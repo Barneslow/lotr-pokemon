@@ -1,4 +1,4 @@
-import { dataCleaning } from "@/helpers/datacleaning";
+import { dataEnhancement } from "@/helpers/dataEnhancement";
 import { Character } from "@/models/models";
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -79,7 +79,7 @@ export async function fetchAllCharacters(): Promise<Character[]> {
     includedNames.includes(obj.name)
   );
 
-  const cleanedData = dataCleaning(filteredData);
+  const cleanedData = dataEnhancement(filteredData);
 
   return cleanedData;
 }

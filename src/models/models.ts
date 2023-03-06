@@ -2,8 +2,9 @@ export interface Character {
   _id: string;
   height: string;
   race: string;
-  mainAttack?: Attack;
-  specialAttack?: Attack;
+  mainAttack: Attack;
+  specialAttack: Attack;
+  health: number;
   gender: string;
   birth?: string;
   death?: string;

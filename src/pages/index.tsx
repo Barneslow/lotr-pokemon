@@ -68,6 +68,7 @@ export default function Home() {
               height={character.height}
               mainAttack={character.mainAttack}
               specialAttack={character.specialAttack}
+              health={character.health}
             />
           ))}
         </div>

@@ -14,8 +14,9 @@ interface CharacterProps {
   race: string;
   realm: string;
   height: string;
-  mainAttack?: Attack;
-  specialAttack?: Attack;
+  mainAttack: Attack;
+  specialAttack: Attack;
+  health: number;
 }
 
 interface ImageData {
@@ -59,7 +60,7 @@ const CharacterCard = (props: CharacterProps) => {
             {props.name}
           </h3>
           <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-            <span style={{ fontSize: 20 }}>200</span>
+            <span style={{ fontSize: 20 }}>{props.health}</span>
             <FontAwesomeIcon
               icon={faHeart}
               style={{ height: 20, color: "red" }}
