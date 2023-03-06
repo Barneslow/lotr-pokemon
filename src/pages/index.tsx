@@ -6,10 +6,13 @@ import CharacterCard from "@/components/CharacterCard";
 import { Character } from "@/models/models";
 import DUMMY_DATA from "../assets/data/myFile.json";
 
+import styles from "./index.module.css";
+
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
+  const [flipAll, setFlipAll] = useState(false);
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
@@ -54,8 +57,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="background">
+      <main className={styles.background}>
         <input onChange={filterCharacters} />
+        <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
+          Flip All
+        </button>
         <div
           style={{
             display: "flex",
@@ -67,6 +73,7 @@ export default function Home() {
         >
           {filteredCharacters.map((character, index) => (
             <CharacterCard
+              flipAll={flipAll}
               key={index}
               name={character.name}
               race={character.race}

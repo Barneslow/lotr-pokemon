@@ -5,10 +5,5 @@
   margin: 0;
 }
 
-.background {
-  background: url("../assets/images/lotr-map-background.jpg");
-  background-size: contain;
-  padding: 1rem;
-  min-height: 100vh;
-  min-width: 100vw;
+button {
 }

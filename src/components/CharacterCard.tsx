@@ -1,11 +1,10 @@
 import Link from "next/link";
 import styles from "./CharacterCard.module.css";
 
-import imageData from "../assets/images.json";
 import { Roboto } from "next/font/google";
 
 import { Attack } from "@/models/models";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardContent from "./CardContent";
 
 export interface CharacterProps {
@@ -19,13 +18,19 @@ export interface CharacterProps {
   health: number;
 }
 
+type FlipCharacterProps = CharacterProps & { flipAll: boolean };
+
 const roboto = Roboto({
   weight: ["100", "300", "400", "700"],
   subsets: ["latin"],
 });
 
-const CharacterCard = (props: CharacterProps) => {
+const CharacterCard = (props: FlipCharacterProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    setIsFlipped(!props.flipAll);
+  }, [props.flipAll]);
 
   return (
     // <Link
