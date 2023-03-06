@@ -1,14 +1,14 @@
 import Link from "next/link";
 import styles from "./CharacterCard.module.css";
-import Image from "next/image";
 
 import imageData from "../assets/images.json";
-import { Varela_Round, Roboto } from "next/font/google";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBolt, faHandFist, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { Attack } from "@/models/models";
+import { Roboto } from "next/font/google";
 
-interface CharacterProps {
+import { Attack } from "@/models/models";
+import { useState } from "react";
+import CardContent from "./CardContent";
+
+export interface CharacterProps {
   _id?: string;
   name: string;
   race: string;
@@ -19,109 +19,44 @@ interface CharacterProps {
   health: number;
 }
 
-interface ImageData {
-  name: string;
-  imageUrl: string;
-}
-
 const roboto = Roboto({
   weight: ["100", "300", "400", "700"],
   subsets: ["latin"],
 });
 
 const CharacterCard = (props: CharacterProps) => {
-  const data: ImageData = imageData.find((item) => item.name === props.name)!;
-
-  console.log(props);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <Link
-      href={`character/${props.name}`}
-      style={{ textDecoration: "none" }}
-      className={`${styles.wrapper} ${roboto.className}`}
+    // <Link
+    //   href={`character/${props.name}`}
+    //   style={{ textDecoration: "none" }}
+    //   className={`${styles.wrapper} ${roboto.className}`}
+    // >
+    <div
+      onClick={() => setIsFlipped(!isFlipped)}
+      className={`${styles.card} ${roboto.className}`}
     >
-      <div className={`${styles.card} ${roboto.className}`}>
+      <div
+        className={`${styles["card-inner"]} ${isFlipped && styles.isflipped}`}
+      >
         <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            width: "100%",
-            marginBottom: 5,
-          }}
-        >
-          <h3
-            style={{
-              fontWeight: 700,
-              margin: 5,
-              fontSize: 20,
-            }}
-          >
-            {props.name}
-          </h3>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-            <span style={{ fontSize: 20 }}>{props.health}</span>
-            <FontAwesomeIcon
-              icon={faHeart}
-              style={{ height: 20, color: "red" }}
-            />
-          </div>
-        </div>
-        <div className={styles["image-box"]}>
-          <Image
-            alt={`Picture of the ${props.name}`}
-            width={400}
-            height={400}
-            className={styles.image}
-            src={data?.imageUrl}
+          className={`${styles["card-face"]} ${styles["card-face-front"]}`}
+        ></div>
+        <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
+          <CardContent
+            name={props.name}
+            race={props.race}
+            realm={props.realm}
+            height={props.height}
+            mainAttack={props.mainAttack}
+            specialAttack={props.specialAttack}
+            health={props.health}
           />
         </div>
-        <div className={styles.info}>
-          <div className={styles.block}>
-            <FontAwesomeIcon
-              icon={faHandFist}
-              style={{
-                height: 22,
-                color: "blue",
-                stroke: "black",
-                strokeWidth: 10,
-              }}
-            />
-            <p>{props.mainAttack?.name}</p>
-            <span style={{ fontWeight: 700 }}>{props.mainAttack?.value}</span>
-          </div>
-          <div className={styles.block}>
-            <FontAwesomeIcon
-              icon={faBolt}
-              style={{
-                height: 22,
-                color: "yellow",
-                stroke: "black",
-                strokeWidth: 10,
-              }}
-            />
-            <p>{props.specialAttack?.name}</p>
-            <span style={{ fontWeight: 700 }}>
-              {props.specialAttack?.value}
-            </span>
-          </div>
-          <div className={styles.bottom}>
-            <div className={styles.box}>
-              <p style={{ fontWeight: 700 }}>Race</p>
-              <p style={{ fontWeight: 300 }}>{props.race}</p>
-            </div>
-            <div className={styles.box}>
-              <p style={{ fontWeight: 700 }}>Height</p>
-              <p style={{ fontWeight: 300 }}>{props.height}</p>
-            </div>
-            <div className={styles.box}>
-              <p style={{ fontWeight: 700 }}>Realm</p>
-              <p style={{ fontWeight: 300 }}>{props.realm}</p>
-            </div>
-          </div>
-        </div>
       </div>
-    </Link>
+    </div>
+    // </Link>
   );
 };
 

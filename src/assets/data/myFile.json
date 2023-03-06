@@ -477,7 +477,7 @@
     "wikiUrl": "http://lotr.wikia.com//wiki/Legolas",
     "mainAttack": { "name": "Bow of the Galadhrim", "value": 50 },
     "specialAttack": { "name": "Double Arrow", "value": 150 },
-    "health": 400
+    "health": 440
   },
   {
     "_id": "5cd99d4bde30eff6ebccfd82",
@@ -778,7 +778,7 @@
     "race": "Black Uruk",
     "mainAttack": { "name": "Orc Blade", "value": 20 },
     "specialAttack": { "name": "Brute", "value": 80 },
-    "health": 200
+    "health": 250
   },
   {
     "_id": "5cdbdecb6dc0baeae48cfa52",
@@ -870,7 +870,7 @@
     "race": "Orc",
     "mainAttack": { "name": "Orc Scimitar", "value": 20 },
     "specialAttack": { "name": "Rage", "value": 60 },
-    "health": 220
+    "health": 200
   },
   {
     "_id": "5cdbdecb6dc0baeae48cfa97",
@@ -975,7 +975,7 @@
     "race": "Orc",
     "wikiUrl": "http://lotr.wikia.com//wiki/Sharku",
     "mainAttack": { "name": "Orc Scimitar", "value": 20 },
-    "specialAttack": { "name": "Warg", "value": 70 },
+    "specialAttack": { "name": "Warg Rider", "value": 70 },
     "health": 200
   },
   {

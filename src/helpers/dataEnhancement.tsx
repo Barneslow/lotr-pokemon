@@ -216,7 +216,7 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.realm = "Mirkwood";
       character.mainAttack = { name: "Bow of the Galadhrim", value: 50 };
       character.specialAttack = { name: "Double Arrow", value: 150 };
-      character.health = 400;
+      character.health = 440;
     }
     if (character.name === "Isildur") {
       character.height = "7'1\"";
@@ -373,7 +373,7 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.realm = "Mordor";
       character.mainAttack = { name: "Orc Scimitar", value: 20 };
       character.specialAttack = { name: "Rage", value: 60 };
-      character.health = 220;
+      character.health = 200;
     }
     if (character.name === "Gothmog") {
       character.height = "5'9\"";
@@ -411,7 +411,7 @@ export function dataEnhancement(array: Character[]): Character[] {
     if (character.name === "Shagrat") {
       character.mainAttack = { name: "Orc Blade", value: 20 };
       character.specialAttack = { name: "Brute", value: 80 };
-      character.health = 200;
+      character.health = 250;
     }
     if (character.name === "Azog") {
       character.height = "8'5\"";
@@ -424,7 +424,7 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.height = "5'0\"";
       character.realm = "Isengard";
       character.mainAttack = { name: "Orc Scimitar", value: 20 };
-      character.specialAttack = { name: "Warg", value: 70 };
+      character.specialAttack = { name: "Warg Rider", value: 70 };
       character.health = 200;
     }
     if (character.name === "Khamûl") {
