@@ -4,31 +4,35 @@ import { fetchAllCharacters } from "./api/hello";
 import { ChangeEvent, useEffect, useState } from "react";
 import CharacterCard from "@/components/CharacterCard";
 import { Character } from "@/models/models";
+import DUMMY_DATA from "../assets/data/myFile.json";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [characters, setCharacters] = useState<Character[]>(DUMMY_DATA);
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
 
-  useEffect(() => {
-    async function initiaDataFetch() {
-      try {
-        const data = await fetchAllCharacters();
+  // useEffect(() => {
+  //   async function initiaDataFetch() {
+  //     try {
+  //       const data = await fetchAllCharacters();
 
-        setCharacters(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    initiaDataFetch();
-  }, []);
+  //       setCharacters(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   initiaDataFetch();
+  // }, []);
 
   useEffect(() => {
     const newFilteredCharacters = characters.filter((character) => {
-      return character.name.toLowerCase().includes(searchField);
+      return (
+        character.name.toLowerCase().includes(searchField) ||
+        character.race.toLowerCase().includes(searchField)
+      );
     });
 
     setFilteredCharacters(newFilteredCharacters);
@@ -48,7 +52,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="background" style={{ maxWidth: "100vw" }}>
+      <main className="background">
         <input onChange={filterCharacters} />
         <div
           style={{
