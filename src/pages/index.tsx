@@ -10,7 +10,9 @@ const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
-  const [characters, setCharacters] = useState<Character[]>(DUMMY_DATA);
+  const [characters, setCharacters] = useState<Character[]>(
+    DUMMY_DATA as Character[]
+  );
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
 
