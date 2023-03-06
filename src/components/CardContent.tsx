@@ -32,7 +32,7 @@ const CardContent = (props: CharacterProps) => {
             fontSize: 20,
           }}
         >
-          {props.name}
+          {props.name.substring(0, 20)}
         </h3>
         <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
           <span style={{ fontSize: 20 }}>{props.health}</span>
@@ -44,7 +44,7 @@ const CardContent = (props: CharacterProps) => {
       </div>
       <div className={styles["image-box"]}>
         <Image
-          alt={`Picture of the ${props.name}`}
+          alt={`Picture of ${props.name}`}
           width={400}
           height={400}
           className={styles.image}

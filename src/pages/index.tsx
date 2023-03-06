@@ -5,10 +5,18 @@ import { ChangeEvent, useEffect, useState } from "react";
 import CharacterCard from "@/components/CharacterCard";
 import { Character } from "@/models/models";
 import DUMMY_DATA from "../assets/data/myFile.json";
+// import { saveAs } from "file-saver";
 
 import styles from "./index.module.css";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
+
+// function saveJSONToFile(jsonData) {
+//   const blob = new Blob([JSON.stringify(jsonData)], {
+//     type: "application/json",
+//   });
+//   saveAs(blob, "myFile.json");
+// }
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
@@ -25,6 +33,7 @@ export default function Home() {
   //       const data = await fetchAllCharacters();
 
   //       setCharacters(data);
+  //       saveJSONToFile(data);
   //     } catch (error) {
   //       console.log(error);
   //     }

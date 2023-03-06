@@ -63,7 +63,7 @@ export async function fetchAllCharacters(): Promise<Character[]> {
     "Bolg",
     "Azog",
     "Sharku",
-    "Gothmog",
+    "Gothmog (Lieutenant of Morgul)",
     "Grishnákh",
     "Lugdush",
     "Uglúk",
@@ -73,6 +73,14 @@ export async function fetchAllCharacters(): Promise<Character[]> {
     "Isildur",
     "Khamûl",
     "Black Serpent",
+    "Gríma Wormtongue",
+    "Bilbo Baggins",
+    "Denethor II",
+    "Gwaihir",
+    "Smaug",
+    "Mablung the Ranger",
+    "Gorbag",
+    "Muzgash",
   ];
 
   const filteredData = data.docs.filter((obj: any) =>

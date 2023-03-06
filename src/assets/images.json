@@ -223,7 +223,7 @@
     "imageUrl": "https://static.wikia.nocookie.net/lotr/images/0/05/Sharku3.jpg/revision/latest?cb=20140918165540"
   },
   {
-    "name": "Gothmog",
+    "name": "Gothmog (Lieutenant of Morgul)",
     "imageUrl": "https://static.wikia.nocookie.net/pjmidearthfilms/images/e/e1/Lieutenant_Gothmog.jpg/revision/latest?cb=20200910075636"
   },
   {
@@ -253,5 +253,44 @@
   {
     "name": "Black Serpent",
     "imageUrl": "https://static.wikia.nocookie.net/lotr/images/0/0c/Serpent_Lord_crop.png/revision/latest?cb=20150716202902"
+  },
+  {
+    "name": "Muzgash",
+    "imageUrl": "https://static.wikia.nocookie.net/pjmidearthfilms/images/e/e2/LAGDUF.png/revision/latest?cb=20200712011518"
+  },
+
+  {
+    "name": "Gwaihir",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/4/41/Gwaihir.jpg/revision/latest/scale-to-width-down/1000?cb=20210916194719"
+  },
+
+  {
+    "name": "Gríma Wormtongue",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/b/b0/Grima.jpg/revision/latest?cb=20080707153733"
+  },
+
+  {
+    "name": "Bilbo Baggins",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/6/68/Bilbo_baggins.jpg/revision/latest?cb=20130202022550"
+  },
+  {
+    "name": "Denethor II",
+    "imageUrl": "https://static.wikia.nocookie.net/middlearthfilmsaga/images/8/89/Denethor_ROTK_1.jpg/revision/latest?cb=20190109204243"
+  },
+  {
+    "name": "Mablung the Ranger",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/c/cf/Mablung.jpg/revision/latest?cb=20090609200347"
+  },
+  {
+    "name": "Mablung the Ranger",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/c/cf/Mablung.jpg/revision/latest?cb=20090609200347"
+  },
+  {
+    "name": "Smaug",
+    "imageUrl": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/01/smaug.png"
+  },
+  {
+    "name": "Gorbag",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/d/da/Gorbag.jpg/revision/latest?cb=20190205204344"
   }
 ]

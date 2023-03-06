@@ -329,7 +329,7 @@ export function dataEnhancement(array: Character[]): Character[] {
     }
     if (character.name === "Snaga") {
       character.height = "4'10\"";
-      character.realm = "Cirith Ungol";
+      character.realm = "Mordor";
       character.mainAttack = { name: "Orc Scimitar", value: 20 };
       character.specialAttack = { name: "Rage", value: 60 };
       character.health = 200;
@@ -375,7 +375,7 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.specialAttack = { name: "Rage", value: 60 };
       character.health = 200;
     }
-    if (character.name === "Gothmog") {
+    if (character.name === "Gothmog (Lieutenant of Morgul)") {
       character.height = "5'9\"";
       character.realm = "Mordor";
       character.mainAttack = { name: "Black Axe", value: 30 };
@@ -440,6 +440,60 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.mainAttack = { name: "Standard Bearer", value: 20 };
       character.specialAttack = { name: "Mûmakil", value: 140 };
       character.health = 380;
+    }
+    if (character.name === "Gríma Wormtongue") {
+      character.realm = "Rohan";
+      character.height = "5'11\"";
+      character.mainAttack = { name: "Dagger", value: 20 };
+      character.specialAttack = { name: "Whispers", value: 80 };
+      character.health = 220;
+    }
+    if (character.name === "Bilbo Baggins") {
+      character.realm = "The Shire";
+      character.height = "4'1\"";
+      character.mainAttack = { name: "Sting", value: 30 };
+      character.specialAttack = { name: "Sneak", value: 70 };
+      character.health = 250;
+    }
+    if (character.name === "Denethor II") {
+      character.realm = "Gondor";
+      character.height = "6'1\"";
+      character.mainAttack = { name: "Staff", value: 35 };
+      character.specialAttack = { name: "Palantír", value: 110 };
+      character.health = 300;
+    }
+    if (character.name === "Gwaihir") {
+      character.realm = "Unknown";
+      character.height = "18'0";
+      character.mainAttack = { name: "Swoop", value: 55 };
+      character.specialAttack = { name: "Great Winds", value: 190 };
+      character.health = 500;
+    }
+    if (character.name === "Smaug") {
+      character.height = "Enormous";
+      character.mainAttack = { name: "Bite", value: 70 };
+      character.specialAttack = { name: "Fireblast", value: 240 };
+      character.health = 700;
+    }
+    if (character.name === "Mablung the Ranger") {
+      character.realm = "Gondor";
+      character.height = "6'1\"";
+      character.mainAttack = { name: "Bow", value: 25 };
+      character.specialAttack = { name: "Ambush", value: 90 };
+      character.health = 230;
+    }
+    if (character.name === "Gorbag") {
+      character.height = "5'5\"";
+      character.mainAttack = { name: "Orc Scimitar", value: 20 };
+      character.specialAttack = { name: "Rage", value: 65 };
+      character.health = 220;
+    }
+    if (character.name === "Muzgash") {
+      character.realm = "Mordor";
+      character.height = "5'6\"";
+      character.mainAttack = { name: "Spear", value: 25 };
+      character.specialAttack = { name: "Rage", value: 60 };
+      character.health = 200;
     }
 
     return character;
