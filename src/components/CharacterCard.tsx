@@ -33,35 +33,35 @@ const CharacterCard = (props: FlipCharacterProps) => {
   }, [props.flipAll]);
 
   return (
-    // <Link
-    //   href={`character/${props.name}`}
-    //   style={{ textDecoration: "none" }}
-    //   className={`${styles.wrapper} ${roboto.className}`}
-    // >
     <div
-      onClick={() => setIsFlipped(!isFlipped)}
-      className={`${styles.card} ${roboto.className}`}
+      // href={`character/${props.name}`}
+      style={{ textDecoration: "none" }}
+      className={`${styles.wrapper} ${roboto.className}`}
     >
       <div
-        className={`${styles["card-inner"]} ${isFlipped && styles.isflipped}`}
+        onClick={() => setIsFlipped(!isFlipped)}
+        className={`${styles.card} ${roboto.className}`}
       >
         <div
-          className={`${styles["card-face"]} ${styles["card-face-front"]}`}
-        ></div>
-        <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
-          <CardContent
-            name={props.name}
-            race={props.race}
-            realm={props.realm}
-            height={props.height}
-            mainAttack={props.mainAttack}
-            specialAttack={props.specialAttack}
-            health={props.health}
-          />
+          className={`${styles["card-inner"]} ${isFlipped && styles.isflipped}`}
+        >
+          <div
+            className={`${styles["card-face"]} ${styles["card-face-front"]}`}
+          ></div>
+          <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
+            <CardContent
+              name={props.name}
+              race={props.race}
+              realm={props.realm}
+              height={props.height}
+              mainAttack={props.mainAttack}
+              specialAttack={props.specialAttack}
+              health={props.health}
+            />
+          </div>
         </div>
       </div>
     </div>
-    // </Link>
   );
 };
 
