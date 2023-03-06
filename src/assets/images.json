@@ -102,7 +102,7 @@
   },
   {
     "name": "Bofur",
-    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/e/ec/Gimli_-_FOTR.png/revision/latest?cb=20121008105956"
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/5/56/Bofur_Nesbitt.jpg/revision/latest?cb=20121030120400"
   },
 
   {
@@ -160,7 +160,7 @@
   },
   {
     "name": "Gollum",
-    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/6/64/Gollum_-_Two_Towers.png/revision/latest/scale-to-width-down/1000?cb=20210117024459"
+    "imageUrl": "https://variety.com/wp-content/uploads/2022/03/MCDLOOF_EC090.jpg"
   },
   {
     "name": "Radagast",
@@ -168,11 +168,11 @@
   },
   {
     "name": "Sauron",
-    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/9/90/Sauron-2.jpg/revision/latest?cb=20110508182634"
+    "imageUrl": "https://i0.wp.com/middle-earth.xenite.org/files/2013/12/sauron-and-the-one-ring.jpg?fit=360%2C247&ssl=1"
   },
   {
     "name": "Treebeard",
-    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/2/23/TreebeardatIsengard.png/revision/latest/scale-to-width-down/1000?cb=20210117035345"
+    "imageUrl": "https://static.wikia.nocookie.net/heroes-and-villain/images/6/67/Treebeard_ROTK_1.png/revision/latest?cb=20190121152950"
   },
   {
     "name": "Witch-king of Angmar",
@@ -188,7 +188,7 @@
   },
   {
     "name": "Éowyn",
-    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/0/02/%C3%89owyn_of_Rohan_%2860%29.jpg/revision/latest?cb=20210604134514"
+    "imageUrl": "https://alchetron.com/cdn/owyn-cac92612-1792-4160-9b51-04ca0f3b144-resize-750.jpeg"
   },
   {
     "name": "Haldir (Lorien)",
@@ -245,5 +245,13 @@
   {
     "name": "Gamling",
     "imageUrl": "https://static.wikia.nocookie.net/lotr/images/3/33/Gamling.jpg/revision/latest/scale-to-width-down/1000?cb=20150308165156"
+  },
+  {
+    "name": "Khamûl",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/f/f8/Third_Age_Easterling.png/revision/latest/scale-to-width-down/1000?cb=20210423182822"
+  },
+  {
+    "name": "Black Serpent",
+    "imageUrl": "https://static.wikia.nocookie.net/lotr/images/0/0c/Serpent_Lord_crop.png/revision/latest?cb=20150716202902"
   }
 ]

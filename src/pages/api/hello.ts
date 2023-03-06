@@ -1,3 +1,4 @@
+import { dataCleaning } from "@/helpers/datacleaning";
 import { Character } from "@/models/models";
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -70,13 +71,17 @@ export async function fetchAllCharacters(): Promise<Character[]> {
     "Gamling",
     "Théoden",
     "Isildur",
+    "Khamûl",
+    "Black Serpent",
   ];
 
   const filteredData = data.docs.filter((obj: any) =>
     includedNames.includes(obj.name)
   );
 
-  return filteredData;
+  const cleanedData = dataCleaning(filteredData);
+
+  return cleanedData;
 }
 
 export async function fetchCharacter(character: string): Promise<Character> {

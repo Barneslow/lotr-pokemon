@@ -66,6 +66,8 @@ export default function Home() {
               race={character.race}
               realm={character.realm}
               height={character.height}
+              mainAttack={character.mainAttack}
+              specialAttack={character.specialAttack}
             />
           ))}
         </div>
