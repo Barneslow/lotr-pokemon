@@ -93,4 +93,6 @@ const CharacterCard: React.FC<FlipCharacterProps> = memo((props) => {
   );
 });
 
+CharacterCard.displayName = "CharacterCard";
+
 export default CharacterCard;

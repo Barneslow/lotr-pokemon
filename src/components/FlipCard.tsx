@@ -66,4 +66,6 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
   );
 });
 
+FlipCard.displayName = "FlipCard";
+
 export default FlipCard;
