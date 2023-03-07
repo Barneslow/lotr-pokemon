@@ -43,7 +43,7 @@ export default function Home() {
 
       setChosenCards((prev) => [...prev, card]);
     },
-    [setCount, setChosenCards]
+    [setCount, setChosenCards, characters]
   );
 
   const container = {
