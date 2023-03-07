@@ -109,7 +109,5 @@ export async function fetchCharacterQuotes(id: string): Promise<string[]> {
 
   const quotes = data.docs.map((item: any) => item.dialog);
 
-  console.log(quotes);
-
   return quotes;
 }

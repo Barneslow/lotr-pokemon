@@ -15,36 +15,36 @@ const CardContent = (props: CharacterProps) => {
   const data: ImageData = imageData.find((item) => item.name === props.name)!;
 
   return (
-    <>
+    <div>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
           width: "100%",
-          marginBottom: 5,
+          marginBottom: 2,
         }}
       >
         <h3
           style={{
             fontWeight: 700,
             margin: 5,
-            fontSize: 20,
+            fontSize: 14,
           }}
         >
           {props.name.substring(0, 20)}
         </h3>
         <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-          <span style={{ fontSize: 20 }}>{props.health}</span>
+          <span style={{ fontSize: 14 }}>{props.health}</span>
           <FontAwesomeIcon
             icon={faHeart}
-            style={{ height: 20, color: "red" }}
+            style={{ height: 14, color: "red" }}
           />
         </div>
       </div>
       <div className={styles["image-box"]}>
         <Image
-          alt={`Picture of ${props.name}`}
+          alt={`Picture of the ${props.name}`}
           width={400}
           height={400}
           className={styles.image}
@@ -56,7 +56,7 @@ const CardContent = (props: CharacterProps) => {
           <FontAwesomeIcon
             icon={faHandFist}
             style={{
-              height: 22,
+              height: 14,
               color: "blue",
               stroke: "black",
               strokeWidth: 10,
@@ -69,7 +69,7 @@ const CardContent = (props: CharacterProps) => {
           <FontAwesomeIcon
             icon={faBolt}
             style={{
-              height: 22,
+              height: 14,
               color: "yellow",
               stroke: "black",
               strokeWidth: 10,
@@ -93,7 +93,7 @@ const CardContent = (props: CharacterProps) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

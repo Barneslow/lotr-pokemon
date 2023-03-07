@@ -1,13 +1,16 @@
 import Head from "next/head";
 import { Varela_Round } from "next/font/google";
 import { fetchAllCharacters } from "./api/hello";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import CharacterCard from "@/components/CharacterCard";
 import { Character } from "@/models/models";
 import DUMMY_DATA from "../assets/data/myFile.json";
-// import { saveAs } from "file-saver";
+import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
+import { randomFiveFromArray, shuffleArray } from "@/helpers/arrays";
+import ChosenCards from "@/components/ChosenCards";
+import ChosenCard from "@/components/ChosenCard";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
@@ -20,12 +23,61 @@ const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
-  const [flipAll, setFlipAll] = useState(false);
+  const [flipAll, setFlipAll] = useState(true);
+  const [fight, setFight] = useState(false);
+  const [enemy, setEnemy] = useState<Character[]>([]);
+  const [count, setCount] = useState(0);
+  const [chosenCards, setChosenCards] = useState<Character[]>([]);
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
+
+  const updateCount = useCallback(
+    (newValue: number, card: Character): void => {
+      setCount((prev) => (prev += newValue));
+      setChosenCards((prev) => [...prev, card]);
+    },
+    [setCount, setChosenCards]
+  );
+
+  const container = {
+    initial: {},
+    animate: { transition: { staggerChildren: 0.05 } },
+  };
+
+  const child = {
+    initial: { scale: 0, opacity: 0, y: -10 },
+    animate: {
+      scale: 1,
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, type: "spring", bounce: 0.3 },
+    },
+  };
+
+  useEffect(() => {
+    shuffleArray(characters);
+  }, []);
+
+  useEffect(() => {
+    if (count >= 5) {
+      setFight(true);
+
+      const chosenIds = chosenCards.map((card) => card._id);
+      const rival = characters.filter((char) => !chosenIds.includes(char._id));
+
+      setEnemy(randomFiveFromArray(rival));
+    }
+  }, [count]);
+
+  // useEffect(() => {
+  //   const chosenCardsIds = chosenCards.map((card) => card._id);
+  //   setCharacters((prev) =>
+  //     prev.filter((character) => !chosenCardsIds.includes(character._id))
+  //   );
+  // }, [count]);
 
   // useEffect(() => {
   //   async function initiaDataFetch() {
@@ -71,29 +123,71 @@ export default function Home() {
         <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
           Flip All
         </button>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1rem",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {filteredCharacters.map((character, index) => (
-            <CharacterCard
-              flipAll={flipAll}
-              key={index}
-              name={character.name}
-              race={character.race}
-              realm={character.realm}
-              height={character.height}
-              mainAttack={character.mainAttack}
-              specialAttack={character.specialAttack}
-              health={character.health}
-            />
-          ))}
-        </div>
+        <ChosenCards count={count} cards={chosenCards} />
+        {fight ? (
+          <>
+            <h1>Lets Fight</h1>
+            <motion.div
+              variants={container}
+              initial="initial"
+              animate="animate"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1rem",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {enemy.map((character) => (
+                <motion.div variants={child}>
+                  <ChosenCard
+                    _id={character._id}
+                    key={character._id}
+                    name={character.name}
+                    race={character.race}
+                    realm={character.realm}
+                    height={character.height}
+                    mainAttack={character.mainAttack}
+                    specialAttack={character.specialAttack}
+                    health={character.health}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </>
+        ) : (
+          <motion.div
+            variants={container}
+            initial="initial"
+            animate="animate"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {filteredCharacters.map((character) => (
+              <motion.div variants={child}>
+                <CharacterCard
+                  _id={character._id}
+                  flipAll={flipAll}
+                  key={character._id}
+                  name={character.name}
+                  race={character.race}
+                  realm={character.realm}
+                  height={character.height}
+                  mainAttack={character.mainAttack}
+                  specialAttack={character.specialAttack}
+                  health={character.health}
+                  updateCount={updateCount}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </main>
     </>
   );

@@ -74,7 +74,7 @@ export function dataEnhancement(array: Character[]): Character[] {
 
     if (character.name === "Meriadoc Brandybuck") {
       character.realm = "The Shire";
-      character.height = "4'6\"";
+      character.height = "4'4\"";
       character.mainAttack = { name: "Barrow-blades", value: 20 };
       character.specialAttack = { name: "Rocks", value: 80 };
       character.health = 240;
@@ -145,7 +145,7 @@ export function dataEnhancement(array: Character[]): Character[] {
 
     if (character.name === "Samwise Gamgee") {
       character.realm = "The Shire";
-      character.height = "4'0\"";
+      character.height = "3'6\"";
       character.mainAttack = { name: "Daggers of Westernesse", value: 40 };
       character.specialAttack = { name: "Stout Heart", value: 100 };
       character.health = 310;
@@ -266,7 +266,7 @@ export function dataEnhancement(array: Character[]): Character[] {
       character.health = 380;
     }
     if (character.name === "Peregrin Took") {
-      character.height = "4'5\"";
+      character.height = "4'6\"";
       character.realm = "The Shire";
       character.mainAttack = { name: "Barrow Blades", value: 20 };
       character.specialAttack = { name: "Rocks", value: 80 };
@@ -450,7 +450,7 @@ export function dataEnhancement(array: Character[]): Character[] {
     }
     if (character.name === "Bilbo Baggins") {
       character.realm = "The Shire";
-      character.height = "4'1\"";
+      character.height = "3'1\"";
       character.mainAttack = { name: "Sting", value: 30 };
       character.specialAttack = { name: "Sneak", value: 70 };
       character.health = 250;
