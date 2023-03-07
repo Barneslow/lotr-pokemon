@@ -98,6 +98,11 @@
 
   .stats {
     display: none;
+    width: calc(100% - 4px);
+  }
+
+  .card-inner {
+    border: 2px solid rgb(250, 207, 101);
   }
 
   .icon {
