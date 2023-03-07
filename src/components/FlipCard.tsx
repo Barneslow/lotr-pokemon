@@ -6,10 +6,19 @@ import imageData from "../assets/images.json";
 import { ImageData } from "./CardContent";
 
 import styles from "./FlipCard.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBolt,
+  faFistRaised,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface FlipCardProps {
   _id: string;
   name: string;
+  health: number;
+  mainAttack: number;
+  specialAttack: number;
   flipAll: boolean;
   updateCount: (newValue: number, cardId: string) => void;
 }
@@ -50,7 +59,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
           className={`${styles["card-face"]} ${styles["card-face-front"]}`}
         ></div>
         <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
-          <h3 className={styles.header}>{props.name.substring(0, 20)}</h3>
+          <h3 className={styles.header}>{props.name.substring(0, 11)}</h3>
           <div className={styles["image-box"]}>
             <Image
               alt={`Picture of the ${props.name}`}
@@ -59,6 +68,44 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               className={styles.image}
               src={data?.imageUrl}
             />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              margin: 3,
+            }}
+          >
+            <div>
+              <FontAwesomeIcon
+                icon={faHeart}
+                color="red"
+                height={20}
+                strokeWidth={10}
+                stroke="black"
+              />
+              <p>{props.health}</p>
+            </div>
+            <div>
+              <FontAwesomeIcon
+                icon={faFistRaised}
+                color="blue"
+                height={20}
+                strokeWidth={10}
+                stroke="black"
+              />
+              <p>{props.mainAttack}</p>
+            </div>
+            <div>
+              <FontAwesomeIcon
+                icon={faBolt}
+                color="yellow"
+                height={20}
+                strokeWidth={10}
+                stroke="black"
+              />
+              <p>{props.specialAttack}</p>
+            </div>
           </div>
         </div>
       </div>

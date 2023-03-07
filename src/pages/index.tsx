@@ -191,6 +191,9 @@ export default function Home() {
                   _id={character._id}
                   updateCount={updateCount}
                   flipAll={flipAll}
+                  health={character.health}
+                  mainAttack={character.mainAttack.value}
+                  specialAttack={character.specialAttack.value}
                 />
               </motion.div>
             ))}
