@@ -63,7 +63,7 @@ export default function Home() {
 
   useEffect(() => {
     shuffleArray(characters);
-  }, []);
+  }, [characters]);
 
   useEffect(() => {
     if (count >= 5) {
@@ -74,7 +74,7 @@ export default function Home() {
 
       setEnemy(randomFiveFromArray(rival));
     }
-  }, [count]);
+  }, [count, characters, chosenCards]);
 
   // useEffect(() => {
   //   const chosenCardsIds = chosenCards.map((card) => card._id);
@@ -143,10 +143,9 @@ export default function Home() {
               }}
             >
               {enemy.map((character) => (
-                <motion.div variants={child}>
+                <motion.div variants={child} key={character._id}>
                   <ChosenCard
                     _id={character._id}
-                    key={character._id}
                     name={character.name}
                     race={character.race}
                     realm={character.realm}
@@ -173,7 +172,7 @@ export default function Home() {
             }}
           >
             {filteredCharacters.map((character) => (
-              <motion.div variants={child}>
+              <motion.div variants={child} key={character._id}>
                 {/* <CharacterCard
                   _id={character._id}
                   flipAll={flipAll}
