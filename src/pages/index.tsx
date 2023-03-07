@@ -166,7 +166,7 @@ export default function Home() {
             style={{
               display: "flex",
               flexWrap: "wrap",
-              gap: "1rem",
+              gap: 5,
               justifyContent: "center",
               alignItems: "center",
             }}

@@ -15,7 +15,15 @@ const CardContent = (props: CharacterProps) => {
   const data: ImageData = imageData.find((item) => item.name === props.name)!;
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: 250,
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -29,16 +37,16 @@ const CardContent = (props: CharacterProps) => {
           style={{
             fontWeight: 700,
             margin: 5,
-            fontSize: 14,
+            fontSize: 18,
           }}
         >
           {props.name.substring(0, 20)}
         </h3>
         <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-          <span style={{ fontSize: 14 }}>{props.health}</span>
+          <span style={{ fontSize: 18 }}>{props.health}</span>
           <FontAwesomeIcon
             icon={faHeart}
-            style={{ height: 14, color: "red" }}
+            style={{ height: 18, color: "red" }}
           />
         </div>
       </div>
@@ -56,27 +64,31 @@ const CardContent = (props: CharacterProps) => {
           <FontAwesomeIcon
             icon={faHandFist}
             style={{
-              height: 14,
+              height: 20,
               color: "blue",
               stroke: "black",
               strokeWidth: 10,
             }}
           />
-          <p>{props.mainAttack?.name}</p>
-          <span style={{ fontWeight: 700 }}>{props.mainAttack?.value}</span>
+          <p style={{ fontSize: 14 }}>{props.mainAttack?.name}</p>
+          <span style={{ fontWeight: 700, fontSize: 16 }}>
+            {props.mainAttack?.value}
+          </span>
         </div>
         <div className={styles.block}>
           <FontAwesomeIcon
             icon={faBolt}
             style={{
-              height: 14,
+              height: 20,
               color: "yellow",
               stroke: "black",
               strokeWidth: 10,
             }}
           />
-          <p>{props.specialAttack?.name}</p>
-          <span style={{ fontWeight: 700 }}>{props.specialAttack?.value}</span>
+          <p style={{ fontSize: 14 }}>{props.specialAttack?.name}</p>
+          <span style={{ fontWeight: 700, fontSize: 16 }}>
+            {props.specialAttack?.value}
+          </span>
         </div>
         <div className={styles.bottom}>
           <div className={styles.box}>

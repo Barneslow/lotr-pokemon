@@ -42,6 +42,8 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
     name: props.name,
   };
 
+  console.log("render");
+
   return (
     <div
       onClick={() => {
