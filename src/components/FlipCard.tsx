@@ -42,8 +42,6 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
     name: props.name,
   };
 
-  console.log("render");
-
   return (
     <div
       onClick={() => {
@@ -72,17 +70,13 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
             />
           </div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              margin: 3,
-            }}
+            className={styles.stats}
           >
             <div>
               <FontAwesomeIcon
                 icon={faHeart}
                 color="red"
-                height={20}
+                className={styles.icon}
                 strokeWidth={10}
                 stroke="black"
               />
@@ -92,7 +86,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               <FontAwesomeIcon
                 icon={faFistRaised}
                 color="blue"
-                height={20}
+                className={styles.icon}
                 strokeWidth={10}
                 stroke="black"
               />
@@ -102,7 +96,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               <FontAwesomeIcon
                 icon={faBolt}
                 color="yellow"
-                height={20}
+                className={styles.icon}
                 strokeWidth={10}
                 stroke="black"
               />
