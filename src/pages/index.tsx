@@ -11,6 +11,7 @@ import styles from "./index.module.css";
 import { randomFiveFromArray, shuffleArray } from "@/helpers/arrays";
 import ChosenCards from "@/components/ChosenCards";
 import ChosenCard from "@/components/ChosenCard";
+import FlipCard from "@/components/FlipCard";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
@@ -35,8 +36,11 @@ export default function Home() {
     useState<Character[]>(characters);
 
   const updateCount = useCallback(
-    (newValue: number, card: Character): void => {
+    (newValue: number, cardId: string): void => {
       setCount((prev) => (prev += newValue));
+
+      const card = characters.find((item) => item._id === cardId)!;
+
       setChosenCards((prev) => [...prev, card]);
     },
     [setCount, setChosenCards]
@@ -126,7 +130,6 @@ export default function Home() {
         <ChosenCards count={count} cards={chosenCards} />
         {fight ? (
           <>
-            <h1>Lets Fight</h1>
             <motion.div
               variants={container}
               initial="initial"
@@ -171,7 +174,7 @@ export default function Home() {
           >
             {filteredCharacters.map((character) => (
               <motion.div variants={child}>
-                <CharacterCard
+                {/* <CharacterCard
                   _id={character._id}
                   flipAll={flipAll}
                   key={character._id}
@@ -183,6 +186,12 @@ export default function Home() {
                   specialAttack={character.specialAttack}
                   health={character.health}
                   updateCount={updateCount}
+                /> */}
+                <FlipCard
+                  name={character.name}
+                  _id={character._id}
+                  updateCount={updateCount}
+                  flipAll={flipAll}
                 />
               </motion.div>
             ))}

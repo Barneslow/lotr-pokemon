@@ -46,8 +46,6 @@ const CharacterCard: React.FC<FlipCharacterProps> = memo((props) => {
     health: props.health,
   };
 
-  console.log("render");
-
   return (
     <div
       // href={`character/${props.name}`}

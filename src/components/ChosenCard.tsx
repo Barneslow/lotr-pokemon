@@ -1,6 +1,7 @@
 import { Roboto } from "next/font/google";
 import CardContent from "./CardContent";
 import { CharacterProps } from "./CharacterCard";
+import { motion } from "framer-motion";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "700"],
@@ -9,7 +10,10 @@ const roboto = Roboto({
 
 const ChosenCard = (props: CharacterProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
       style={{
         background: "lightgrey",
         padding: ".5rem",
@@ -28,7 +32,7 @@ const ChosenCard = (props: CharacterProps) => {
         specialAttack={props.specialAttack}
         health={props.health}
       />
-    </div>
+    </motion.div>
   );
 };
 

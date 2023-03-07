@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "./CharacterCard.module.css";
 import imageData from "../assets/images.json";
 
-interface ImageData {
+export interface ImageData {
   name: string;
   imageUrl: string;
 }
