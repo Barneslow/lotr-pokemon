@@ -1,5 +1,5 @@
 import { Character } from "@/models/models";
-import ChosenCard from "./ChosenCard";
+import CharacterCard from "./CharacterCard";
 
 type CountProps = {
   cards: Character[];
@@ -15,27 +15,14 @@ const ChosenCards = (props: CountProps) => {
         width: "100%",
         justifyContent: "center",
         padding: "1rem",
-        overflow: "scroll",
+        // overflow: "scroll",
       }}
     >
       {props.cards.map((char, index) => (
-        <ChosenCard
-          _id={char._id}
-          key={index}
-          name={char.name}
-          race={char.race}
-          realm={char.realm}
-          height={char.height}
-          mainAttack={char.mainAttack}
-          specialAttack={char.specialAttack}
-          health={char.health}
-        />
+        <CharacterCard key={index} character={char} />
       ))}
     </div>
   );
 };
 
 export default ChosenCards;
-
-// <div style={{ background: "rgba(0, 0, 0, .8)", borderRadius: 10 }}>
-// <h1 style={{ color: "white", textAlign: "center" }}>{props.count}</h1>

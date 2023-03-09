@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 import styles from "./index.module.css";
 import { randomFiveFromArray, shuffleArray } from "@/helpers/arrays";
 import ChosenCards from "@/components/ChosenCards";
-import ChosenCard from "@/components/ChosenCard";
 import FlipCard from "@/components/FlipCard";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
@@ -144,16 +143,7 @@ export default function Home() {
             >
               {enemy.map((character) => (
                 <motion.div variants={child} key={character._id}>
-                  <ChosenCard
-                    _id={character._id}
-                    name={character.name}
-                    race={character.race}
-                    realm={character.realm}
-                    height={character.height}
-                    mainAttack={character.mainAttack}
-                    specialAttack={character.specialAttack}
-                    health={character.health}
-                  />
+                  <CharacterCard character={character} />
                 </motion.div>
               ))}
             </motion.div>
@@ -173,19 +163,6 @@ export default function Home() {
           >
             {filteredCharacters.map((character) => (
               <motion.div variants={child} key={character._id}>
-                {/* <CharacterCard
-                  _id={character._id}
-                  flipAll={flipAll}
-                  key={character._id}
-                  name={character.name}
-                  race={character.race}
-                  realm={character.realm}
-                  height={character.height}
-                  mainAttack={character.mainAttack}
-                  specialAttack={character.specialAttack}
-                  health={character.health}
-                  updateCount={updateCount}
-                /> */}
                 <FlipCard
                   name={character.name}
                   _id={character._id}

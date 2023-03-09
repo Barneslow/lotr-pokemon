@@ -59,7 +59,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
           className={`${styles["card-face"]} ${styles["card-face-front"]}`}
         ></div>
         <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
-          <h3 className={styles.header}>{props.name.substring(0, 11)}</h3>
+          <h3 className={styles.header}>{props.name}</h3>
           <div className={styles["image-box"]}>
             <Image
               alt={`Picture of the ${props.name}`}
@@ -69,7 +69,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               src={data?.imageUrl}
             />
           </div>
-          <div
+          {/* <div
             className={styles.stats}
           >
             <div>
@@ -102,7 +102,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               />
               <p>{props.specialAttack}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

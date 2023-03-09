@@ -1,9 +1,9 @@
 import { faBolt, faHandFist, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CharacterProps } from "./CharacterCard";
+import { CharacterObjectProps } from "./CharacterCard";
 import Image from "next/image";
 
-import styles from "./CharacterCard.module.css";
+import styles from "./CardContent.module.css";
 import imageData from "../assets/images.json";
 
 export interface ImageData {
@@ -11,48 +11,23 @@ export interface ImageData {
   imageUrl: string;
 }
 
-const CardContent = (props: CharacterProps) => {
-  const data: ImageData = imageData.find((item) => item.name === props.name)!;
+const CardContent = ({ character }: CharacterObjectProps) => {
+  const data: ImageData = imageData.find(
+    (item) => item.name === character.name
+  )!;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: 250,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          width: "100%",
-          marginBottom: 2,
-        }}
-      >
-        <h3
-          style={{
-            fontWeight: 700,
-            margin: 5,
-            fontSize: 18,
-          }}
-        >
-          {props.name.substring(0, 20)}
-        </h3>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-          <span style={{ fontSize: 18 }}>{props.health}</span>
-          <FontAwesomeIcon
-            icon={faHeart}
-            style={{ height: 18, color: "red" }}
-          />
+    <div className={styles.card}>
+      <div className={styles.heading}>
+        <h3 className={styles.name}>{character.name.substring(0, 20)}</h3>
+        <div style={{ display: "flex" }}>
+          <span>{character.health}</span>
+          <FontAwesomeIcon icon={faHeart} height={18} color="red" />
         </div>
       </div>
       <div className={styles["image-box"]}>
         <Image
-          alt={`Picture of the ${props.name}`}
+          alt={`Picture of the ${character.name}`}
           width={400}
           height={400}
           className={styles.image}
@@ -70,10 +45,8 @@ const CardContent = (props: CharacterProps) => {
               strokeWidth: 10,
             }}
           />
-          <p style={{ fontSize: 14 }}>{props.mainAttack?.name}</p>
-          <span style={{ fontWeight: 700, fontSize: 16 }}>
-            {props.mainAttack?.value}
-          </span>
+          <p>{character.mainAttack?.name}</p>
+          <span style={{ fontWeight: 700 }}>{character.mainAttack?.value}</span>
         </div>
         <div className={styles.block}>
           <FontAwesomeIcon
@@ -85,23 +58,29 @@ const CardContent = (props: CharacterProps) => {
               strokeWidth: 10,
             }}
           />
-          <p style={{ fontSize: 14 }}>{props.specialAttack?.name}</p>
-          <span style={{ fontWeight: 700, fontSize: 16 }}>
-            {props.specialAttack?.value}
+          <p>{character.specialAttack?.name}</p>
+          <span style={{ fontWeight: 700 }}>
+            {character.specialAttack?.value}
           </span>
         </div>
         <div className={styles.bottom}>
           <div className={styles.box}>
-            <p style={{ fontWeight: 700 }}>Race</p>
-            <p style={{ fontWeight: 300 }}>{props.race}</p>
+            <p className={styles.stat} style={{ fontWeight: 700 }}>
+              Race
+            </p>
+            <p className={styles.stat}>{character.race}</p>
           </div>
           <div className={styles.box}>
-            <p style={{ fontWeight: 700 }}>Height</p>
-            <p style={{ fontWeight: 300 }}>{props.height}</p>
+            <p className={styles.stat} style={{ fontWeight: 700 }}>
+              Height
+            </p>
+            <p className={styles.stat}>{character.height}</p>
           </div>
           <div className={styles.box}>
-            <p style={{ fontWeight: 700 }}>Realm</p>
-            <p style={{ fontWeight: 300 }}>{props.realm}</p>
+            <p className={styles.stat} style={{ fontWeight: 700 }}>
+              Realm
+            </p>
+            <p className={styles.stat}>{character.realm}</p>
           </div>
         </div>
       </div>
