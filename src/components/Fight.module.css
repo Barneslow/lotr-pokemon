@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container {
+  display: flex;
+  overflow: scroll;
+  gap: 5px;
+  align-items: center;
+}

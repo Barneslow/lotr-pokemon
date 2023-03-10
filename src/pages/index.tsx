@@ -9,17 +9,10 @@ import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
 import { randomFiveFromArray, shuffleArray } from "@/helpers/arrays";
-import ChosenCards from "@/components/ChosenCards";
 import FlipCard from "@/components/FlipCard";
+import Fight from "@/components/Fight";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
-
-// function saveJSONToFile(jsonData) {
-//   const blob = new Blob([JSON.stringify(jsonData)], {
-//     type: "application/json",
-//   });
-//   saveAs(blob, "myFile.json");
-// }
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
@@ -31,6 +24,7 @@ export default function Home() {
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
+
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
 
@@ -122,31 +116,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.background}>
-        <input onChange={filterCharacters} />
+        {/* <input onChange={filterCharacters} />
         <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
           Flip All
-        </button>
-        <ChosenCards count={count} cards={chosenCards} />
+        </button> */}
         {fight ? (
           <>
-            <motion.div
-              variants={container}
-              initial="initial"
-              animate="animate"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1rem",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {enemy.map((character) => (
-                <motion.div variants={child} key={character._id}>
-                  <CharacterCard character={character} />
-                </motion.div>
-              ))}
-            </motion.div>
+            <Fight enemy={enemy} team={chosenCards} />
           </>
         ) : (
           <motion.div
