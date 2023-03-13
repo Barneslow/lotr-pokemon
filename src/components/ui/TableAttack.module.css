@@ -1,0 +1,17 @@
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+  background: linear-gradient(#28313b, #485461);
+  border-radius: 10px;
+  justify-content: space-between;
+  border: 1px solid whitesmoke;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

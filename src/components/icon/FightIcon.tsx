@@ -15,8 +15,14 @@ interface FightIconProps {
 const FightIcon = ({ icon, value, color, height, onClick }: FightIconProps) => {
   return (
     <div className={styles.container} onClick={onClick}>
-      <FontAwesomeIcon icon={icon} color={color} height={height} />
-      <span>{value}</span>
+      <FontAwesomeIcon
+        icon={icon}
+        color={color}
+        height={height}
+        stroke="black"
+        strokeWidth={20}
+      />
+      <span style={{ fontWeight: 900 }}>{value}</span>
     </div>
   );
 };

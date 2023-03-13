@@ -1,17 +1,22 @@
 import { faBolt, faHandFist, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CharacterObjectProps } from "./CharacterCard";
 import Image from "next/image";
 
 import styles from "./CardContent.module.css";
 import imageData from "../assets/images.json";
+import { FightCardProps } from "./FightCard";
+import useModal from "@/hooks/useModal";
 
 export interface ImageData {
   name: string;
   imageUrl: string;
 }
 
-const CardContent = ({ character }: CharacterObjectProps) => {
+const CardContent = ({
+  character,
+  setAttackingCharacter,
+  close,
+}: FightCardProps) => {
   const data: ImageData = imageData.find(
     (item) => item.name === character.name
   )!;
@@ -19,10 +24,10 @@ const CardContent = ({ character }: CharacterObjectProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.heading}>
-        <h3 className={styles.name}>{character.name.substring(0, 20)}</h3>
-        <div style={{ display: "flex" }}>
-          <span>{character.health}</span>
-          <FontAwesomeIcon icon={faHeart} height={18} color="red" />
+        <h3 style={{ fontSize: 20 }}>{character.name}</h3>
+        <div>
+          <span style={{ fontSize: 20 }}>{character.health}</span>
+          <FontAwesomeIcon icon={faHeart} height={20} color="red" />
         </div>
       </div>
       <div className={styles["image-box"]}>
@@ -34,54 +39,70 @@ const CardContent = ({ character }: CharacterObjectProps) => {
           src={data?.imageUrl}
         />
       </div>
+      <div
+        className={styles.block}
+        onClick={() => {
+          close();
+          setAttackingCharacter({
+            attack: character.mainAttack,
+            name: character.name,
+          });
+        }}
+      >
+        <FontAwesomeIcon
+          icon={faHandFist}
+          style={{
+            height: 20,
+            color: "blue",
+            stroke: "black",
+            strokeWidth: 5,
+          }}
+        />
+        <p>{character.mainAttack?.name}</p>
+        <span style={{ fontWeight: 700 }}>{character.mainAttack?.value}</span>
+      </div>
+      <div
+        className={styles.block}
+        onClick={() => {
+          setAttackingCharacter({
+            attack: character.specialAttack,
+            name: character.name,
+          });
+          close();
+        }}
+      >
+        <FontAwesomeIcon
+          icon={faBolt}
+          style={{
+            height: 20,
+            color: "yellow",
+            stroke: "black",
+            strokeWidth: 5,
+          }}
+        />
+        <p>{character.specialAttack?.name}</p>
+        <span style={{ fontWeight: 700 }}>
+          {character.specialAttack?.value}
+        </span>
+      </div>
       <div className={styles.info}>
-        <div className={styles.block}>
-          <FontAwesomeIcon
-            icon={faHandFist}
-            style={{
-              height: 20,
-              color: "blue",
-              stroke: "black",
-              strokeWidth: 10,
-            }}
-          />
-          <p>{character.mainAttack?.name}</p>
-          <span style={{ fontWeight: 700 }}>{character.mainAttack?.value}</span>
+        <div className={styles.box}>
+          <p className={styles.stat} style={{ fontWeight: 700 }}>
+            Race
+          </p>
+          <p className={styles.stat}>{character.race}</p>
         </div>
-        <div className={styles.block}>
-          <FontAwesomeIcon
-            icon={faBolt}
-            style={{
-              height: 20,
-              color: "yellow",
-              stroke: "black",
-              strokeWidth: 10,
-            }}
-          />
-          <p>{character.specialAttack?.name}</p>
-          <span style={{ fontWeight: 700 }}>
-            {character.specialAttack?.value}
-          </span>
+        <div className={styles.box}>
+          <p className={styles.stat} style={{ fontWeight: 700 }}>
+            Height
+          </p>
+          <p className={styles.stat}>{character.height}</p>
         </div>
-        <div className={styles.bottom}>
-          <div className={styles.box}>
-            <p className={styles.stat} style={{ fontWeight: 700 }}>
-              Race
-            </p>
-            <p className={styles.stat}>{character.race}</p>
-          </div>
-          <div className={styles.box}>
-            <p className={styles.stat} style={{ fontWeight: 700 }}>
-              Height
-            </p>
-            <p className={styles.stat}>{character.height}</p>
-          </div>
-          <div className={styles.box}>
-            <p className={styles.stat} style={{ fontWeight: 700 }}>
-              Realm
-            </p>
-            <p className={styles.stat}>{character.realm}</p>
-          </div>
+        <div className={styles.box}>
+          <p className={styles.stat} style={{ fontWeight: 700 }}>
+            Realm
+          </p>
+          <p className={styles.stat}>{character.realm}</p>
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import EnemyFightCard from "./EnemyFightCard";
 
 import styles from "./Fight.module.css";
 import FightCard from "./FightCard";
+import TableAttack from "./ui/TableAttack";
 
 export interface AttackingCharacter {
   attack: Attack;
@@ -66,44 +67,39 @@ const Fight = ({ setIsFighting }: FightProps) => {
   }, [turn]);
 
   return (
-    <>
-      <div style={{ color: "whitesmoke", fontSize: 40 }}>
-        <p> {attackingCharacter?.name}</p>
-        <p>{attackingCharacter?.attack?.value}</p>
-      </div>
-      <div className={styles.wrapper}>
-        <motion.div
-          variants={container}
-          initial="initial"
-          animate="animate"
-          className={styles.container}
-        >
-          {enemy.map((character) => (
-            <motion.div variants={child} key={character._id}>
-              <EnemyFightCard
-                character={character}
-                attackingCharacter={attackingCharacter}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-        <motion.div
-          variants={container}
-          initial="initial"
-          animate="animate"
-          className={styles.container}
-        >
-          {team.map((character) => (
-            <motion.div variants={child} key={character._id}>
-              <FightCard
-                character={character}
-                setAttackingCharacter={setAttackingCharacter}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </>
+    <div className={styles.wrapper}>
+      <motion.div
+        variants={container}
+        initial="initial"
+        animate="animate"
+        className={styles.container}
+      >
+        {enemy.map((character) => (
+          <motion.div variants={child} key={character._id}>
+            <EnemyFightCard
+              character={character}
+              attackingCharacter={attackingCharacter}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+      <TableAttack attackingCharacter={attackingCharacter} />
+      <motion.div
+        variants={container}
+        initial="initial"
+        animate="animate"
+        className={styles.container}
+      >
+        {team.map((character) => (
+          <motion.div variants={child} key={character._id}>
+            <FightCard
+              character={character}
+              setAttackingCharacter={setAttackingCharacter}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
   );
 };
 

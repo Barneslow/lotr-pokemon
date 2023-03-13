@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Varela_Round } from "next/font/google";
+import { M_PLUS_Rounded_1c } from "next/font/google";
 import { fetchAllCharacters } from "./api/hello";
 import {
   ChangeEvent,
@@ -17,7 +17,10 @@ import FlipCard from "@/components/FlipCard";
 import Fight from "@/components/Fight";
 import { FightContext } from "@/context/FightContext";
 
-const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
+const msPlus = M_PLUS_Rounded_1c({
+  weight: ["400", "500", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
@@ -57,7 +60,6 @@ export default function Home() {
 
   useEffect(() => {
     shuffleArray(characters);
-    console.log("shuffle");
   }, [characters]);
 
   useEffect(() => {
@@ -117,7 +119,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.background}>
+      <main className={`${styles.background} ${msPlus.className}`}>
         {/* <input onChange={filterCharacters} />
         <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
           Flip All

@@ -1,5 +1,3 @@
-import { CharacterObjectProps } from "./CharacterCard";
-
 import imageJSON from "../assets/images.json";
 import styles from "./FightCard.module.css";
 import { ImageData } from "./CardContent";
@@ -10,6 +8,7 @@ import { useContext } from "react";
 import DeadOverlay from "./ui/DeadOverlay";
 import { FightContext } from "@/context/FightContext";
 import { AttackingCharacter } from "./Fight";
+import { CharacterObjectProps } from "@/models/models";
 
 interface EnemyFightCardProps extends CharacterObjectProps {
   attackingCharacter: AttackingCharacter | undefined;

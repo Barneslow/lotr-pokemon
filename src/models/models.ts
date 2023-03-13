@@ -19,3 +19,16 @@ export interface Attack {
   name: string;
   value: number;
 }
+
+export interface CharacterObjectProps {
+  character: {
+    _id: string;
+    name: string;
+    race: string;
+    realm: string;
+    height: string;
+    mainAttack: Attack;
+    specialAttack: Attack;
+    health: number;
+  };
+}

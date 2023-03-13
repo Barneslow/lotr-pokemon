@@ -1,40 +1,29 @@
 import Link from "next/link";
 import styles from "./CharacterCard.module.css";
 
-import { Roboto } from "next/font/google";
 import { motion } from "framer-motion";
 
-import { Attack } from "@/models/models";
 import CardContent from "./CardContent";
+import { FightCardProps } from "./FightCard";
 
-export interface CharacterObjectProps {
-  character: {
-    _id: string;
-    name: string;
-    race: string;
-    realm: string;
-    height: string;
-    mainAttack: Attack;
-    specialAttack: Attack;
-    health: number;
-  };
-}
-
-const roboto = Roboto({
-  weight: ["100", "300", "400", "700"],
-  subsets: ["latin"],
-});
-
-const CharacterCard: React.FC<CharacterObjectProps> = ({ character }) => {
+const CharacterCard: React.FC<FightCardProps> = ({
+  character,
+  setAttackingCharacter,
+  close,
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       style={{ textDecoration: "none" }}
-      className={`${styles.wrapper} ${roboto.className}`}
+      className={styles.wrapper}
     >
-      <CardContent character={character} />
+      <CardContent
+        setAttackingCharacter={setAttackingCharacter}
+        character={character}
+        close={close}
+      />
     </motion.div>
   );
 };
