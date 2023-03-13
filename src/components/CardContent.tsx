@@ -42,11 +42,13 @@ const CardContent = ({
       <div
         className={styles.block}
         onClick={() => {
-          close();
           setAttackingCharacter({
             attack: character.mainAttack,
             name: character.name,
           });
+          if (close) {
+            close();
+          }
         }}
       >
         <FontAwesomeIcon
@@ -68,7 +70,9 @@ const CardContent = ({
             attack: character.specialAttack,
             name: character.name,
           });
-          close();
+          if (close) {
+            close();
+          }
         }}
       >
         <FontAwesomeIcon
