@@ -1,6 +1,11 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import FightContextProvider from "@/context/FightContext";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <FightContextProvider>
+      <Component {...pageProps} />
+    </FightContextProvider>
+  );
 }

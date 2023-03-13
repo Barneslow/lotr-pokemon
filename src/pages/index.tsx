@@ -1,29 +1,30 @@
 import Head from "next/head";
 import { Varela_Round } from "next/font/google";
 import { fetchAllCharacters } from "./api/hello";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import CharacterCard from "@/components/CharacterCard";
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Character } from "@/models/models";
-import DUMMY_DATA from "../assets/data/myFile.json";
 import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
-import { randomFiveFromArray, shuffleArray } from "@/helpers/arrays";
+import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/FlipCard";
 import Fight from "@/components/Fight";
+import { FightContext } from "@/context/FightContext";
 
 const varela = Varela_Round({ weight: ["400"], subsets: ["latin"] });
 
 export default function Home() {
   const [searchField, setSearchField] = useState("");
+  const { updateTeam, team, setEnemyTeam, count, setCount, characters } =
+    useContext(FightContext);
   const [flipAll, setFlipAll] = useState(true);
-  const [fight, setFight] = useState(false);
-  const [enemy, setEnemy] = useState<Character[]>([]);
-  const [count, setCount] = useState(0);
-  const [chosenCards, setChosenCards] = useState<Character[]>([]);
-  const [characters, setCharacters] = useState<Character[]>(
-    DUMMY_DATA as Character[]
-  );
+  const [isFighting, setIsFighting] = useState(false);
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
@@ -34,9 +35,9 @@ export default function Home() {
 
       const card = characters.find((item) => item._id === cardId)!;
 
-      setChosenCards((prev) => [...prev, card]);
+      updateTeam({ ...card });
     },
-    [setCount, setChosenCards, characters]
+    [setCount, characters]
   );
 
   const container = {
@@ -56,18 +57,19 @@ export default function Home() {
 
   useEffect(() => {
     shuffleArray(characters);
+    console.log("shuffle");
   }, [characters]);
 
   useEffect(() => {
     if (count >= 5) {
-      setFight(true);
+      setIsFighting(true);
 
-      const chosenIds = chosenCards.map((card) => card._id);
+      const chosenIds = team.map((card) => card._id);
       const rival = characters.filter((char) => !chosenIds.includes(char._id));
 
-      setEnemy(randomFiveFromArray(rival));
+      setEnemyTeam(rival);
     }
-  }, [count, characters, chosenCards]);
+  }, [count, characters]);
 
   // useEffect(() => {
   //   const chosenCardsIds = chosenCards.map((card) => card._id);
@@ -120,9 +122,9 @@ export default function Home() {
         <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
           Flip All
         </button> */}
-        {fight ? (
+        {isFighting ? (
           <>
-            <Fight enemy={enemy} team={chosenCards} />
+            <Fight setIsFighting={setIsFighting} />
           </>
         ) : (
           <motion.div

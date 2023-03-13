@@ -6,12 +6,6 @@ import imageData from "../assets/images.json";
 import { ImageData } from "./CardContent";
 
 import styles from "./FlipCard.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBolt,
-  faFistRaised,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
 
 export interface FlipCardProps {
   _id: string;
@@ -69,40 +63,6 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
               src={data?.imageUrl}
             />
           </div>
-          {/* <div
-            className={styles.stats}
-          >
-            <div>
-              <FontAwesomeIcon
-                icon={faHeart}
-                color="red"
-                className={styles.icon}
-                strokeWidth={10}
-                stroke="black"
-              />
-              <p>{props.health}</p>
-            </div>
-            <div>
-              <FontAwesomeIcon
-                icon={faFistRaised}
-                color="blue"
-                className={styles.icon}
-                strokeWidth={10}
-                stroke="black"
-              />
-              <p>{props.mainAttack}</p>
-            </div>
-            <div>
-              <FontAwesomeIcon
-                icon={faBolt}
-                color="yellow"
-                className={styles.icon}
-                strokeWidth={10}
-                stroke="black"
-              />
-              <p>{props.specialAttack}</p>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

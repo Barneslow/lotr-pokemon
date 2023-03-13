@@ -6,7 +6,8 @@
 
 .container {
   display: flex;
-  overflow: scroll;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 5px;
   align-items: center;
 }
