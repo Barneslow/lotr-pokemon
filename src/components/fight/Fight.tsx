@@ -1,19 +1,21 @@
 import { FightContext } from "@/context/FightContext";
-import { enemiesAttackTurn, IEnemyAttack } from "@/helpers/fight";
-import { Attack } from "@/models/models";
+import {
+  animationTimer,
+  enemiesAttackTurn,
+  IAttackingAnimationProps,
+  isOdd,
+} from "@/helpers/fight";
+import { AttackingCharacter, Character } from "@/models/models";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import EnemyFightCard from "./EnemyFightCard";
+import EnemyFightCard from "../cards/EnemyFightCard";
 
 import styles from "./Fight.module.css";
-import FightCard from "./FightCard";
-import FightModal from "./ui/FightModal";
-import TableAttack from "./ui/TableAttack";
+import FightCard from "../cards/FightCard";
+import FightModal from "./FightModal";
+import TableAttack from "./TableAttack";
 
-export interface AttackingCharacter {
-  attack: Attack;
-  name: string;
-}
+import useSound from "use-sound";
 
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;
@@ -22,10 +24,14 @@ interface FightProps {
 const Fight = ({ setIsFighting }: FightProps) => {
   const { turn, changeTurn, enemy, team, reset } = useContext(FightContext);
   const [showModal, setShowModal] = useState(false);
-  const [enemyAttack, setEnemyAttack] = useState<IEnemyAttack>();
+  const [animatedAttack, setAnimatedAttack] =
+    useState<IAttackingAnimationProps>();
   const [attackingCharacter, setAttackingCharacter] = useState<
     AttackingCharacter | undefined
   >();
+
+  const [gondorAudio] = useSound("/audio/gondor.mp3");
+  const [mordorAudio] = useSound("/audio/mordor.mp3");
 
   const container = {
     initial: {},
@@ -51,15 +57,26 @@ const Fight = ({ setIsFighting }: FightProps) => {
       setIsFighting(false);
       return;
     }
+    async function OpposingTeamsTurn() {
+      await animationTimer(1000);
 
-    if (!turn) {
+      mordorAudio();
+
+      team.forEach((char) => {
+        if (char.mainAttack.disabledTurns > 0) {
+          char.mainAttack.disabledTurns -= 1;
+        }
+        if (char.specialAttack.disabledTurns > 0) {
+          char.specialAttack.disabledTurns -= 1;
+        }
+      });
       changeTurn();
 
       setShowModal(true);
 
-      setTimeout(() => setShowModal(false), 4000);
+      setTimeout(() => setShowModal(false), 2000);
 
-      setEnemyAttack(enemiesAttackTurn(team, enemy));
+      setAnimatedAttack(enemiesAttackTurn(team, enemy));
 
       if (attackingCharacter) {
         const character = team.find(
@@ -71,9 +88,34 @@ const Fight = ({ setIsFighting }: FightProps) => {
         }
       }
     }
+
+    if (isOdd(turn)) {
+      OpposingTeamsTurn();
+    }
   }, [turn]);
 
-  console.log(enemyAttack);
+  async function playerFightAnimation(target: Character) {
+    if (!attackingCharacter) return;
+
+    gondorAudio();
+
+    setShowModal(true);
+    setAnimatedAttack({
+      attacker: attackingCharacter,
+      target,
+    });
+
+    attackingCharacter.attack.disabledTurns =
+      attackingCharacter.attack.disabledFor;
+
+    target.health = target.health - attackingCharacter.attack.value;
+
+    await animationTimer(2000);
+    changeTurn();
+    setShowModal(false);
+    setAttackingCharacter(undefined);
+  }
+
   return (
     <div className={styles.wrapper}>
       <motion.div
@@ -86,13 +128,15 @@ const Fight = ({ setIsFighting }: FightProps) => {
           <motion.div variants={child} key={character._id}>
             <EnemyFightCard
               character={character}
+              playerFightAnimation={playerFightAnimation}
               attackingCharacter={attackingCharacter}
             />
           </motion.div>
         ))}
       </motion.div>
-      <TableAttack attackingCharacter={attackingCharacter} />
-      <FightModal enemyAttack={enemyAttack} showModal={showModal} />
+      {/* <h2>{turn}</h2> */}
+      {/* <TableAttack attackingCharacter={attackingCharacter} /> */}
+      <FightModal animatedAttack={animatedAttack} showModal={showModal} />
       <motion.div
         variants={container}
         initial="initial"
@@ -104,6 +148,7 @@ const Fight = ({ setIsFighting }: FightProps) => {
             <FightCard
               character={character}
               setAttackingCharacter={setAttackingCharacter}
+              attackingCharacter={attackingCharacter}
             />
           </motion.div>
         ))}

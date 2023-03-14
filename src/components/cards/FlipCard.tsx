@@ -2,8 +2,7 @@ import { Roboto } from "next/font/google";
 
 import { memo, useEffect, useState } from "react";
 import Image from "next/image";
-import imageData from "../assets/images.json";
-import { ImageData } from "./CardContent";
+import imageData from "../../assets/images.json";
 
 import styles from "./FlipCard.module.css";
 
@@ -23,7 +22,7 @@ const roboto = Roboto({
 });
 
 const FlipCard: React.FC<FlipCardProps> = memo((props) => {
-  const data: ImageData = imageData.find((item) => item.name === props.name)!;
+  const data = imageData.find((item) => item.name === props.name)!;
 
   const [isFlipped, setIsFlipped] = useState(false);
 

@@ -23,13 +23,48 @@
   object-fit: cover;
 }
 
-.block {
+.button {
+  font-size: 16px;
+  border: none;
+  color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding-block: 7px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  position: relative;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  height: 1px;
+  width: 100%;
+  bottom: 0;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: lightgrey;
+}
+
+.button:disabled {
+  background-color: darkgrey;
+  color: red;
+}
+
+.button:hover:disabled {
+  cursor: not-allowed;
+}
+
+.button:disabled::before {
+  content: "";
+  position: absolute;
+  background: red;
+  height: 1px;
+  width: 100%;
 }
 
 .info {

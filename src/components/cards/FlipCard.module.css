@@ -21,8 +21,7 @@
   position: relative;
   border: 5px solid rgb(250, 207, 101);
   border-radius: 10px;
-  box-shadow: var(--box-shadow)
-
+  box-shadow: var(--box-shadow);
 }
 
 .isflipped {
@@ -39,7 +38,7 @@
 }
 
 .card-face-front {
-  background: url("../assets/images/card-background.jpg");
+  background: url("../../assets/images/card-background.jpg");
   background-size: 100% 100%;
 }
 

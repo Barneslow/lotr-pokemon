@@ -18,7 +18,7 @@ interface IFightContext {
   //   enemySpecial: number;
   //   teamSpecial: number;
   reset: () => void;
-  turn: boolean;
+  turn: number;
   updateTeam: (character: Character) => void;
   changeTurn: () => void;
   setEnemyTeam: (array: Character[]) => void;
@@ -35,7 +35,7 @@ const defaultState = {
   //   enemySpecial: 3,
   //   teamSpecial: 3,
   reset: () => {},
-  turn: true,
+  turn: 0,
   changeTurn: () => {},
   updateTeam: (character: Character) => {},
   setEnemyTeam: (array: Character[]) => {},
@@ -56,7 +56,7 @@ export const FightContextProvider = ({ children }: Props) => {
   );
 
   const [count, setCount] = useState(0);
-  const [turn, setTurn] = useState(true);
+  const [turn, setTurn] = useState(0);
 
   function updateTeam(character: Character) {
     setTeam((prev) => [...prev, character]);
@@ -82,7 +82,7 @@ export const FightContextProvider = ({ children }: Props) => {
   }
 
   function changeTurn() {
-    setTurn((prev) => !prev);
+    setTurn((prev) => prev + 1);
   }
   const value = {
     enemy,

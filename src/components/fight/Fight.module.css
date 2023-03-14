@@ -13,5 +13,11 @@
 .container {
   display: flex;
   gap: 5px;
-  overflow: scroll;
+  overflow-x: scroll;
+}
+
+@media only screen and (min-width: 1100px) {
+  .wrapper {
+    align-items: center;
+  }
 }

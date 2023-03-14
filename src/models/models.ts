@@ -18,6 +18,9 @@ export interface Character {
 export interface Attack {
   name: string;
   value: number;
+  disabledFor: number;
+  disabledTurns: number;
+  isSpecial?: boolean;
 }
 
 export interface CharacterObjectProps {

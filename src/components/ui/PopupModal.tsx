@@ -1,8 +1,7 @@
-import { Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
-import CharacterCard from "../CharacterCard";
-import { AttackingCharacter } from "../Fight";
+import CharacterCard from "../cards/CharacterCard";
 
 import styles from "./PopupModal.module.css";
 

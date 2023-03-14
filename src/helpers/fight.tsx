@@ -1,15 +1,15 @@
 import { AttackingCharacter, Character } from "@/models/models";
 import { getRandomEnemyAttack } from "./arrays";
 
-export interface IEnemyAttack {
-  enemyAttack: AttackingCharacter;
+export interface IAttackingAnimationProps {
+  attacker: AttackingCharacter;
   target: Character;
 }
 
 export function enemiesAttackTurn(
   team: Character[],
   enemy: Character[]
-): IEnemyAttack {
+): IAttackingAnimationProps {
   const aliveEnemies = enemy.filter((char) => char.health > 0);
   const enemyAttack = getRandomEnemyAttack(aliveEnemies);
 
@@ -20,5 +20,20 @@ export function enemiesAttackTurn(
 
   randomTeamMate.health = randomTeamMate.health - enemyAttack.attack.value;
 
-  return { enemyAttack, target: randomTeamMate };
+  return { attacker: enemyAttack, target: randomTeamMate };
+}
+
+export function animationTimer(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export function isOdd(n: number) {
+  return Math.abs(n % 2) == 1;
+}
+
+export function calculatePercentage(max: number, value: number): number {
+  const parts = 100 / max;
+  const percentage = value * parts;
+
+  return percentage;
 }

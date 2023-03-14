@@ -13,8 +13,8 @@ import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
 import { shuffleArray } from "@/helpers/arrays";
-import FlipCard from "@/components/FlipCard";
-import Fight from "@/components/Fight";
+import FlipCard from "@/components/cards/FlipCard";
+import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
 
 const msPlus = M_PLUS_Rounded_1c({

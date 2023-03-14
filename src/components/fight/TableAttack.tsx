@@ -1,5 +1,4 @@
-import { AttackingCharacter } from "../Fight";
-
+import { AttackingCharacter } from "@/models/models";
 import styles from "./TableAttack.module.css";
 
 interface TableAttackProps {

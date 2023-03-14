@@ -1,29 +1,29 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import { IEnemyAttack } from "@/helpers/fight";
+import { IAttackingAnimationProps } from "@/helpers/fight";
 import images from "../../assets/images.json";
 
 import styles from "./FightModal.module.css";
-import { Backdrop } from "./PopupModal";
+import { Backdrop } from "../ui/PopupModal";
 import Image from "next/image";
 
 interface FightModalProps {
-  enemyAttack: IEnemyAttack | undefined;
+  animatedAttack: IAttackingAnimationProps | undefined;
   showModal: boolean;
 }
 
-const FightModal = ({ enemyAttack, showModal }: FightModalProps) => {
+const FightModal = ({ animatedAttack, showModal }: FightModalProps) => {
   const enemyImage = images.find(
-    (item) => item.name === enemyAttack?.enemyAttack.name
+    (item) => item.name === animatedAttack?.attacker.name
   )!;
 
   const teamImage = images.find(
-    (item) => item.name === enemyAttack?.target.name
+    (item) => item.name === animatedAttack?.target.name
   )!;
 
   const container = {
     initial: {},
-    animate: { transition: { delayChildren: 1, staggerChildren: 1 } },
+    animate: { transition: { delayChildren: 0.1, staggerChildren: 0.1 } },
   };
 
   const child = {
@@ -45,18 +45,18 @@ const FightModal = ({ enemyAttack, showModal }: FightModalProps) => {
             initial={{ y: "-100vh" }}
             animate={{ y: 0 }}
             exit={{ y: "100vh" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             <motion.div
               className={styles["image-box"]}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", delay: 0.3 }}
+              transition={{ type: "spring", delay: 0.1 }}
             >
               <Image
                 className={styles.image}
                 src={enemyImage?.imageUrl}
-                alt={`Picture of ${enemyAttack?.enemyAttack.name}`}
+                alt={`Picture of ${animatedAttack?.attacker.name}`}
                 width={400}
                 height={400}
               />
@@ -68,24 +68,24 @@ const FightModal = ({ enemyAttack, showModal }: FightModalProps) => {
               className={styles["text-box"]}
             >
               <motion.p variants={child}>
-                {enemyAttack?.enemyAttack.name} uses{" "}
-                {enemyAttack?.enemyAttack.attack.name}
+                {animatedAttack?.attacker.name} uses{" "}
+                {animatedAttack?.attacker.attack.name}
               </motion.p>
               <motion.p variants={child}>
-                {enemyAttack?.target.name} is hit for{" "}
-                {enemyAttack?.enemyAttack.attack.value}
+                {animatedAttack?.target.name} is hit for{" "}
+                {animatedAttack?.attacker.attack.value}
               </motion.p>
             </motion.div>
             <motion.div
               className={styles["image-box"]}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", delay: 2 }}
+              transition={{ type: "spring", delay: 0.6 }}
             >
               <Image
                 className={styles.image}
                 src={teamImage?.imageUrl}
-                alt={`Picture of ${enemyAttack?.target.name}`}
+                alt={`Picture of ${animatedAttack?.target.name}`}
                 width={400}
                 height={400}
               />

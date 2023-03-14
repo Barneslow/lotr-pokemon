@@ -3,13 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
 import styles from "./CardContent.module.css";
-import imageData from "../assets/images.json";
+import imageData from "../../assets/images.json";
 import { FightCardProps } from "./FightCard";
-
-// export interface ImageData {
-//   name: string;
-//   imageUrl: string;
-// }
 
 const CardContent = ({
   character,
@@ -36,8 +31,9 @@ const CardContent = ({
           src={data?.imageUrl}
         />
       </div>
-      <div
-        className={styles.block}
+      <button
+        className={styles.button}
+        disabled={character.mainAttack.disabledTurns > 0}
         onClick={() => {
           setAttackingCharacter({
             attack: character.mainAttack,
@@ -59,9 +55,10 @@ const CardContent = ({
         />
         <p>{character.mainAttack?.name}</p>
         <span style={{ fontWeight: 700 }}>{character.mainAttack?.value}</span>
-      </div>
-      <div
-        className={styles.block}
+      </button>
+      <button
+        className={styles.button}
+        disabled={character.specialAttack.disabledTurns > 0}
         onClick={() => {
           setAttackingCharacter({
             attack: character.specialAttack,
@@ -85,7 +82,7 @@ const CardContent = ({
         <span style={{ fontWeight: 700 }}>
           {character.specialAttack?.value}
         </span>
-      </div>
+      </button>
       <div className={styles.info}>
         <div className={styles.box}>
           <p className={styles.stat} style={{ fontWeight: 700 }}>
