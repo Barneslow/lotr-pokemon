@@ -134,7 +134,6 @@ const Fight = ({ setIsFighting }: FightProps) => {
           </motion.div>
         ))}
       </motion.div>
-      {/* <h2>{turn}</h2> */}
       {/* <TableAttack attackingCharacter={attackingCharacter} /> */}
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
       <motion.div

@@ -1,6 +1,6 @@
 .card {
-  width: 200px;
-  height: 300px;
+  width: clamp(100px, 18vw, 150px);
+  aspect-ratio: 2/3;
   background-color: whitesmoke;
   position: relative;
   border-radius: 5px;
@@ -41,19 +41,31 @@
   }
 
   .attack-text {
-    font-size: clamp(10px, 2.5vw, 18px);
+    font-size: clamp(10px, 2vw, 16px);
     display: flex;
     margin: 0.25rem;
     width: 100%;
-    background-color: whitesmoke;
     border-radius: 2px;
     padding: 2px;
-    color: black;
     font-weight: 500;
   }
 }
 
+.enemy {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 .card:hover:not(:disabled) {
+  background-color: red;
+
+  .enemy {
+    display: block;
+    background-color: rgba(255, 0, 0, 0.2);
+  }
+
   filter: brightness(1.2);
 }
 
@@ -71,7 +83,7 @@
 }
 
 .header h3 {
-  font-size: clamp(10px, 2.5vw, 18px);
+  font-size: clamp(10px, 2vw, 16px);
   width: fit-content;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0 1rem;
@@ -117,13 +129,14 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .card {
-    width: 100px;
-    height: 150px;
-  }
-
   .svg {
     height: 30px;
     width: 30px;
   }
 }
+
+// @media only screen and (min-width: 1100px) {
+//   .card {
+//     width: clamp(200px, 14vw, 300px);
+//   }
+// }

@@ -39,6 +39,7 @@ const EnemyFightCard: React.FC<EnemyFightCardProps> = memo(
         }}
         className={styles.card}
       >
+        <div className={styles.enemy}></div>
         {character.health <= 0 && <DeadOverlay />}
         <div className={styles.header}>
           <h3>{character.name.substring(0, 20)}</h3>

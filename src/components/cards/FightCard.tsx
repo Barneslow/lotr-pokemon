@@ -14,7 +14,7 @@ import { calculatePercentage } from "@/helpers/fight";
 
 export interface FightCardProps extends CharacterObjectProps {
   setAttackingCharacter: (value: AttackingCharacter) => void;
-  attackingCharacter: AttackingCharacter | undefined;
+  attackingCharacter?: AttackingCharacter | undefined;
   close?: () => void;
 }
 
@@ -41,8 +41,6 @@ const FightCard: React.FC<FightCardProps> = ({
   const mainPower = calculatePercentage(2, character.mainAttack.disabledTurns)!;
 
   const isSelected = attackingCharacter?.name === character.name;
-
-  console.log(attackingCharacter?.attack);
 
   return (
     <>
