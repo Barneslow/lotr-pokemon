@@ -1,6 +1,5 @@
 import imageJSON from "../assets/images.json";
 import styles from "./FightCard.module.css";
-import { ImageData } from "./CardContent";
 import Image from "next/image";
 import DeadOverlay from "./ui/DeadOverlay";
 import { AttackingCharacter } from "./Fight";
@@ -17,9 +16,7 @@ const FightCard: React.FC<FightCardProps> = ({
   character,
   setAttackingCharacter,
 }) => {
-  const data: ImageData = imageJSON.find(
-    (item) => item.name === character.name
-  )!;
+  const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { open, modalOpen, close } = useModal();
 

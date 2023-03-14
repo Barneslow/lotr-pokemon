@@ -68,10 +68,10 @@ export default PopupModal;
 
 interface BackdropProps {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
-const Backdrop = ({ children, onClick }: BackdropProps) => {
+export const Backdrop = ({ children, onClick }: BackdropProps) => {
   return (
     <motion.div
       className={styles.backdrop}

@@ -1,10 +1,15 @@
-import { Attack, Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 import { getRandomEnemyAttack } from "./arrays";
+
+export interface IEnemyAttack {
+  enemyAttack: AttackingCharacter;
+  target: Character;
+}
 
 export function enemiesAttackTurn(
   team: Character[],
   enemy: Character[]
-): Attack {
+): IEnemyAttack {
   const aliveEnemies = enemy.filter((char) => char.health > 0);
   const enemyAttack = getRandomEnemyAttack(aliveEnemies);
 
@@ -13,7 +18,7 @@ export function enemiesAttackTurn(
   const randomTeamMate =
     aliveTeam[Math.floor(Math.random() * aliveTeam.length)];
 
-  randomTeamMate.health = randomTeamMate.health - enemyAttack.value;
+  randomTeamMate.health = randomTeamMate.health - enemyAttack.attack.value;
 
-  return enemyAttack;
+  return { enemyAttack, target: randomTeamMate };
 }

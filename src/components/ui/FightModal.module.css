@@ -1,0 +1,34 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.image-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid gold;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-box {
+  display: flex;
+  background: linear-gradient(to bottom, #a71d31, #3f0d12);
+  justify-content: space-evenly;
+  padding: 1rem;
+  text-align: center;
+  flex-direction: column;
+  width: clamp(300px, 100%, 800px);
+  border-radius: 10px;
+  gap: 1rem;
+  box-shadow: var(--box-shadow);
+}

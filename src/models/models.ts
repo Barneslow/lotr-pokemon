@@ -32,3 +32,8 @@ export interface CharacterObjectProps {
     health: number;
   };
 }
+
+export interface AttackingCharacter {
+  attack: Attack;
+  name: string;
+}

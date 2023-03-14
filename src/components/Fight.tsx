@@ -1,5 +1,5 @@
 import { FightContext } from "@/context/FightContext";
-import { enemiesAttackTurn } from "@/helpers/fight";
+import { enemiesAttackTurn, IEnemyAttack } from "@/helpers/fight";
 import { Attack } from "@/models/models";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import EnemyFightCard from "./EnemyFightCard";
 
 import styles from "./Fight.module.css";
 import FightCard from "./FightCard";
+import FightModal from "./ui/FightModal";
 import TableAttack from "./ui/TableAttack";
 
 export interface AttackingCharacter {
@@ -20,6 +21,8 @@ interface FightProps {
 
 const Fight = ({ setIsFighting }: FightProps) => {
   const { turn, changeTurn, enemy, team, reset } = useContext(FightContext);
+  const [showModal, setShowModal] = useState(false);
+  const [enemyAttack, setEnemyAttack] = useState<IEnemyAttack>();
   const [attackingCharacter, setAttackingCharacter] = useState<
     AttackingCharacter | undefined
   >();
@@ -52,7 +55,11 @@ const Fight = ({ setIsFighting }: FightProps) => {
     if (!turn) {
       changeTurn();
 
-      const enemyAttack = enemiesAttackTurn(team, enemy);
+      setShowModal(true);
+
+      setTimeout(() => setShowModal(false), 4000);
+
+      setEnemyAttack(enemiesAttackTurn(team, enemy));
 
       if (attackingCharacter) {
         const character = team.find(
@@ -66,6 +73,7 @@ const Fight = ({ setIsFighting }: FightProps) => {
     }
   }, [turn]);
 
+  console.log(enemyAttack);
   return (
     <div className={styles.wrapper}>
       <motion.div
@@ -84,6 +92,7 @@ const Fight = ({ setIsFighting }: FightProps) => {
         ))}
       </motion.div>
       <TableAttack attackingCharacter={attackingCharacter} />
+      <FightModal enemyAttack={enemyAttack} showModal={showModal} />
       <motion.div
         variants={container}
         initial="initial"

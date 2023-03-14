@@ -5,21 +5,18 @@ import Image from "next/image";
 import styles from "./CardContent.module.css";
 import imageData from "../assets/images.json";
 import { FightCardProps } from "./FightCard";
-import useModal from "@/hooks/useModal";
 
-export interface ImageData {
-  name: string;
-  imageUrl: string;
-}
+// export interface ImageData {
+//   name: string;
+//   imageUrl: string;
+// }
 
 const CardContent = ({
   character,
   setAttackingCharacter,
   close,
 }: FightCardProps) => {
-  const data: ImageData = imageData.find(
-    (item) => item.name === character.name
-  )!;
+  const data = imageData.find((item) => item.name === character.name)!;
 
   return (
     <div className={styles.card}>

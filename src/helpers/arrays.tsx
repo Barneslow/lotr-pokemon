@@ -1,4 +1,4 @@
-import { Attack, Character } from "@/models/models";
+import { Attack, AttackingCharacter, Character } from "@/models/models";
 
 export function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -20,7 +20,7 @@ export function randomFiveFromArray(array: any[]) {
   return randomItems;
 }
 
-export function getRandomEnemyAttack(array: Character[]): Attack {
+export function getRandomEnemyAttack(array: Character[]): AttackingCharacter {
   const randomCharacter = array[Math.floor(Math.random() * array.length)];
 
   const randomAttack =
@@ -28,5 +28,5 @@ export function getRandomEnemyAttack(array: Character[]): Attack {
       ? randomCharacter.specialAttack
       : randomCharacter.mainAttack;
 
-  return randomAttack;
+  return { attack: randomAttack, name: randomCharacter.name };
 }
