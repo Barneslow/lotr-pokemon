@@ -19,7 +19,7 @@ export const DUMMY_ENEMY = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Sneak",
       value: 70,
       isSpecial: true,
@@ -46,7 +46,7 @@ export const DUMMY_ENEMY = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Mûmakil",
       value: 140,
       isSpecial: true,
@@ -73,7 +73,7 @@ export const DUMMY_ENEMY = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Dwarven Power",
       value: 25,
       isSpecial: true,
@@ -100,7 +100,7 @@ export const DUMMY_ENEMY = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Dwarven Power",
       value: 25,
       isSpecial: true,
@@ -127,7 +127,7 @@ export const DUMMY_ENEMY = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Horn of Gondor",
       value: 150,
       isSpecial: true,
@@ -157,7 +157,7 @@ export const DUMMY_TEAM = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Army of the Dead",
       value: 200,
       isSpecial: true,
@@ -184,7 +184,7 @@ export const DUMMY_TEAM = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Flood",
       value: 140,
       isSpecial: true,
@@ -211,7 +211,7 @@ export const DUMMY_TEAM = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Invisibilty",
       value: 130,
       isSpecial: true,
@@ -238,7 +238,7 @@ export const DUMMY_TEAM = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Dwarven Power",
       value: 25,
       isSpecial: true,
@@ -265,7 +265,7 @@ export const DUMMY_TEAM = [
     },
     specialAttack: {
       disabledTurns: 0,
-      disabledFor: 5,
+      disabledFor: 7,
       name: "Dwarven Power",
       value: 25,
       isSpecial: true,

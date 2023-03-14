@@ -19,7 +19,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Army of the Dead",
       "value": 200,
       "isSpecial": true
@@ -46,7 +46,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Flood",
       "value": 140,
       "isSpecial": true
@@ -73,7 +73,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Invisibilty",
       "value": 130,
       "isSpecial": true
@@ -100,7 +100,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -127,7 +127,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -154,7 +154,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Sneak",
       "value": 70,
       "isSpecial": true
@@ -181,7 +181,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Mûmakil",
       "value": 140,
       "isSpecial": true
@@ -208,7 +208,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -235,7 +235,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -262,7 +262,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Horn of Gondor",
       "value": 150,
       "isSpecial": true
@@ -289,7 +289,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rocks",
       "value": 80,
       "isSpecial": true
@@ -316,7 +316,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Wisdom",
       "value": 120,
       "isSpecial": true
@@ -343,7 +343,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Ambush",
       "value": 80,
       "isSpecial": true
@@ -370,7 +370,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Palantír",
       "value": 110,
       "isSpecial": true
@@ -397,7 +397,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -424,7 +424,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -451,7 +451,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -478,7 +478,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Faithful",
       "value": 150,
       "isSpecial": true
@@ -505,7 +505,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Foresight",
       "value": 140,
       "isSpecial": true
@@ -532,7 +532,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Ambush",
       "value": 120,
       "isSpecial": true
@@ -559,7 +559,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -586,7 +586,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Nenya",
       "value": 275,
       "isSpecial": true
@@ -613,7 +613,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Stout Heart",
       "value": 100,
       "isSpecial": true
@@ -640,7 +640,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Standard Bearer",
       "value": 90,
       "isSpecial": true
@@ -667,7 +667,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "High King",
       "value": 140,
       "isSpecial": true
@@ -694,7 +694,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rebirth",
       "value": 200,
       "isSpecial": true
@@ -721,7 +721,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Let them come!",
       "value": 140,
       "isSpecial": true
@@ -748,7 +748,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -775,7 +775,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Sniper",
       "value": 90,
       "isSpecial": true
@@ -802,7 +802,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Horn of the Deep",
       "value": 140,
       "isSpecial": true
@@ -829,7 +829,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Cavalry",
       "value": 100,
       "isSpecial": true
@@ -856,7 +856,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Double Arrow",
       "value": 150,
       "isSpecial": true
@@ -883,7 +883,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Saurons Bane",
       "value": 135,
       "isSpecial": true
@@ -910,7 +910,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Ambush",
       "value": 90,
       "isSpecial": true
@@ -937,7 +937,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -964,7 +964,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dwarven Power",
       "value": 25,
       "isSpecial": true
@@ -991,7 +991,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Wind of the Mountain",
       "value": 130,
       "isSpecial": true
@@ -1018,7 +1018,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Scepter",
       "value": 160,
       "isSpecial": true
@@ -1045,7 +1045,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Oak Shield",
       "value": 110,
       "isSpecial": true
@@ -1072,7 +1072,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "A Red Day",
       "value": 150,
       "isSpecial": true
@@ -1099,7 +1099,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rocks",
       "value": 80,
       "isSpecial": true
@@ -1126,7 +1126,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Whispers",
       "value": 80,
       "isSpecial": true
@@ -1153,7 +1153,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Gollum",
       "value": 90,
       "isSpecial": true
@@ -1180,7 +1180,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Narya",
       "value": 250,
       "isSpecial": true
@@ -1207,7 +1207,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Natures Call",
       "value": 130,
       "isSpecial": true
@@ -1234,7 +1234,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Dark Sorcery",
       "value": 160,
       "isSpecial": true
@@ -1261,7 +1261,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "The One Ring",
       "value": 400,
       "isSpecial": true
@@ -1288,7 +1288,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Fiery whip",
       "value": 200,
       "isSpecial": true
@@ -1315,7 +1315,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Fangorn",
       "value": 160,
       "isSpecial": true
@@ -1342,7 +1342,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Black Speech ",
       "value": 120,
       "isSpecial": true
@@ -1368,7 +1368,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rage",
       "value": 60,
       "isSpecial": true
@@ -1394,7 +1394,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Fireblast",
       "value": 240,
       "isSpecial": true
@@ -1420,7 +1420,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Venom",
       "value": 170,
       "isSpecial": true
@@ -1446,7 +1446,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Brute",
       "value": 80,
       "isSpecial": true
@@ -1472,7 +1472,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Chariot",
       "value": 130,
       "isSpecial": true
@@ -1499,7 +1499,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "I am no man",
       "value": 110,
       "isSpecial": true
@@ -1526,7 +1526,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Spear",
       "value": 120,
       "isSpecial": true
@@ -1552,7 +1552,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Gundabad Warg",
       "value": 100,
       "isSpecial": true
@@ -1578,7 +1578,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Charge",
       "value": 150,
       "isSpecial": true
@@ -1604,7 +1604,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rage",
       "value": 60,
       "isSpecial": true
@@ -1630,7 +1630,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Great Winds",
       "value": 190,
       "isSpecial": true
@@ -1656,7 +1656,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rage",
       "value": 60,
       "isSpecial": true
@@ -1682,7 +1682,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Time of the Orc",
       "value": 90,
       "isSpecial": true
@@ -1710,7 +1710,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Rage",
       "value": 65,
       "isSpecial": true
@@ -1736,7 +1736,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Great Mace",
       "value": 170,
       "isSpecial": true
@@ -1762,7 +1762,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Unlight",
       "value": 220,
       "isSpecial": true
@@ -1788,7 +1788,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Orc Draught",
       "value": 80,
       "isSpecial": true
@@ -1814,7 +1814,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Orc Draught",
       "value": 80,
       "isSpecial": true
@@ -1840,7 +1840,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Gundabad Warg",
       "value": 110,
       "isSpecial": true
@@ -1867,7 +1867,7 @@
     },
     "specialAttack": {
       "disabledTurns": 0,
-      "disabledFor": 5,
+      "disabledFor": 7,
       "name": "Warg Rider",
       "value": 70,
       "isSpecial": true
