@@ -16,6 +16,7 @@ import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
+import Deck from "@/components/deck/deck";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -129,32 +130,39 @@ export default function Home() {
             <Fight setIsFighting={setIsFighting} />
           </>
         ) : (
-          <motion.div
-            variants={container}
-            initial="initial"
-            animate="animate"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 5,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {filteredCharacters.map((character) => (
-              <motion.div variants={child} key={character._id}>
-                <FlipCard
-                  name={character.name}
-                  _id={character._id}
-                  updateCount={updateCount}
-                  flipAll={flipAll}
-                  health={character.health}
-                  mainAttack={character.mainAttack.value}
-                  specialAttack={character.specialAttack.value}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          <>
+            <Deck />
+            <div className={styles.heading}>
+              <h1>LOTR POKEMON</h1>
+              <h2>Fight to win cards!</h2>
+            </div>
+            <motion.div
+              variants={container}
+              initial="initial"
+              animate="animate"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 5,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {filteredCharacters.map((character) => (
+                <motion.div variants={child} key={character._id}>
+                  <FlipCard
+                    name={character.name}
+                    _id={character._id}
+                    updateCount={updateCount}
+                    flipAll={flipAll}
+                    health={character.health}
+                    mainAttack={character.mainAttack.value}
+                    specialAttack={character.specialAttack.value}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </>
         )}
       </main>
     </>

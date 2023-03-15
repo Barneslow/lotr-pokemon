@@ -1,3 +1,4 @@
+import { DUMMY_ENEMY, DUMMY_TEAM } from "@/components/ui/DummyEnemies";
 import { randomFiveFromArray } from "@/helpers/arrays";
 import { Character } from "@/models/models";
 import {
@@ -44,9 +45,9 @@ const defaultState = {
 
 export const FightContext = createContext<IFightContext>(defaultState);
 
-interface Props {
+type Props = {
   children?: ReactNode;
-}
+};
 
 export const FightContextProvider = ({ children }: Props) => {
   const [team, setTeam] = useState<Character[]>([]);

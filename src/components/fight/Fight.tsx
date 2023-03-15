@@ -13,9 +13,11 @@ import EnemyFightCard from "../cards/EnemyFightCard";
 import styles from "./Fight.module.css";
 import FightCard from "../cards/FightCard";
 import FightModal from "./FightModal";
-import TableAttack from "./TableAttack";
 
 import useSound from "use-sound";
+import CompletedModal from "./CompletedModal";
+import { randomFromArray } from "@/helpers/arrays";
+import { DeckContext } from "@/context/DeckContext";
 
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;
@@ -23,7 +25,13 @@ interface FightProps {
 
 const Fight = ({ setIsFighting }: FightProps) => {
   const { turn, changeTurn, enemy, team, reset } = useContext(FightContext);
+  const { updateDeck } = useContext(DeckContext);
+
   const [showModal, setShowModal] = useState(false);
+  const [completedAnimation, setCompletedAnimation] = useState(false);
+  const [victoryCharacter, setVictoryCharacter] = useState<
+    Character | undefined
+  >();
   const [animatedAttack, setAnimatedAttack] =
     useState<IAttackingAnimationProps>();
   const [attackingCharacter, setAttackingCharacter] = useState<
@@ -53,12 +61,23 @@ const Fight = ({ setIsFighting }: FightProps) => {
     const aliveTeam = team.filter((char) => char.health > 0);
 
     if (aliveEnemies.length === 0 || aliveTeam.length === 0) {
-      reset();
-      setIsFighting(false);
+      let victoryCharacter;
+
+      if (aliveTeam.length > 0) {
+        victoryCharacter = randomFromArray(team);
+      }
+
+      setCompletedAnimation(true);
+      setVictoryCharacter(victoryCharacter);
+
       return;
     }
+
+    if (aliveEnemies.length === 0) {
+    }
+
     async function OpposingTeamsTurn() {
-      await animationTimer(1000);
+      await animationTimer(500);
 
       mordorAudio();
 
@@ -74,7 +93,7 @@ const Fight = ({ setIsFighting }: FightProps) => {
 
       setShowModal(true);
 
-      setTimeout(() => setShowModal(false), 2000);
+      setTimeout(() => setShowModal(false), 500);
 
       setAnimatedAttack(enemiesAttackTurn(team, enemy));
 
@@ -110,14 +129,29 @@ const Fight = ({ setIsFighting }: FightProps) => {
 
     target.health = target.health - attackingCharacter.attack.value;
 
-    await animationTimer(2000);
+    await animationTimer(500);
     changeTurn();
     setShowModal(false);
     setAttackingCharacter(undefined);
   }
 
+  async function closeModal() {
+    if (victoryCharacter) {
+      updateDeck(victoryCharacter);
+    }
+
+    reset();
+    setIsFighting(false);
+  }
+
   return (
     <div className={styles.wrapper}>
+      <CompletedModal
+        victory={team.filter((char) => char.health > 0).length > 0}
+        showModal={completedAnimation}
+        character={victoryCharacter}
+        onClick={closeModal}
+      />
       <motion.div
         variants={container}
         initial="initial"
@@ -134,7 +168,6 @@ const Fight = ({ setIsFighting }: FightProps) => {
           </motion.div>
         ))}
       </motion.div>
-      {/* <TableAttack attackingCharacter={attackingCharacter} /> */}
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
       <motion.div
         variants={container}

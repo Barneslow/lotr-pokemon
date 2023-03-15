@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./CharacterCard.module.css";
 
 import { motion } from "framer-motion";

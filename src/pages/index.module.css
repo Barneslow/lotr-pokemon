@@ -4,6 +4,7 @@
   /* padding: 1rem; */
   min-height: 100vh;
   min-width: 100vw;
+  text-align: center;
 }
 
 .btn {
@@ -17,4 +18,22 @@
 .btn:hover {
   filter: brightness(0.9);
   cursor: pointer;
+}
+
+.heading {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.heading h1 {
+  font-size: clamp(1.3rem, 4vw, 3rem);
+  background: linear-gradient(112.1deg, white 11.4%, #ffd500 70.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading h2 {
+  font-size: clamp(1rem, 3vw, 2.2rem);
+  background: linear-gradient(112.1deg, white 11.4%, #ffd500 70.2%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

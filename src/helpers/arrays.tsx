@@ -9,6 +9,11 @@ export function shuffleArray(array: any[]) {
   return array;
 }
 
+export function randomFromArray(array: any[]) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
 export function randomFiveFromArray(array: any[]) {
   let randomItems = [];
 

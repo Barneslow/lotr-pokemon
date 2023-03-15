@@ -93,7 +93,6 @@ const FightModal = ({ animatedAttack, showModal }: FightModalProps) => {
           </motion.div>
         </Backdrop>
       )}
-      ,
     </AnimatePresence>
   );
 };

@@ -52,7 +52,7 @@ const FlipCard: React.FC<FlipCardProps> = memo((props) => {
           className={`${styles["card-face"]} ${styles["card-face-front"]}`}
         ></div>
         <div className={`${styles["card-face"]} ${styles["card-face-back"]}`}>
-          <h3 className={styles.header}>{props.name}</h3>
+          <h3 className={styles.header}>{props.name.substring(0, 20)}</h3>
           <div className={styles["image-box"]}>
             <Image
               alt={`Picture of the ${props.name}`}
