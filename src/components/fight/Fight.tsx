@@ -18,6 +18,8 @@ import useSound from "use-sound";
 import CompletedModal from "./CompletedModal";
 import { randomFromArray } from "@/helpers/arrays";
 import { DeckContext } from "@/context/DeckContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faForward } from "@fortawesome/free-solid-svg-icons";
 
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;
@@ -169,6 +171,15 @@ const Fight = ({ setIsFighting }: FightProps) => {
         ))}
       </motion.div>
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
+      <div className={styles.skip}>
+        <FontAwesomeIcon
+          height={40}
+          width={40}
+          icon={faForward}
+          color="black"
+          onClick={changeTurn}
+        />
+      </div>
       <motion.div
         variants={container}
         initial="initial"
