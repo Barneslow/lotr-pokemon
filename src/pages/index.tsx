@@ -16,7 +16,7 @@ import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
-import Deck from "@/components/deck/deck";
+import Deck from "@/components/deck/Deck";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],

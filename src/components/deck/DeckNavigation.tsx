@@ -1,12 +1,12 @@
-import styles from "./Deck.module.css";
-
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "@/hooks/useDimensions";
 import { Navigation } from "./Navigation";
 import { HamburgerToggle } from "./HamburgerToggle";
 
-const Deck = () => {
+import styles from "./DeckNavigation.module.css";
+
+const DeckNavigation = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   const containerRef = useRef(null);
@@ -49,4 +49,4 @@ const Deck = () => {
   );
 };
 
-export default Deck;
+export default DeckNavigation;
