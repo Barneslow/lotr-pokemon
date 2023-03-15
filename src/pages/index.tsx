@@ -16,7 +16,7 @@ import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
-import Deck from "@/components/deck/Deck";
+import DeckNavigation from "@/components/deck/DeckNavigation";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -106,11 +106,11 @@ export default function Home() {
     setFilteredCharacters(newFilteredCharacters);
   }, [characters, searchField]);
 
-  function filterCharacters(e: ChangeEvent<HTMLInputElement>): void {
-    const searchFieldString = e.target.value.toLocaleLowerCase();
+  // function filterCharacters(e: ChangeEvent<HTMLInputElement>): void {
+  //   const searchFieldString = e.target.value.toLocaleLowerCase();
 
-    setSearchField(searchFieldString);
-  }
+  //   setSearchField(searchFieldString);
+  // }
 
   return (
     <>
@@ -126,12 +126,10 @@ export default function Home() {
           Flip All
         </button> */}
         {isFighting ? (
-          <>
-            <Fight setIsFighting={setIsFighting} />
-          </>
+          <Fight setIsFighting={setIsFighting} />
         ) : (
           <>
-            <Deck />
+            <DeckNavigation />
             <div className={styles.heading}>
               <h1>LOTR POKEMON</h1>
               <h2>Fight to win cards!</h2>
