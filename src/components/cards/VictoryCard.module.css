@@ -1,0 +1,57 @@
+.victory {
+  width: fit-content;
+  border-radius: 10px;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 60px 30px #fff, 0 0 100px 60px rgb(255, 252, 81),
+    0 0 140px 90px rgb(255, 204, 0);
+  background: linear-gradient(to bottom right, whitesmoke, #a7a7a7);
+  padding: 0.8rem;
+  color: black;
+  font-size: 18px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.image-box {
+  width: 350px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stat-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-block: 7px;
+  font-weight: 500;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 400px) {
+  .image-box {
+    width: 260px;
+  }
+}

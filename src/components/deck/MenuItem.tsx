@@ -35,7 +35,7 @@ export const MenuItem = ({ name, placeholder }: MenuItemProps) => {
     <Link href={`/character/${name}`}>
       <motion.li
         variants={menuItemVarients}
-        whileHover={{ scale: 1.1, background: "lightgrey" }}
+        whileHover={{ scale: 1.1, color: "#0A6EBD" }}
         whileTap={{ scale: 0.95 }}
         className={styles["list-item"]}
       >

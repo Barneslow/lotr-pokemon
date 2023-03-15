@@ -2,8 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./FightModal.module.css";
 import { Backdrop } from "../ui/PopupModal";
-import CharacterCard from "../cards/CharacterCard";
 import { Character } from "@/models/models";
+import VictoryCard from "../cards/VictoryCard";
 
 interface CompletedModalProps {
   showModal: boolean;
@@ -47,8 +47,8 @@ const CompletedModal = ({
               {victory ? `YOU WON ${character?.name}` : "YOU LOST. TRY AGAIN!"}
             </motion.h3>
             {character && (
-              <motion.div variants={child} className={styles.victory}>
-                <CharacterCard character={character} />
+              <motion.div variants={child}>
+                <VictoryCard character={character} />
               </motion.div>
             )}
           </motion.div>
