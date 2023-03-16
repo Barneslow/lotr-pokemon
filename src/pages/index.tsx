@@ -1,27 +1,18 @@
 import Head from "next/head";
 import { M_PLUS_Rounded_1c } from "next/font/google";
 import { fetchAllCharacters } from "./api/hello";
-import {
-  ChangeEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Character } from "@/models/models";
 import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
 import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
-import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
-import Playground from "@/components/fight/Playground/PlayGround";
 import NewFight from "@/components/fight/NewFight";
 import TheOneRing from "@/components/ui/icon/TheOneRing";
 import { animationTimer } from "@/helpers/fight";
-// import { DragBox } from "@/components/ui/DragBox";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
