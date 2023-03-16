@@ -26,13 +26,13 @@ interface IFightContext {
   reset: () => void;
 }
 
-const defaultState = {
+const defaultState: IFightContext = {
   enemy: [],
   team: [],
   characters: [],
   count: 0,
   turn: 0,
-  attackingCharacter: [],
+  attackingCharacter: undefined,
   updateAttackingCharacter: (character: AttackingCharacter | undefined) => {},
   updateTeam: (character: Character) => {},
   setEnemyTeam: (array: Character[]) => {},
