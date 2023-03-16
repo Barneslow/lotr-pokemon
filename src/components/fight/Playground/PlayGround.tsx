@@ -4,7 +4,7 @@ import { FightContext } from "@/context/FightContext";
 import { AttackingCharacter, Character } from "@/models/models";
 import React, { useContext, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import ActionButtons from "../ActionButtons";
+import ActionButtons from "../../ui/ActionButtons";
 
 import styles from "./Playground.module.css";
 

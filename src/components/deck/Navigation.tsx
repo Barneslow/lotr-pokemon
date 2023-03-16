@@ -36,7 +36,6 @@ type NavigationProp = {
 export const Navigation = ({ open }: NavigationProp) => {
   const { deck } = useContext(DeckContext);
 
-  console.log(open);
   return (
     <motion.ul
       variants={variants}

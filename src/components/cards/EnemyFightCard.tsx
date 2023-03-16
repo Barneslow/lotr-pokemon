@@ -9,7 +9,7 @@ import characterHealthData from "../../assets/data/myFile.json";
 
 import styles from "./FightCard.module.scss";
 import { isOdd } from "@/helpers/fight";
-import { HeartIcon } from "../icon/CardIcons";
+import { HeartIcon } from "../ui/icon/CardIcons";
 
 interface EnemyFightCardProps extends CharacterObjectProps {
   playerFightAnimation: (target: Character) => void;

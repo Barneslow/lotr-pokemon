@@ -17,9 +17,9 @@ import FlipCard from "@/components/cards/FlipCard";
 import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
-import Playground from "@/components/ui/Playground/PlayGround";
+import Playground from "@/components/fight/Playground/PlayGround";
 import NewFight from "@/components/fight/NewFight";
-import TheOneRing from "@/components/icon/TheOneRing";
+import TheOneRing from "@/components/ui/icon/TheOneRing";
 import { animationTimer } from "@/helpers/fight";
 // import { DragBox } from "@/components/ui/DragBox";
 

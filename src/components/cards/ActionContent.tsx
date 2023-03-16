@@ -9,7 +9,7 @@ import {
 
 import styles from "./ActionContent.module.css";
 import CharacterFooterInfo from "./CharacterFooterInfo";
-import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../icon/CardIcons";
+import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";
 import { useContext } from "react";
 import { FightContext } from "@/context/FightContext";
 

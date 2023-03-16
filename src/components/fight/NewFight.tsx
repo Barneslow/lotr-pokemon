@@ -16,7 +16,7 @@ import useSound from "use-sound";
 import CompletedModal from "./CompletedModal";
 import { randomFromArray } from "@/helpers/arrays";
 import { DeckContext } from "@/context/DeckContext";
-import Playground from "../ui/Playground/PlayGround";
+import Playground from "./Playground/PlayGround";
 
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;

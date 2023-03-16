@@ -2,7 +2,7 @@ import { FightContext } from "@/context/FightContext";
 import { calculateAttackTimeRemaining } from "@/helpers/fight";
 import { useContext } from "react";
 import { CharacterCardProps } from "../cards/ActionCard";
-import { SkipIcon, SpecialPowerIcon, SwordIcon } from "../icon/CardIcons";
+import { SkipIcon, SpecialPowerIcon, SwordIcon } from "./icon/CardIcons";
 import styles from "./ActionButtons.module.css";
 
 const ActionButtons = ({ character }: CharacterCardProps) => {

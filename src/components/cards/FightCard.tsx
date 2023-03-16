@@ -10,7 +10,7 @@ import {
   calculateAttackTimeRemaining,
   calculateCharacterHealth,
 } from "@/helpers/fight";
-import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../icon/CardIcons";
+import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";
 
 export interface FightCardProps extends CharacterObjectProps {
   setAttackingCharacter: (value: AttackingCharacter) => void;
