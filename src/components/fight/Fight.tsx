@@ -191,7 +191,6 @@ const Fight = ({ setIsFighting }: FightProps) => {
             <FightCard
               character={character}
               setAttackingCharacter={setAttackingCharacter}
-              attackingCharacter={attackingCharacter}
             />
           </motion.div>
         ))}

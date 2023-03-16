@@ -20,6 +20,7 @@
   align-items: center;
   overflow: hidden;
   min-height: 225px;
+  position: relative;
 }
 
 .list {

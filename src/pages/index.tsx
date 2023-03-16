@@ -31,7 +31,7 @@ export default function Home() {
   const { updateTeam, team, setEnemyTeam, count, setCount, characters } =
     useContext(FightContext);
   const [flipAll, setFlipAll] = useState(true);
-  const [isFighting, setIsFighting] = useState(true);
+  const [isFighting, setIsFighting] = useState(false);
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
@@ -132,8 +132,7 @@ export default function Home() {
           <NewFight setIsFighting={setIsFighting} />
         ) : (
           <>
-            {/* <Playground /> */}
-            {/* <DeckNavigation />
+            <DeckNavigation />
             <div className={styles.heading}>
               <h1>LOTR POKEMON</h1>
               <h2>Fight to win cards!</h2>
@@ -163,7 +162,7 @@ export default function Home() {
                   />
                 </motion.div>
               ))}
-            </motion.div> */}
+            </motion.div>
           </>
         )}
       </main>

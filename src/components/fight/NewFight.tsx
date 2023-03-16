@@ -148,7 +148,7 @@ const NewFight = ({ setIsFighting }: FightProps) => {
         ))}
       </div>
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
-      <Playground />
+      <Playground setAttackingCharacter={setAttackingCharacter} />
     </div>
   );
 };

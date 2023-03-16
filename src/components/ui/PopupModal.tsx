@@ -1,7 +1,7 @@
 import { AttackingCharacter, Character } from "@/models/models";
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
-import CharacterCard from "../cards/CharacterCard";
+import ActionCard from "../cards/ActionCard";
 
 import styles from "./PopupModal.module.css";
 
@@ -51,11 +51,7 @@ const PopupModal = ({
             exit="exit"
             onClick={(e) => e.stopPropagation()}
           >
-            <CharacterCard
-              setAttackingCharacter={setAttackingCharacter}
-              character={character}
-              close={close}
-            />
+            <ActionCard character={character} />
           </motion.div>
         </Backdrop>
       )}

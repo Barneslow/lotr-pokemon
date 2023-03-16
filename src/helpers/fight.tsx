@@ -1,4 +1,5 @@
 import { AttackingCharacter, Character } from "@/models/models";
+import originalData from "../assets/data/myFile.json";
 import { getRandomEnemyAttack } from "./arrays";
 
 export interface IAttackingAnimationProps {
@@ -34,6 +35,28 @@ export function isOdd(n: number) {
 export function calculatePercentage(max: number, value: number): number {
   const parts = 100 / max;
   const percentage = value * parts;
+
+  return percentage;
+}
+
+export function calculateAttackTimeRemaining(character: Character) {
+  const specialPower = calculatePercentage(
+    character.specialAttack.disabledFor,
+    character.specialAttack.disabledTurns
+  );
+
+  const mainPower = calculatePercentage(
+    character.mainAttack.disabledFor,
+    character.mainAttack.disabledTurns
+  )!;
+
+  return { mainPower, specialPower };
+}
+
+export function calculateCharacterHealth(character: Character) {
+  const { health } = originalData.find((char) => char.name === character.name)!;
+
+  const percentage = 100 - (character.health / health) * 100;
 
   return percentage;
 }

@@ -1,10 +1,10 @@
 import ActionCard from "@/components/cards/ActionCard";
 import FightCard from "@/components/cards/FightCard";
 import { FightContext } from "@/context/FightContext";
-import { Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 import React, { useContext, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { DUMMY_CHARACTER } from "../DummyEnemies";
+import ActionButtons from "../ActionButtons";
 
 import styles from "./Playground.module.css";
 
@@ -16,7 +16,11 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const Playground = () => {
+type PlaygroundProps = {
+  setAttackingCharacter: (value: AttackingCharacter) => void;
+};
+
+const Playground = ({ setAttackingCharacter }: PlaygroundProps) => {
   const { team } = useContext(FightContext);
   const [inPlayCharacter, setInPlayCharacter] = useState<Character[]>([]);
   const [teamArray, setTeamArray] = useState<Character[]>(team);
@@ -89,6 +93,12 @@ const Playground = () => {
                 snapshot.isDraggingOver && styles.hover
               }`}
             >
+              {inPlayCharacter[0] && (
+                <ActionButtons
+                  character={inPlayCharacter[0]}
+                  setAttackingCharacter={setAttackingCharacter}
+                />
+              )}
               {inPlayCharacter.map((character, index) => (
                 <Draggable
                   key={character._id}

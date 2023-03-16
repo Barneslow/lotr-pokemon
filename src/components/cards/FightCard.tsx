@@ -6,41 +6,29 @@ import useModal from "@/hooks/useModal";
 import PopupModal from "../ui/PopupModal";
 import { AttackingCharacter, CharacterObjectProps } from "@/models/models";
 
-import characterHealthData from "../../assets/data/myFile.json";
-
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { calculatePercentage } from "@/helpers/fight";
+import {
+  calculateAttackTimeRemaining,
+  calculateCharacterHealth,
+} from "@/helpers/fight";
 
 export interface FightCardProps extends CharacterObjectProps {
   setAttackingCharacter: (value: AttackingCharacter) => void;
-  attackingCharacter?: AttackingCharacter | undefined;
   close?: () => void;
 }
 
 const FightCard: React.FC<FightCardProps> = ({
   character,
   setAttackingCharacter,
-  attackingCharacter,
 }) => {
   const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { open, modalOpen, close } = useModal();
 
-  const { health } = characterHealthData.find(
-    (char) => char.name === character.name
-  )!;
+  const percentage = calculateCharacterHealth(character);
 
-  const percentage = 100 - (character.health / health) * 100;
-
-  const specialPower = calculatePercentage(
-    character.specialAttack.disabledFor,
-    character.specialAttack.disabledTurns
-  );
-
-  const mainPower = calculatePercentage(2, character.mainAttack.disabledTurns)!;
-
-  const isSelected = attackingCharacter?.name === character.name;
+  const { mainPower, specialPower } = calculateAttackTimeRemaining(character);
 
   return (
     <>
@@ -50,10 +38,7 @@ const FightCard: React.FC<FightCardProps> = ({
         close={close}
         character={character}
       />
-      <div
-        onClick={open}
-        className={`${styles.card} ${isSelected && styles.selected}`}
-      >
+      <div onClick={open} className={styles.card}>
         {character.health <= 0 && <DeadOverlay />}
         <div className={styles.header}>
           <h3>{character.name.substring(0, 20)}</h3>
@@ -69,28 +54,8 @@ const FightCard: React.FC<FightCardProps> = ({
           <HeartIcon percentage={percentage} id={character._id}>
             <span className={styles.health}>{character.health}</span>
           </HeartIcon>
-
-          {isSelected && !attackingCharacter?.attack.isSpecial && (
-            <span className={styles["attack-text"]}>
-              {character.mainAttack.name} {character.mainAttack.value}
-            </span>
-          )}
-          <SwordIcon
-            id={character._id}
-            used={mainPower}
-            selected={attackingCharacter?.attack.isSpecial}
-          />
-
-          {isSelected && attackingCharacter?.attack.isSpecial && (
-            <span className={styles["attack-text"]}>
-              {character.specialAttack.name} {character.specialAttack.value}
-            </span>
-          )}
-          <SpecialPowerIcon
-            id={character._id}
-            used={specialPower}
-            selected={attackingCharacter?.attack.isSpecial}
-          />
+          <SwordIcon id={character._id} used={mainPower} />
+          <SpecialPowerIcon id={character._id} used={specialPower} />
         </div>
       </div>
     </>
@@ -103,19 +68,22 @@ export type HeartIconProps = {
   children: ReactNode;
   percentage: number;
   id: string;
+  stroke?: string;
 };
 
 export type PowerIconProps = {
   id: string;
   used: number;
-  selected?: boolean;
+  stroke?: string;
+  size?: number;
 };
 
-function SwordIcon({ id, used, selected }: PowerIconProps) {
+export function SwordIcon({ id, used, stroke, size }: PowerIconProps) {
   return (
     <svg
       viewBox="0 0 510.31 510.3"
-      className={`${styles.svg} ${!selected && styles.visible}`}
+      className={styles.svg}
+      style={{ width: size, height: size }}
     >
       <linearGradient id={`swordgradient${id}`} gradientTransform="rotate(90)">
         <stop offset={`${used}%`} stop-color="white" stop-opacity=".5" />
@@ -126,7 +94,7 @@ function SwordIcon({ id, used, selected }: PowerIconProps) {
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         fill={`url('#swordgradient${id}')`}
-        stroke="whitesmoke"
+        stroke={stroke || "white"}
         strokeWidth={10}
         transition={{
           duration: 5,
@@ -156,11 +124,12 @@ function SwordIcon({ id, used, selected }: PowerIconProps) {
   );
 }
 
-function SpecialPowerIcon({ id, used, selected }: PowerIconProps) {
+export function SpecialPowerIcon({ id, used, stroke, size }: PowerIconProps) {
   return (
     <svg
       viewBox="0 -0.5 17 17"
-      className={`${styles.svg} ${selected && styles.visible}`}
+      className={styles.svg}
+      style={{ width: size, height: size }}
     >
       <linearGradient id={`spicongradient${id}`} gradientTransform="rotate(90)">
         <stop offset={`${used}%`} stop-color="white" stop-opacity=".5" />
@@ -171,7 +140,7 @@ function SpecialPowerIcon({ id, used, selected }: PowerIconProps) {
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         fill={`url('#spicongradient${id}')`}
-        stroke="whitesmoke"
+        stroke={stroke || "white"}
         strokeWidth={0.5}
         transition={{
           duration: 1,
@@ -185,7 +154,12 @@ function SpecialPowerIcon({ id, used, selected }: PowerIconProps) {
   );
 }
 
-export function HeartIcon({ children, percentage, id }: HeartIconProps) {
+export function HeartIcon({
+  children,
+  percentage,
+  id,
+  stroke,
+}: HeartIconProps) {
   return (
     <div
       style={{
@@ -208,7 +182,7 @@ export function HeartIcon({ children, percentage, id }: HeartIconProps) {
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           fill={`url('#gradient${id}')`}
-          stroke="white"
+          stroke={stroke || "white"}
           strokeWidth={0.6}
           transition={{
             duration: 1,

@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 
-import CardContent from "./CardContent";
-import { FightCardProps } from "./FightCard";
-
 import styles from "./ActionCard.module.css";
 import ActionContent from "./ActionContent";
+import { Character } from "@/models/models";
+import { SpecialPowerIcon, SwordIcon } from "./FightCard";
+import { calculateAttackTimeRemaining } from "@/helpers/fight";
 
-const ActionCard: React.FC<FightCardProps> = ({ character }) => {
+export type CharacterCardProps = {
+  character: Character;
+};
+
+const ActionCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
