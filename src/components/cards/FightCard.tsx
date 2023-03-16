@@ -86,8 +86,8 @@ export function SwordIcon({ id, used, stroke, size }: PowerIconProps) {
       style={{ width: size, height: size }}
     >
       <linearGradient id={`swordgradient${id}`} gradientTransform="rotate(90)">
-        <stop offset={`${used}%`} stop-color="white" stop-opacity=".5" />
-        <stop offset={`${used}%`} stop-color="#0A6EBD" />
+        <stop offset={`${used}%`} stopColor="white" stopOpacity=".5" />
+        <stop offset={`${used}%`} stopColor="#0A6EBD" />
       </linearGradient>
 
       <motion.path
@@ -132,8 +132,8 @@ export function SpecialPowerIcon({ id, used, stroke, size }: PowerIconProps) {
       style={{ width: size, height: size }}
     >
       <linearGradient id={`spicongradient${id}`} gradientTransform="rotate(90)">
-        <stop offset={`${used}%`} stop-color="white" stop-opacity=".5" />
-        <stop offset={`${used}%`} stop-color="#32CD32" />
+        <stop offset={`${used}%`} stopColor="white" stopOpacity=".5" />
+        <stop offset={`${used}%`} stopColor="#32CD32" />
       </linearGradient>
 
       <motion.path
@@ -170,12 +170,8 @@ export function HeartIcon({
     >
       <svg viewBox="0 0 24 24" className={styles.svg}>
         <linearGradient id={`gradient${id}`} gradientTransform="rotate(90)">
-          <stop
-            offset={`${percentage}%`}
-            stop-color="white"
-            stop-opacity=".5"
-          />
-          <stop offset={`${percentage}%`} stop-color="red" />
+          <stop offset={`${percentage}%`} stopColor="white" stopOpacity=".5" />
+          <stop offset={`${percentage}%`} stopColor="red" />
         </linearGradient>
 
         <motion.path

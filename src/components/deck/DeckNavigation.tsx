@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useCycle } from "framer-motion";
+import { circInOut, motion, useCycle } from "framer-motion";
 import { useDimensions } from "@/hooks/useDimensions";
 import { Navigation } from "./Navigation";
 import { HamburgerToggle } from "./HamburgerToggle";
@@ -13,17 +13,40 @@ const DeckNavigation = () => {
 
   const { height } = useDimensions(containerRef);
 
+  // const sidebar = {
+  //   open: {
+  //     clipPath: `circle(${height}px at 40px 40px)`,
+  //     transition: {
+  //       delay: 0.5,
+  //       type: "spring",
+  //       stiffness: 400,
+  //       damping: 40,
+  //     },
+  //   },
+
+  //   closed: {
+  //     clipPath: "circle(25px at 30px 30px)",
+  //     transition: {
+  //       delay: 0.5,
+  //       type: "spring",
+  //       stiffness: 400,
+  //       damping: 40,
+  //     },
+  //   },
+  // };
+
   const sidebar = {
-    open: (height = 1000) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    open: {
+      width: 300,
       transition: {
         type: "spring",
-        stiffness: 20,
-        restDelta: 2,
+        stiffness: 400,
+        damping: 40,
       },
-    }),
+    },
+
     closed: {
-      clipPath: "circle(25px at 30px 30px)",
+      width: 0,
       transition: {
         delay: 0.5,
         type: "spring",
@@ -32,7 +55,6 @@ const DeckNavigation = () => {
       },
     },
   };
-
   return (
     <motion.nav
       initial={false}
@@ -40,7 +62,6 @@ const DeckNavigation = () => {
       custom={height}
       ref={containerRef}
       className={styles.nav}
-      style={{ width: isOpen ? 300 : 0 }}
     >
       <motion.div className={styles.background} variants={sidebar} />
       <Navigation />

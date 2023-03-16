@@ -2,6 +2,9 @@
   outline: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 8px;
   left: 5px;
@@ -9,11 +12,13 @@
   height: 50px;
   border-radius: 50%;
   background: transparent;
+  background-color: whitesmoke;
 }
 
 .svg {
-  height: 23px;
-  width: 23px;
+  width: 30px;
+  margin-top: 3px;
+  margin-left: 2px;
 }
 
 .list {

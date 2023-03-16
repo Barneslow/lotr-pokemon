@@ -2,8 +2,8 @@
   width: fit-content;
   border-radius: 10px;
   border: 3px solid var(--gold);
-  /* box-shadow: 0 0 60px 30px #fff, 0 0 100px 60px rgb(255, 252, 81),
-    0 0 140px 90px rgb(255, 204, 0); */
+  box-shadow: 0 0 60px 30px #fff, 0 0 100px 60px rgb(255, 252, 81),
+    0 0 140px 90px rgb(255, 204, 0);
   background: linear-gradient(to bottom right, whitesmoke, #a7a7a7);
   padding: 0.8rem;
   color: black;
