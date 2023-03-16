@@ -29,11 +29,19 @@ const headingVariants = {
   },
 };
 
-export const Navigation = () => {
+type NavigationProp = {
+  open: boolean;
+};
+
+export const Navigation = ({ open }: NavigationProp) => {
   const { deck } = useContext(DeckContext);
 
   return (
-    <motion.ul variants={variants} className={styles.list}>
+    <motion.ul
+      variants={variants}
+      className={styles.list}
+      style={{ display: open ? "block" : "none" }}
+    >
       <motion.h3 variants={headingVariants} className={styles.heading}>
         Add to your deck
       </motion.h3>

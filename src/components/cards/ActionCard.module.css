@@ -1,8 +1,6 @@
 .card {
-  border: 2px solid goldenrod;
   background-color: whitesmoke;
   box-shadow: var(--box-shadow);
   padding: 0.5rem;
-  width: 300px;
-  height: 100%;
+  border-radius: 15px;
 }

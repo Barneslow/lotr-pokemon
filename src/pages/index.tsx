@@ -1,25 +1,18 @@
 import Head from "next/head";
 import { M_PLUS_Rounded_1c } from "next/font/google";
 import { fetchAllCharacters } from "./api/hello";
-import {
-  ChangeEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Character } from "@/models/models";
 import { motion } from "framer-motion";
 
 import styles from "./index.module.css";
 import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
-import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
-import Playground from "@/components/ui/Playground/PlayGround";
 import NewFight from "@/components/fight/NewFight";
-// import { DragBox } from "@/components/ui/DragBox";
+import TheOneRing from "@/components/ui/icon/TheOneRing";
+import { animationTimer } from "@/helpers/fight";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -31,7 +24,7 @@ export default function Home() {
   const { updateTeam, team, setEnemyTeam, count, setCount, characters } =
     useContext(FightContext);
   const [flipAll, setFlipAll] = useState(true);
-  const [isFighting, setIsFighting] = useState(true);
+  const [isFighting, setIsFighting] = useState(false);
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
@@ -67,13 +60,17 @@ export default function Home() {
   }, [characters]);
 
   useEffect(() => {
-    if (count >= 5) {
+    async function delay() {
+      await animationTimer(1000);
       setIsFighting(true);
 
       const chosenIds = team.map((card) => card._id);
       const rival = characters.filter((char) => !chosenIds.includes(char._id));
 
       setEnemyTeam(rival);
+    }
+    if (count >= 5) {
+      delay();
     }
   }, [count, characters]);
 
@@ -132,11 +129,11 @@ export default function Home() {
           <NewFight setIsFighting={setIsFighting} />
         ) : (
           <>
-            {/* <Playground /> */}
-            {/* <DeckNavigation />
+            <DeckNavigation />
             <div className={styles.heading}>
+              <TheOneRing />
               <h1>LOTR POKEMON</h1>
-              <h2>Fight to win cards!</h2>
+              <TheOneRing />
             </div>
             <motion.div
               variants={container}
@@ -163,7 +160,7 @@ export default function Home() {
                   />
                 </motion.div>
               ))}
-            </motion.div> */}
+            </motion.div>
           </>
         )}
       </main>

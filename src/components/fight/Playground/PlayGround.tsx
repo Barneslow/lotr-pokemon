@@ -1,10 +1,10 @@
 import ActionCard from "@/components/cards/ActionCard";
 import FightCard from "@/components/cards/FightCard";
 import { FightContext } from "@/context/FightContext";
-import { Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 import React, { useContext, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { DUMMY_CHARACTER } from "../DummyEnemies";
+import ActionButtons from "../../ui/ActionButtons";
 
 import styles from "./Playground.module.css";
 
@@ -14,6 +14,11 @@ const reorder = (list, startIndex, endIndex) => {
   result.splice(endIndex, 0, removed);
 
   return result;
+};
+
+type PlaygroundProps = {
+  setAttackingCharacter: (value: AttackingCharacter) => void;
+  attackingCharacter: AttackingCharacter;
 };
 
 const Playground = () => {
@@ -89,6 +94,11 @@ const Playground = () => {
                 snapshot.isDraggingOver && styles.hover
               }`}
             >
+              {inPlayCharacter[0] ? (
+                <ActionButtons character={inPlayCharacter[0]} />
+              ) : (
+                <h2>PLACE ATTACKER</h2>
+              )}
               {inPlayCharacter.map((character, index) => (
                 <Draggable
                   key={character._id}
@@ -101,7 +111,10 @@ const Playground = () => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <ActionCard character={character} />
+                      <ActionCard
+                        character={character}
+                        stroke="3px solid rgb(50, 177, 50)"
+                      />
                     </li>
                   )}
                 </Draggable>

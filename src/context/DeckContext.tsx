@@ -1,8 +1,6 @@
 import { Character } from "@/models/models";
 import { createContext, ReactNode, useState } from "react";
 
-import { DUMMY_TEAM } from "@/components/ui/DummyEnemies";
-
 interface IDeckContext {
   deck: Character[] | [];
   updateDeck: (character: Character) => void;

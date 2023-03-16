@@ -1,6 +1,6 @@
 import { DUMMY_ENEMY, DUMMY_TEAM } from "@/components/ui/DummyEnemies";
 import { randomFiveFromArray } from "@/helpers/arrays";
-import { Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 import {
   createContext,
   Dispatch,
@@ -15,9 +15,7 @@ interface IFightContext {
   enemy: Character[] | [];
   team: Character[] | [];
   count: number;
-  //   chosenAttack: Attack;
-  //   enemySpecial: number;
-  //   teamSpecial: number;
+
   reset: () => void;
   turn: number;
   updateTeam: (character: Character) => void;
@@ -25,6 +23,8 @@ interface IFightContext {
   setEnemyTeam: (array: Character[]) => void;
   setCount: Dispatch<SetStateAction<number>>;
   characters: Character[];
+  attackingCharacter: AttackingCharacter | undefined;
+  updateAttackingCharacter: (attack: AttackingCharacter | undefined) => void;
 }
 
 const defaultState = {
@@ -50,8 +50,11 @@ type Props = {
 };
 
 export const FightContextProvider = ({ children }: Props) => {
-  const [team, setTeam] = useState<Character[]>(DUMMY_TEAM);
-  const [enemy, setEnemy] = useState<Character[]>(DUMMY_ENEMY);
+  const [team, setTeam] = useState<Character[]>([]);
+  const [enemy, setEnemy] = useState<Character[]>([]);
+  const [attackingCharacter, setAttackingCharacter] = useState<
+    AttackingCharacter | undefined
+  >();
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
@@ -61,6 +64,12 @@ export const FightContextProvider = ({ children }: Props) => {
 
   function updateTeam(character: Character) {
     setTeam((prev) => [...prev, character]);
+  }
+
+  function updateAttackingCharacter(
+    newCharacter: AttackingCharacter | undefined
+  ) {
+    setAttackingCharacter(newCharacter);
   }
 
   function setEnemyTeam(rival: Character[]) {
@@ -89,9 +98,8 @@ export const FightContextProvider = ({ children }: Props) => {
     enemy,
     team,
     setEnemyTeam,
-    // chosenAttack,
-    // enemySpecial,
-    // teamSpecial,
+    attackingCharacter,
+    updateAttackingCharacter,
     count,
     setCount,
     reset,
