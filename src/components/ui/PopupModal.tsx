@@ -30,15 +30,9 @@ interface PopupModalProps {
   modalOpen: boolean;
   close: () => void;
   character: Character;
-  setAttackingCharacter: (value: AttackingCharacter) => void;
 }
 
-const PopupModal = ({
-  modalOpen,
-  close,
-  character,
-  setAttackingCharacter,
-}: PopupModalProps) => {
+const PopupModal = ({ modalOpen, close, character }: PopupModalProps) => {
   return (
     <AnimatePresence initial={false} mode="wait">
       {modalOpen && (

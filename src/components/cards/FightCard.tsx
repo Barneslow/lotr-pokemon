@@ -4,7 +4,7 @@ import Image from "next/image";
 import DeadOverlay from "../ui/DeadOverlay";
 import useModal from "@/hooks/useModal";
 import PopupModal from "../ui/PopupModal";
-import { AttackingCharacter, CharacterObjectProps } from "@/models/models";
+import { CharacterObjectProps } from "@/models/models";
 
 import {
   calculateAttackTimeRemaining,
@@ -13,14 +13,10 @@ import {
 import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";
 
 export interface FightCardProps extends CharacterObjectProps {
-  setAttackingCharacter: (value: AttackingCharacter) => void;
   close?: () => void;
 }
 
-const FightCard: React.FC<FightCardProps> = ({
-  character,
-  setAttackingCharacter,
-}) => {
+const FightCard: React.FC<FightCardProps> = ({ character }) => {
   const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { open, modalOpen, close } = useModal();
@@ -31,12 +27,7 @@ const FightCard: React.FC<FightCardProps> = ({
 
   return (
     <>
-      <PopupModal
-        setAttackingCharacter={setAttackingCharacter}
-        modalOpen={modalOpen}
-        close={close}
-        character={character}
-      />
+      <PopupModal modalOpen={modalOpen} close={close} character={character} />
       <div onClick={open} className={styles.card}>
         {character.health <= 0 && <DeadOverlay />}
         <div className={styles.header}>
