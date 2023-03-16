@@ -7,13 +7,16 @@ import {
   calculateCharacterHealth,
 } from "@/helpers/fight";
 
-import { HeartIcon, SpecialPowerIcon, SwordIcon } from "./FightCard";
-
 import styles from "./ActionContent.module.css";
 import CharacterFooterInfo from "./CharacterFooterInfo";
+import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../icon/CardIcons";
+import { useContext } from "react";
+import { FightContext } from "@/context/FightContext";
 
 const ActionContent = ({ character }: CharacterCardProps) => {
   const data = imageData.find((item) => item.name === character.name)!;
+  const { attackingCharacter, updateAttackingCharacter } =
+    useContext(FightContext);
 
   const percentage = calculateCharacterHealth(character);
 
@@ -36,12 +39,38 @@ const ActionContent = ({ character }: CharacterCardProps) => {
           src={data?.imageUrl}
         />
       </div>
-      <div className={styles.row}>
+      <div
+        className={`${styles.row} ${
+          character.mainAttack.disabledTurns > 0 && styles.disabled
+        } ${
+          attackingCharacter?.attack === character.mainAttack &&
+          styles["selected-attack"]
+        } `}
+        onClick={() =>
+          updateAttackingCharacter({
+            attack: character.mainAttack,
+            name: character.name,
+          })
+        }
+      >
         <SwordIcon id={character._id} used={mainPower} stroke="black" />
         <h5>{character.mainAttack.name}</h5>
         <h5>{character.mainAttack.value}</h5>
       </div>
-      <div className={styles.row}>
+      <div
+        onClick={() =>
+          updateAttackingCharacter({
+            attack: character.specialAttack,
+            name: character.name,
+          })
+        }
+        className={`${styles.row} ${
+          character.specialAttack.disabledTurns > 0 && styles.disabled
+        } ${
+          attackingCharacter?.attack === character.specialAttack &&
+          styles["selected-attack"]
+        } `}
+      >
         <SpecialPowerIcon
           id={character._id}
           used={specialPower}

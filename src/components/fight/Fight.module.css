@@ -14,20 +14,7 @@
   overflow-x: scroll;
 }
 
-.skip {
-  padding: 1rem;
-  background-color: whitesmoke;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px dashed var(--dark-grey);
-}
 
-.skip:hover {
-  cursor: pointer;
-  filter: brightness(0.9);
-}
 
 @media only screen and (min-width: 600px) {
   .wrapper {

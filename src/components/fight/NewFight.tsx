@@ -5,7 +5,7 @@ import {
   IAttackingAnimationProps,
   isOdd,
 } from "@/helpers/fight";
-import { AttackingCharacter, Character } from "@/models/models";
+import { Character } from "@/models/models";
 import { useContext, useEffect, useState } from "react";
 import EnemyFightCard from "../cards/EnemyFightCard";
 
@@ -23,7 +23,15 @@ interface FightProps {
 }
 
 const NewFight = ({ setIsFighting }: FightProps) => {
-  const { turn, changeTurn, enemy, team, reset } = useContext(FightContext);
+  const {
+    turn,
+    changeTurn,
+    enemy,
+    team,
+    reset,
+    updateAttackingCharacter,
+    attackingCharacter,
+  } = useContext(FightContext);
   const { updateDeck } = useContext(DeckContext);
 
   const [showModal, setShowModal] = useState(false);
@@ -33,9 +41,6 @@ const NewFight = ({ setIsFighting }: FightProps) => {
   >();
   const [animatedAttack, setAnimatedAttack] =
     useState<IAttackingAnimationProps>();
-  const [attackingCharacter, setAttackingCharacter] = useState<
-    AttackingCharacter | undefined
-  >();
 
   const [gondorAudio] = useSound("/audio/gondor.mp3");
   const [mordorAudio] = useSound("/audio/mordor.mp3");
@@ -87,7 +92,7 @@ const NewFight = ({ setIsFighting }: FightProps) => {
         )!;
 
         if (character.health <= 0) {
-          setAttackingCharacter(undefined);
+          updateAttackingCharacter(undefined);
         }
       }
     }
@@ -116,7 +121,7 @@ const NewFight = ({ setIsFighting }: FightProps) => {
     await animationTimer(500);
     changeTurn();
     setShowModal(false);
-    setAttackingCharacter(undefined);
+    updateAttackingCharacter(undefined);
   }
 
   async function closeModal() {
@@ -138,17 +143,15 @@ const NewFight = ({ setIsFighting }: FightProps) => {
       />
       <div className={styles.container}>
         {enemy.map((character) => (
-          <div key={character._id}>
-            <EnemyFightCard
-              character={character}
-              playerFightAnimation={playerFightAnimation}
-              attackingCharacter={attackingCharacter}
-            />
-          </div>
+          <EnemyFightCard
+            key={character._id}
+            character={character}
+            playerFightAnimation={playerFightAnimation}
+          />
         ))}
       </div>
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
-      <Playground setAttackingCharacter={setAttackingCharacter} />
+      <Playground />
     </div>
   );
 };

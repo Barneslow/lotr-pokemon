@@ -20,17 +20,20 @@
 }
 
 .heading {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  align-items: center;
 }
 
 .heading h1 {
   font-size: clamp(1.3rem, 4vw, 3rem);
-  background: linear-gradient(112.1deg, white 11.4%, #ffd500 70.2%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: white;
 }
 
 .heading h2 {
+  position: absolute;
   font-size: clamp(1rem, 3vw, 2.2rem);
   background: linear-gradient(112.1deg, white 11.4%, #ffd500 70.2%);
   -webkit-background-clip: text;

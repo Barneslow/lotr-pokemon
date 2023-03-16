@@ -1,18 +1,16 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   display: flex;
   flex: 1;
   width: clamp(300px, 100%, 1000px);
-  /* overflow: hidden; */
 }
 
 .fight-area {
   padding: 5px;
   list-style: none;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   border: 2px dashed white;
   flex: 1;
   border-radius: 20px;
@@ -21,25 +19,36 @@
   overflow: hidden;
   min-height: 225px;
   position: relative;
+  width: 100%;
+}
+
+.fight-area h2 {
+  color: black;
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 50px);
 }
 
 .list {
-  padding: 5px;
   list-style: none;
   display: flex;
   gap: 5px;
-  border-radius: 20px;
+  border-radius: 5px;
   overflow: scroll;
   align-items: center;
-  width: clamp(300px, 100%, 900px);
 }
 
 .hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .item {
   background-color: lightblue;
   padding: 10px;
   overflow: scroll;
+}
+
+@media only screen and (min-width: 600px) {
+  .wrapper {
+    align-items: center;
+  }
 }

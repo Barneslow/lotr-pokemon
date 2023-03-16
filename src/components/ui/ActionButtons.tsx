@@ -1,24 +1,22 @@
+import { FightContext } from "@/context/FightContext";
 import { calculateAttackTimeRemaining } from "@/helpers/fight";
-import { AttackingCharacter, Character } from "@/models/models";
-import { SpecialPowerIcon, SwordIcon } from "../cards/FightCard";
+import { useContext } from "react";
+import { CharacterCardProps } from "../cards/ActionCard";
+import { SkipIcon, SpecialPowerIcon, SwordIcon } from "../icon/CardIcons";
 import styles from "./ActionButtons.module.css";
 
-type ActionButtonProps = {
-  character: Character;
-  setAttackingCharacter: (value: AttackingCharacter) => void;
-};
-
-const ActionButtons = ({
-  character,
-  setAttackingCharacter,
-}: ActionButtonProps) => {
+const ActionButtons = ({ character }: CharacterCardProps) => {
+  const { changeTurn, updateAttackingCharacter } = useContext(FightContext);
   const { mainPower, specialPower } = calculateAttackTimeRemaining(character);
 
   return (
     <div className={styles["button-container"]}>
+      <button onClick={changeTurn} className={styles.button}>
+        <SkipIcon stroke="black" size={40} />
+      </button>
       <button
         onClick={() =>
-          setAttackingCharacter({
+          updateAttackingCharacter({
             attack: character.mainAttack,
             name: character.name,
           })
@@ -28,14 +26,14 @@ const ActionButtons = ({
       >
         <SwordIcon
           id={character._id}
-          size={30}
+          size={40}
           stroke="black"
           used={mainPower}
         />
       </button>
       <button
         onClick={() =>
-          setAttackingCharacter({
+          updateAttackingCharacter({
             attack: character.specialAttack,
             name: character.name,
           })
@@ -45,7 +43,7 @@ const ActionButtons = ({
       >
         <SpecialPowerIcon
           id={character._id}
-          size={30}
+          size={40}
           stroke="black"
           used={specialPower}
         />

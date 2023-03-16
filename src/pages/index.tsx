@@ -19,6 +19,8 @@ import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
 import Playground from "@/components/ui/Playground/PlayGround";
 import NewFight from "@/components/fight/NewFight";
+import TheOneRing from "@/components/icon/TheOneRing";
+import { animationTimer } from "@/helpers/fight";
 // import { DragBox } from "@/components/ui/DragBox";
 
 const msPlus = M_PLUS_Rounded_1c({
@@ -67,13 +69,17 @@ export default function Home() {
   }, [characters]);
 
   useEffect(() => {
-    if (count >= 5) {
+    async function delay() {
+      await animationTimer(1000);
       setIsFighting(true);
 
       const chosenIds = team.map((card) => card._id);
       const rival = characters.filter((char) => !chosenIds.includes(char._id));
 
       setEnemyTeam(rival);
+    }
+    if (count >= 5) {
+      delay();
     }
   }, [count, characters]);
 
@@ -134,8 +140,9 @@ export default function Home() {
           <>
             <DeckNavigation />
             <div className={styles.heading}>
+              <TheOneRing />
               <h1>LOTR POKEMON</h1>
-              <h2>Fight to win cards!</h2>
+              <TheOneRing />
             </div>
             <motion.div
               variants={container}

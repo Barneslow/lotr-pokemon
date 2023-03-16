@@ -3,29 +3,23 @@ import Image from "next/image";
 import { useContext } from "react";
 import DeadOverlay from "../ui/DeadOverlay";
 import { FightContext } from "@/context/FightContext";
-import {
-  AttackingCharacter,
-  Character,
-  CharacterObjectProps,
-} from "@/models/models";
+import { Character, CharacterObjectProps } from "@/models/models";
 
 import characterHealthData from "../../assets/data/myFile.json";
 
 import styles from "./FightCard.module.scss";
-import { HeartIcon } from "./FightCard";
 import { isOdd } from "@/helpers/fight";
+import { HeartIcon } from "../icon/CardIcons";
 
 interface EnemyFightCardProps extends CharacterObjectProps {
   playerFightAnimation: (target: Character) => void;
-  attackingCharacter: AttackingCharacter | undefined;
 }
 
 const EnemyFightCard: React.FC<EnemyFightCardProps> = ({
   character,
   playerFightAnimation,
-  attackingCharacter,
 }) => {
-  const { turn } = useContext(FightContext);
+  const { turn, attackingCharacter } = useContext(FightContext);
   const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { health } = characterHealthData.find(

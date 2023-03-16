@@ -64,7 +64,7 @@ const DeckNavigation = () => {
       className={styles.nav}
     >
       <motion.div className={styles.background} variants={sidebar} />
-      <Navigation />
+      <Navigation open={isOpen} />
       <HamburgerToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );

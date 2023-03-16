@@ -171,15 +171,6 @@ const Fight = ({ setIsFighting }: FightProps) => {
         ))}
       </motion.div>
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
-      <div className={styles.skip}>
-        <FontAwesomeIcon
-          height={40}
-          width={40}
-          icon={faForward}
-          color="black"
-          onClick={changeTurn}
-        />
-      </div>
       <motion.div
         variants={container}
         initial="initial"

@@ -18,9 +18,10 @@ const reorder = (list, startIndex, endIndex) => {
 
 type PlaygroundProps = {
   setAttackingCharacter: (value: AttackingCharacter) => void;
+  attackingCharacter: AttackingCharacter;
 };
 
-const Playground = ({ setAttackingCharacter }: PlaygroundProps) => {
+const Playground = () => {
   const { team } = useContext(FightContext);
   const [inPlayCharacter, setInPlayCharacter] = useState<Character[]>([]);
   const [teamArray, setTeamArray] = useState<Character[]>(team);
@@ -93,11 +94,10 @@ const Playground = ({ setAttackingCharacter }: PlaygroundProps) => {
                 snapshot.isDraggingOver && styles.hover
               }`}
             >
-              {inPlayCharacter[0] && (
-                <ActionButtons
-                  character={inPlayCharacter[0]}
-                  setAttackingCharacter={setAttackingCharacter}
-                />
+              {inPlayCharacter[0] ? (
+                <ActionButtons character={inPlayCharacter[0]} />
+              ) : (
+                <h2>PLACE ATTACKER</h2>
               )}
               {inPlayCharacter.map((character, index) => (
                 <Draggable
@@ -111,7 +111,10 @@ const Playground = ({ setAttackingCharacter }: PlaygroundProps) => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <ActionCard character={character} />
+                      <ActionCard
+                        character={character}
+                        stroke="3px solid rgb(50, 177, 50)"
+                      />
                     </li>
                   )}
                 </Draggable>
