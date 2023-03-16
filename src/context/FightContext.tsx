@@ -15,16 +15,15 @@ interface IFightContext {
   enemy: Character[] | [];
   team: Character[] | [];
   count: number;
-
-  reset: () => void;
   turn: number;
-  updateTeam: (character: Character) => void;
-  changeTurn: () => void;
-  setEnemyTeam: (array: Character[]) => void;
-  setCount: Dispatch<SetStateAction<number>>;
   characters: Character[];
   attackingCharacter: AttackingCharacter | undefined;
   updateAttackingCharacter: (attack: AttackingCharacter | undefined) => void;
+  updateTeam: (character: Character) => void;
+  setEnemyTeam: (array: Character[]) => void;
+  setCount: Dispatch<SetStateAction<number>>;
+  changeTurn: () => void;
+  reset: () => void;
 }
 
 const defaultState = {
@@ -32,15 +31,14 @@ const defaultState = {
   team: [],
   characters: [],
   count: 0,
-  //   chosenAttack: { name: "null", value: 0 },
-  //   enemySpecial: 3,
-  //   teamSpecial: 3,
-  reset: () => {},
   turn: 0,
-  changeTurn: () => {},
+  attackingCharacter: [],
+  updateAttackingCharacter: (character: AttackingCharacter | undefined) => {},
   updateTeam: (character: Character) => {},
   setEnemyTeam: (array: Character[]) => {},
   setCount: () => {},
+  changeTurn: () => {},
+  reset: () => {},
 };
 
 export const FightContext = createContext<IFightContext>(defaultState);
