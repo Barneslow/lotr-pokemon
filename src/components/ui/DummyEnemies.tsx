@@ -1,3 +1,31 @@
+export const DUMMY_CHARACTER = {
+  _id: "5cd99d4bde30eff6ebccfc38",
+  height: "3'1\"",
+  race: "Hobbit",
+  gender: "Male",
+  birth: "22 September ,TA 2890",
+  spouse: "None",
+  death: "Unknown (Last sighting 29 SeptemberTA 3021,) (,SR 1421,)",
+  realm: "The Shire",
+  hair: "Brown, later white",
+  name: "Bilbo Baggins",
+  wikiUrl: "http://lotr.wikia.com//wiki/Bilbo_Baggins",
+  mainAttack: {
+    disabledTurns: 0,
+    disabledFor: 2,
+    name: "Sting",
+    value: 30,
+  },
+  specialAttack: {
+    disabledTurns: 0,
+    disabledFor: 7,
+    name: "Sneak",
+    value: 70,
+    isSpecial: true,
+  },
+  health: 250,
+};
+
 export const DUMMY_ENEMY = [
   {
     _id: "5cd99d4bde30eff6ebccfc38",

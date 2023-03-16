@@ -17,6 +17,9 @@ import FlipCard from "@/components/cards/FlipCard";
 import Fight from "@/components/fight/Fight";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
+import Playground from "@/components/ui/Playground/PlayGround";
+import NewFight from "@/components/fight/NewFight";
+// import { DragBox } from "@/components/ui/DragBox";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -28,7 +31,7 @@ export default function Home() {
   const { updateTeam, team, setEnemyTeam, count, setCount, characters } =
     useContext(FightContext);
   const [flipAll, setFlipAll] = useState(true);
-  const [isFighting, setIsFighting] = useState(false);
+  const [isFighting, setIsFighting] = useState(true);
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
@@ -126,10 +129,11 @@ export default function Home() {
           Flip All
         </button> */}
         {isFighting ? (
-          <Fight setIsFighting={setIsFighting} />
+          <NewFight setIsFighting={setIsFighting} />
         ) : (
           <>
-            <DeckNavigation />
+            {/* <Playground /> */}
+            {/* <DeckNavigation />
             <div className={styles.heading}>
               <h1>LOTR POKEMON</h1>
               <h2>Fight to win cards!</h2>
@@ -159,7 +163,7 @@ export default function Home() {
                   />
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </>
         )}
       </main>

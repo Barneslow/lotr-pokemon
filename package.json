@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -19,13 +21,17 @@
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "file-saver": "^2.0.5",
-    "framer-motion": "^10.2.1",
+    "framer-motion": "^10.3.2",
     "fs": "^0.0.1-security",
     "next": "13.2.3",
     "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",
     "sass": "^1.59.2",
     "typescript": "4.9.5",
     "use-sound": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/react-beautiful-dnd": "^13.1.3"
   }
 }

@@ -1,0 +1,28 @@
+.wrapper {
+  background-color: lightblue;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fight-area {
+  width: 50%;
+  height: 30vh;
+  background-color: rgba(255, 255, 255, 0.2); /* opacity: 0.3; */
+  border-radius: 10px;
+  border: 2px dashed white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: red;
+  width: 50%;
+}

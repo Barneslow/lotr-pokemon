@@ -50,8 +50,8 @@ type Props = {
 };
 
 export const FightContextProvider = ({ children }: Props) => {
-  const [team, setTeam] = useState<Character[]>([]);
-  const [enemy, setEnemy] = useState<Character[]>([]);
+  const [team, setTeam] = useState<Character[]>(DUMMY_TEAM);
+  const [enemy, setEnemy] = useState<Character[]>(DUMMY_ENEMY);
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
