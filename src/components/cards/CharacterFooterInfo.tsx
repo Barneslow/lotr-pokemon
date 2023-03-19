@@ -1,6 +1,6 @@
 import { CharacterCardProps } from "./ActionCard";
 
-import styles from "./CardContent.module.css";
+import styles from "./ActionContent.module.css";
 
 const CharacterFooterInfo = ({ character }: CharacterCardProps) => {
   return (

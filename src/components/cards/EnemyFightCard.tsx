@@ -11,14 +11,11 @@ import styles from "./FightCard.module.scss";
 import { isOdd } from "@/helpers/fight";
 import { HeartIcon } from "../ui/icon/CardIcons";
 
-interface EnemyFightCardProps extends CharacterObjectProps {
-  playerFightAnimation: (target: Character) => void;
-}
+// interface EnemyFightCardProps extends CharacterObjectProps {
+//   playerFightAnimation: (target: Character) => void;
+// }
 
-const EnemyFightCard: React.FC<EnemyFightCardProps> = ({
-  character,
-  playerFightAnimation,
-}) => {
+const EnemyFightCard: React.FC<CharacterObjectProps> = ({ character }) => {
   const { turn, attackingCharacter } = useContext(FightContext);
   const data = imageJSON.find((item) => item.name === character.name)!;
 
@@ -29,11 +26,11 @@ const EnemyFightCard: React.FC<EnemyFightCardProps> = ({
   const percentage = 100 - (character.health / health) * 100;
 
   return (
-    <button
-      disabled={isOdd(turn) || character.health <= 0 || !attackingCharacter}
-      onClick={() => {
-        playerFightAnimation(character);
-      }}
+    <div
+      // disabled={isOdd(turn) || character.health <= 0 || !attackingCharacter}
+      // onClick={() => {
+      //   playerFightAnimation(character);
+      // }}
       className={styles.card}
     >
       <div className={styles.enemy}></div>
@@ -53,7 +50,7 @@ const EnemyFightCard: React.FC<EnemyFightCardProps> = ({
           <span className={styles.health}>{character.health}</span>
         </HeartIcon>
       </div>
-    </button>
+    </div>
   );
 };
 

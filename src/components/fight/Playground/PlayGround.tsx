@@ -1,10 +1,10 @@
 import ActionCard from "@/components/cards/ActionCard";
-import FightCard from "@/components/cards/FightCard";
 import { FightContext } from "@/context/FightContext";
-import { AttackingCharacter, Character } from "@/models/models";
-import React, { useContext, useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import ActionButtons from "../../ui/ActionButtons";
+import { Character } from "@/models/models";
+import React, { ReactNode, useContext, useEffect, useState } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import DraggableActionCharacter from "./DraggableActionCharacter";
+import DraggableCharacter from "./DraggableCharacter";
 
 import styles from "./Playground.module.css";
 
@@ -16,13 +16,12 @@ const reorder = (list: Character[], startIndex: number, endIndex: number) => {
   return result;
 };
 
-type PlaygroundProps = {
-  setAttackingCharacter: (value: AttackingCharacter) => void;
-  attackingCharacter: AttackingCharacter;
+type DroppableZonesProps = {
+  randomAttacker: Character | undefined;
+  children: ReactNode;
 };
-
-const Playground = () => {
-  const { team } = useContext(FightContext);
+const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
+  const { team, updateAttackingCharacter } = useContext(FightContext);
   const [inPlayCharacter, setInPlayCharacter] = useState<Character[]>([]);
   const [teamArray, setTeamArray] = useState<Character[]>(team);
 
@@ -66,6 +65,7 @@ const Playground = () => {
       setInPlayCharacter(newCharacter);
 
       const newTeamArray = Array.from(teamArray);
+
       newTeamArray.splice(destination.index, 0, removed);
       setTeamArray(newTeamArray);
     } else if (
@@ -82,84 +82,81 @@ const Playground = () => {
     }
   };
 
+  useEffect(() => {
+    updateAttackingCharacter(undefined);
+  }, [inPlayCharacter]);
+
+  function setInPlayCharacterClickHandler(character: Character) {
+    const newTeamArray = Array.from(teamArray);
+
+    const updatedArray = newTeamArray.filter(
+      (char) => char.name !== character.name
+    );
+
+    setTeamArray([...updatedArray, ...inPlayCharacter]);
+
+    setInPlayCharacter([character]);
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className={styles.wrapper}>
-        <Droppable droppableId="droppable1">
-          {(provided, snapshot) => (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className={`${styles["fight-area"]} ${
-                snapshot.isDraggingOver && styles.hover
-              }`}
-            >
-              {inPlayCharacter[0] ? (
-                <ActionButtons character={inPlayCharacter[0]} />
-              ) : (
-                <h2>PLACE ATTACKER</h2>
-              )}
-              {inPlayCharacter.map((character, index) => (
-                <Draggable
-                  key={character._id}
-                  draggableId={character._id}
-                  index={index}
+        <div className={styles["fight-area"]}>
+          <div className={styles["fight-zone-container"]}>
+            <Droppable droppableId="droppable1">
+              {(provided, snapshot) => (
+                <ul
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  className={`${styles["fight-zone"]} ${
+                    snapshot.isDraggingOver && styles.hover
+                  }`}
                 >
-                  {(provided) => (
-                    <li
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
-                    >
-                      <ActionCard
-                        character={character}
-                        stroke="3px solid rgb(50, 177, 50)"
-                      />
-                    </li>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </ul>
-          )}
-        </Droppable>
-        <Droppable droppableId="droppable2" direction="horizontal">
+                  {inPlayCharacter.map((character, index) => (
+                    <DraggableActionCharacter
+                      character={character}
+                      index={index}
+                      key={character._id}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </ul>
+              )}
+            </Droppable>
+            {randomAttacker && (
+              <div className={styles["fight-zone"]}>
+                <ActionCard character={randomAttacker} />
+              </div>
+            )}
+          </div>
+        </div>
+        <Droppable droppableId="droppable2">
           {(provided, snapshot) => {
             return (
               <ul
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                className={`${styles.list} ${
+                className={`${styles.container} ${
                   snapshot.isDraggingOver && styles.hover
                 }`}
               >
                 {teamArray.map((character, index) => (
-                  <Draggable
-                    key={character._id}
-                    draggableId={character._id}
+                  <DraggableCharacter
                     index={index}
-                  >
-                    {(provided, snapshot) => {
-                      return (
-                        <li
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          ref={provided.innerRef}
-                        >
-                          <FightCard character={character} />
-                        </li>
-                      );
-                    }}
-                  </Draggable>
+                    character={character}
+                    key={character._id}
+                    onClick={() => setInPlayCharacterClickHandler(character)}
+                  />
                 ))}
                 {provided.placeholder}
               </ul>
             );
           }}
         </Droppable>
+        {children}
       </div>
     </DragDropContext>
   );
 };
 
-export default Playground;
+export default DroppableZones;

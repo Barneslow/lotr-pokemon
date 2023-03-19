@@ -22,7 +22,7 @@
 .heading {
   background: rgba(0, 0, 0, 0.8);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   position: relative;
   align-items: center;
 }
@@ -30,6 +30,12 @@
 .heading h1 {
   font-size: clamp(1.3rem, 4vw, 3rem);
   color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .heading h2 {

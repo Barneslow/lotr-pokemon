@@ -25,7 +25,7 @@ const ActionContent = ({ character }: CharacterCardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.heading}>
-        <h3 style={{ fontSize: 20 }}>{character.name}</h3>
+        <h3>{character.name}</h3>
         <HeartIcon id={character._id} percentage={percentage} stroke="black">
           <span className={styles.health}>{character.health}</span>
         </HeartIcon>

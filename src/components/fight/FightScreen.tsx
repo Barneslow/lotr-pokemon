@@ -1,13 +1,14 @@
 import { FightContext } from "@/context/FightContext";
 import {
   animationTimer,
-  enemiesAttackTurn,
   IAttackingAnimationProps,
-  isOdd,
+  selectedEnemyAttackTurn,
 } from "@/helpers/fight";
 import { Character } from "@/models/models";
 import { useContext, useEffect, useState } from "react";
 import EnemyFightCard from "../cards/EnemyFightCard";
+
+import { motion } from "framer-motion";
 
 import styles from "./Fight.module.css";
 import FightModal from "./FightModal";
@@ -16,13 +17,14 @@ import useSound from "use-sound";
 import CompletedModal from "./CompletedModal";
 import { randomFromArray } from "@/helpers/arrays";
 import { DeckContext } from "@/context/DeckContext";
-import Playground from "./Playground/PlayGround";
+import DroppableZones from "./Playground/PlayGround";
+import ActionButtons from "../ui/ActionButtons";
 
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;
 }
 
-const NewFight = ({ setIsFighting }: FightProps) => {
+const FightScreen = ({ setIsFighting }: FightProps) => {
   const {
     turn,
     changeTurn,
@@ -36,19 +38,24 @@ const NewFight = ({ setIsFighting }: FightProps) => {
 
   const [showModal, setShowModal] = useState(false);
   const [completedAnimation, setCompletedAnimation] = useState(false);
+  const [inPlayCharacter, setInPlayCharacter] = useState<Character[]>([]);
   const [victoryCharacter, setVictoryCharacter] = useState<
     Character | undefined
   >();
   const [animatedAttack, setAnimatedAttack] =
     useState<IAttackingAnimationProps>();
 
+  const [randomAttacker, setRandomAttacker] = useState<Character>(
+    randomFromArray(enemy)
+  );
+
   const [gondorAudio] = useSound("/audio/gondor.mp3");
   const [mordorAudio] = useSound("/audio/mordor.mp3");
 
-  useEffect(() => {
-    const aliveEnemies = enemy.filter((char) => char.health > 0);
-    const aliveTeam = team.filter((char) => char.health > 0);
+  const aliveEnemies = enemy.filter((char) => char.health > 0);
+  const aliveTeam = team.filter((char) => char.health > 0);
 
+  useEffect(() => {
     if (aliveEnemies.length === 0 || aliveTeam.length === 0) {
       let victoryCharacter;
 
@@ -61,48 +68,9 @@ const NewFight = ({ setIsFighting }: FightProps) => {
 
       return;
     }
-
-    if (aliveEnemies.length === 0) {
-    }
-
-    async function OpposingTeamsTurn() {
-      await animationTimer(500);
-
-      mordorAudio();
-
-      team.forEach((char) => {
-        if (char.mainAttack.disabledTurns > 0) {
-          char.mainAttack.disabledTurns -= 1;
-        }
-        if (char.specialAttack.disabledTurns > 0) {
-          char.specialAttack.disabledTurns -= 1;
-        }
-      });
-      changeTurn();
-
-      setShowModal(true);
-
-      setTimeout(() => setShowModal(false), 500);
-
-      setAnimatedAttack(enemiesAttackTurn(team, enemy));
-
-      if (attackingCharacter) {
-        const character = team.find(
-          (char) => char.name === attackingCharacter.name
-        )!;
-
-        if (character.health <= 0) {
-          updateAttackingCharacter(undefined);
-        }
-      }
-    }
-
-    if (isOdd(turn)) {
-      OpposingTeamsTurn();
-    }
   }, [turn]);
 
-  async function playerFightAnimation(target: Character) {
+  async function fightPokemonStyle() {
     if (!attackingCharacter) return;
 
     gondorAudio();
@@ -110,18 +78,70 @@ const NewFight = ({ setIsFighting }: FightProps) => {
     setShowModal(true);
     setAnimatedAttack({
       attacker: attackingCharacter,
-      target,
+      target: randomAttacker,
     });
 
     attackingCharacter.attack.disabledTurns =
       attackingCharacter.attack.disabledFor;
 
-    target.health = target.health - attackingCharacter.attack.value;
+    randomAttacker.health =
+      randomAttacker.health - attackingCharacter.attack.value;
 
     await animationTimer(500);
     changeTurn();
     setShowModal(false);
     updateAttackingCharacter(undefined);
+
+    const aliveEnemies = enemy.filter((char) => char.health > 0);
+
+    if (aliveEnemies.length === 0) {
+      return;
+    }
+
+    if (randomAttacker.health <= 0) {
+      const newEnemy = randomFromArray(aliveEnemies);
+      await OpposingTeamsTurn(newEnemy);
+      setRandomAttacker(newEnemy);
+    } else {
+      OpposingTeamsTurn(randomAttacker);
+    }
+  }
+
+  async function OpposingTeamsTurn(enemy: Character) {
+    await animationTimer(500);
+
+    mordorAudio();
+
+    team.forEach((char) => {
+      if (char.mainAttack.disabledTurns > 0) {
+        char.mainAttack.disabledTurns -= 1;
+      }
+      if (char.specialAttack.disabledTurns > 0) {
+        char.specialAttack.disabledTurns -= 1;
+      }
+    });
+    changeTurn();
+
+    setShowModal(true);
+
+    setTimeout(() => setShowModal(false), 2000);
+
+    if (attackingCharacter) {
+      const character = team.find(
+        (char) => char.name === attackingCharacter.name
+      )!;
+
+      const selectedAttack = selectedEnemyAttackTurn(character, enemy);
+
+      setAnimatedAttack(selectedAttack);
+
+      character.health =
+        character.health - selectedAttack.attacker.attack.value;
+
+      if (character.health < 0) {
+        updateAttackingCharacter(undefined);
+      }
+    }
   }
 
   async function closeModal() {
@@ -134,7 +154,12 @@ const NewFight = ({ setIsFighting }: FightProps) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+      className={styles.wrapper}
+    >
       <CompletedModal
         victory={team.filter((char) => char.health > 0).length > 0}
         showModal={completedAnimation}
@@ -143,17 +168,15 @@ const NewFight = ({ setIsFighting }: FightProps) => {
       />
       <div className={styles.container}>
         {enemy.map((character) => (
-          <EnemyFightCard
-            key={character._id}
-            character={character}
-            playerFightAnimation={playerFightAnimation}
-          />
+          <EnemyFightCard key={character._id} character={character} />
         ))}
       </div>
       <FightModal animatedAttack={animatedAttack} showModal={showModal} />
-      <Playground />
-    </div>
+      <DroppableZones randomAttacker={randomAttacker}>
+        {attackingCharacter && <ActionButtons fight={fightPokemonStyle} />}
+      </DroppableZones>
+    </motion.div>
   );
 };
 
-export default NewFight;
+export default FightScreen;

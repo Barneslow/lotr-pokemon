@@ -1,6 +1,7 @@
 .card {
   color: var(--dark-grey);
-  font-size: 18px;
+  font-size: clamp(10px, 2.5vw, 14px);
+  width: 100%;
 }
 
 .heading {
@@ -8,6 +9,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  font-size: clamp(10px, 2.5vw, 18px);
+  text-align: start;
 }
 
 .health {
@@ -19,10 +22,10 @@
   color: white;
 }
 .image-box {
-  width: 200px;
-  height: 200px;
   border-radius: 10px;
   overflow: hidden;
+  aspect-ratio: 1;
+  width: 250px;
 }
 
 .image {
@@ -32,11 +35,12 @@
 }
 
 .row {
-  margin-top: 3px;
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  font-size: clamp(12px, 2.5vw, 16px);
 }
 
 .disabled {
@@ -53,6 +57,32 @@
 }
 
 .selected-attack {
-  background-color: rgb(255, 255, 12);
+  background-color: rgb(237, 237, 129);
   border-radius: 5px;
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-box {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .image-box {
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .image-box {
+    width: 125px;
+  }
 }

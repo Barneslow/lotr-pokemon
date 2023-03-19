@@ -1,7 +1,8 @@
-import { AttackingCharacter, Character } from "@/models/models";
+import { FightContext } from "@/context/FightContext";
+import { animationTimer } from "@/helpers/fight";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode } from "react";
-import ActionCard from "../cards/ActionCard";
+import { ReactNode, useContext, useEffect } from "react";
+import CharacterCard from "../cards/CharacterCard";
 
 import styles from "./PopupModal.module.css";
 
@@ -21,18 +22,42 @@ const dropIn = {
     },
   },
   exit: {
-    scale: 0,
-    opacity: 0,
+    scale: 2,
+    transition: { duration: 0.2 },
+  },
+};
+
+const container = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.3 } },
+};
+
+const enemyContainer = {
+  initial: {},
+  animate: { transition: { delayChildren: 2.5, staggerChildren: 0.15 } },
+};
+const child = {
+  initial: { x: "100vw" },
+  animate: {
+    x: 0,
+    transition: { duration: 1, type: "spring", bounce: 0.1 },
   },
 };
 
 interface PopupModalProps {
   modalOpen: boolean;
   close: () => void;
-  character: Character;
+  setIsFighting: (boolen: boolean) => void;
 }
 
-const PopupModal = ({ modalOpen, close, character }: PopupModalProps) => {
+const PopupModal = ({ modalOpen, close, setIsFighting }: PopupModalProps) => {
+  const { team, enemy } = useContext(FightContext);
+
+  async function startFight() {
+    close();
+    await animationTimer(50);
+    setIsFighting(true);
+  }
   return (
     <AnimatePresence initial={false} mode="wait">
       {modalOpen && (
@@ -45,7 +70,40 @@ const PopupModal = ({ modalOpen, close, character }: PopupModalProps) => {
             exit="exit"
             onClick={(e) => e.stopPropagation()}
           >
-            <ActionCard character={character} />
+            <motion.div
+              className={styles.container}
+              variants={container}
+              initial="initial"
+              animate="animate"
+            >
+              {team.map((character) => (
+                <motion.div
+                  key={character._id}
+                  variants={child}
+                  style={{ display: "flex" }}
+                >
+                  <CharacterCard character={character} />
+                </motion.div>
+              ))}
+            </motion.div>
+            <h1 style={{ color: "white" }}>VS</h1>
+            <motion.div
+              className={styles.container}
+              variants={enemyContainer}
+              initial="initial"
+              animate="animate"
+              onAnimationComplete={startFight}
+            >
+              {enemy.map((character) => (
+                <motion.div
+                  key={character._id}
+                  variants={child}
+                  style={{ display: "flex" }}
+                >
+                  <CharacterCard character={character} />
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </Backdrop>
       )}

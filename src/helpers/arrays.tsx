@@ -1,4 +1,4 @@
-import { Attack, AttackingCharacter, Character } from "@/models/models";
+import { AttackingCharacter, Character } from "@/models/models";
 
 export function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {

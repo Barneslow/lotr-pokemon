@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import styles from "./ActionCard.module.css";
 import ActionContent from "./ActionContent";
 import { AttackingCharacter, Character } from "@/models/models";
+import DeadOverlay from "../ui/DeadOverlay";
 
 export type CharacterCardProps = {
   character: Character;
@@ -19,6 +20,8 @@ const ActionCard: React.FC<CharacterCardProps> = ({ character, stroke }) => {
       style={{ textDecoration: "none", border: stroke }}
       className={styles.card}
     >
+      {character.health <= 0 && <DeadOverlay />}
+
       <ActionContent character={character} />
     </motion.div>
   );

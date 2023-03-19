@@ -13,10 +13,10 @@ import {
 import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";
 
 export interface FightCardProps extends CharacterObjectProps {
-  close?: () => void;
+  onClick: () => void;
 }
 
-const FightCard: React.FC<FightCardProps> = ({ character }) => {
+const FightCard: React.FC<FightCardProps> = ({ character, onClick }) => {
   const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { open, modalOpen, close } = useModal();
@@ -27,8 +27,8 @@ const FightCard: React.FC<FightCardProps> = ({ character }) => {
 
   return (
     <>
-      <PopupModal modalOpen={modalOpen} close={close} character={character} />
-      <div onClick={open} className={styles.card}>
+      {/* <PopupModal modalOpen={modalOpen} close={close} character={character} /> */}
+      <div onClick={onClick} className={styles.card}>
         {character.health <= 0 && <DeadOverlay />}
         <div className={styles.header}>
           <h3>{character.name.substring(0, 20)}</h3>

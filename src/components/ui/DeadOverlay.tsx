@@ -13,6 +13,8 @@ const DeadOverlay = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        top: 0,
+        left: 0,
       }}
     >
       <Image

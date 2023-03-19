@@ -4,37 +4,52 @@
   display: flex;
   flex: 1;
   width: clamp(300px, 100%, 1000px);
+  gap: 0.5rem;
 }
 
 .fight-area {
   padding: 5px;
   list-style: none;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px dashed white;
   flex: 1;
-  border-radius: 20px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  min-height: 225px;
   position: relative;
+  width: clamp(300px, 100%, 750px);
+}
+
+.fight-zone-container {
+  display: grid;
   width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
-.fight-area h2 {
-  color: black;
-  font-weight: 800;
-  font-size: clamp(26px, 4vw, 50px);
+.fight-zone {
+  background-color: rgba(141, 251, 124, 0.5);
+  border: 2px dashed green;
+  border-radius: 20px;
+  height: 100%;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.list {
+.fight-zone:nth-child(2) {
+  background-color: rgba(255, 54, 54, 0.5);
+  border: 2px dashed red;
+}
+
+.container {
   list-style: none;
   display: flex;
   gap: 5px;
   border-radius: 5px;
   overflow: scroll;
-  align-items: center;
 }
 
 .hover {
@@ -50,5 +65,16 @@
 @media only screen and (min-width: 600px) {
   .wrapper {
     align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

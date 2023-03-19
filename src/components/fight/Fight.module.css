@@ -14,10 +14,34 @@
   overflow-x: scroll;
 }
 
+.attack-button {
+  position: absolute;
+  background-color: red;
+  border: 1px solid var(--dark-grey);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+  color: white;
+  height: 50px;
+  width: 50px;
+}
 
+.attack-button:hover {
+  cursor: pointer;
+}
 
 @media only screen and (min-width: 600px) {
   .wrapper {
     align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

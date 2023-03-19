@@ -10,9 +10,11 @@ import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
-import NewFight from "@/components/fight/NewFight";
 import TheOneRing from "@/components/ui/icon/TheOneRing";
 import { animationTimer } from "@/helpers/fight";
+import FightScreen from "@/components/fight/FightScreen";
+import PopupModal from "@/components/ui/PopupModal";
+import useModal from "@/hooks/useModal";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -28,6 +30,8 @@ export default function Home() {
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
+
+  const { modalOpen, close, open } = useModal();
 
   const updateCount = useCallback(
     (newValue: number, cardId: string): void => {
@@ -59,18 +63,20 @@ export default function Home() {
     shuffleArray(characters);
   }, [characters]);
 
+  async function animateFightBeginning() {
+    await animationTimer(200);
+
+    open();
+
+    const chosenIds = team.map((card) => card._id);
+    const rival = characters.filter((char) => !chosenIds.includes(char._id));
+
+    setEnemyTeam(rival);
+  }
+
   useEffect(() => {
-    async function delay() {
-      await animationTimer(1000);
-      setIsFighting(true);
-
-      const chosenIds = team.map((card) => card._id);
-      const rival = characters.filter((char) => !chosenIds.includes(char._id));
-
-      setEnemyTeam(rival);
-    }
     if (count >= 5) {
-      delay();
+      animateFightBeginning();
     }
   }, [count, characters]);
 
@@ -121,12 +127,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.background} ${msPlus.className}`}>
-        {/* <input onChange={filterCharacters} />
-        <button className={styles.btn} onClick={() => setFlipAll(!flipAll)}>
-          Flip All
-        </button> */}
+        <PopupModal
+          modalOpen={modalOpen}
+          setIsFighting={setIsFighting}
+          close={close}
+        />
         {isFighting ? (
-          <NewFight setIsFighting={setIsFighting} />
+          <>
+            <FightScreen setIsFighting={setIsFighting} />
+          </>
         ) : (
           <>
             <DeckNavigation />

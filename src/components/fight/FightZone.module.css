@@ -1,0 +1,29 @@
+.fight-area {
+  padding: 5px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: clamp(300px, 100%, 750px);
+  gap: 1rem;
+}
+
+.fight-zone {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px dashed white;
+  border-radius: 20px;
+  min-height: 225px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.fight-zone:nth-child(2) {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 2px dashed red;
+}

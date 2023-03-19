@@ -7,7 +7,7 @@ export interface IAttackingAnimationProps {
   target: Character;
 }
 
-export function enemiesAttackTurn(
+export function randomEnemyAttackTurn(
   team: Character[],
   enemy: Character[]
 ): IAttackingAnimationProps {
@@ -22,6 +22,18 @@ export function enemiesAttackTurn(
   randomTeamMate.health = randomTeamMate.health - enemyAttack.attack.value;
 
   return { attacker: enemyAttack, target: randomTeamMate };
+}
+
+export function selectedEnemyAttackTurn(
+  unit: Character,
+  enemy: Character
+): IAttackingAnimationProps {
+  const randomAttack =
+    Math.random() < 0.5 ? enemy.specialAttack : enemy.mainAttack;
+
+  const enemyAttack = { name: enemy.name, attack: randomAttack };
+
+  return { attacker: enemyAttack, target: unit };
 }
 
 export function animationTimer(ms: number): Promise<void> {
