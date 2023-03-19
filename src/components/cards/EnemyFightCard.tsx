@@ -3,12 +3,11 @@ import Image from "next/image";
 import { useContext } from "react";
 import DeadOverlay from "../ui/DeadOverlay";
 import { FightContext } from "@/context/FightContext";
-import { Character, CharacterObjectProps } from "@/models/models";
+import { CharacterObjectProps } from "@/models/models";
 
 import characterHealthData from "../../assets/data/myFile.json";
 
 import styles from "./FightCard.module.scss";
-import { isOdd } from "@/helpers/fight";
 import { HeartIcon } from "../ui/icon/CardIcons";
 
 // interface EnemyFightCardProps extends CharacterObjectProps {
@@ -16,7 +15,6 @@ import { HeartIcon } from "../ui/icon/CardIcons";
 // }
 
 const EnemyFightCard: React.FC<CharacterObjectProps> = ({ character }) => {
-  const { turn, attackingCharacter } = useContext(FightContext);
   const data = imageJSON.find((item) => item.name === character.name)!;
 
   const { health } = characterHealthData.find(

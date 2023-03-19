@@ -23,7 +23,7 @@
   display: grid;
   position: relative;
   align-items: center;
-  height: 100px;
+  height: 70px;
   background: url("../assets/images/One\ Ring.svg"), rgba(0, 0, 0, 1);
 }
 

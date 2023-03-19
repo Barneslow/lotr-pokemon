@@ -22,6 +22,7 @@ const DeadOverlay = () => {
         alt="dead character overlay"
         width={200}
         height={200}
+        style={{ objectFit: "contain", height: "100%", width: "100%" }}
       />
     </div>
   );

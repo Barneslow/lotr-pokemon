@@ -2,8 +2,6 @@ import imageJSON from "../../assets/images.json";
 import styles from "./FightCard.module.scss";
 import Image from "next/image";
 import DeadOverlay from "../ui/DeadOverlay";
-import useModal from "@/hooks/useModal";
-import PopupModal from "../ui/PopupModal";
 import { CharacterObjectProps } from "@/models/models";
 
 import {
@@ -19,15 +17,12 @@ export interface FightCardProps extends CharacterObjectProps {
 const FightCard: React.FC<FightCardProps> = ({ character, onClick }) => {
   const data = imageJSON.find((item) => item.name === character.name)!;
 
-  const { open, modalOpen, close } = useModal();
-
   const percentage = calculateCharacterHealth(character);
 
   const { mainPower, specialPower } = calculateAttackTimeRemaining(character);
 
   return (
     <>
-      {/* <PopupModal modalOpen={modalOpen} close={close} character={character} /> */}
       <div onClick={onClick} className={styles.card}>
         {character.health <= 0 && <DeadOverlay />}
         <div className={styles.header}>

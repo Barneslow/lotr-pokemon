@@ -1,5 +1,4 @@
 import { FightContext } from "@/context/FightContext";
-import { animationTimer } from "@/helpers/fight";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { ReactNode, useContext } from "react";
@@ -56,8 +55,8 @@ const PopupModal = ({ modalOpen, close }: PopupModalProps) => {
   const router = useRouter();
 
   async function startFight() {
-    close();
     router.push("/fight");
+    close();
   }
   return (
     <AnimatePresence initial={false} mode="wait">

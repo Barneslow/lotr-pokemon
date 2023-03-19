@@ -58,12 +58,19 @@
 .card:hover:not(:disabled) {
   background-color: red;
 
-  .enemy {
-    display: block;
-    background-color: rgba(255, 0, 0, 0.2);
-  }
+  // .enemy {
+  //   display: block;
+  //   background-color: rgba(255, 0, 0, 0.2);
+  // }
 
   filter: brightness(1.2);
+}
+
+.card {
+  .enemy:hover {
+    cursor: default;
+    filter: brightness(2);
+  }
 }
 
 .card:hover:disabled {

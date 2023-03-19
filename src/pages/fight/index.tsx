@@ -29,11 +29,7 @@ const msPlus = M_PLUS_Rounded_1c({
   subsets: ["latin"],
 });
 
-interface FightProps {
-  setIsFighting: (boolean: boolean) => void;
-}
-
-const FightScreen = ({ setIsFighting }: FightProps) => {
+const FightScreen = () => {
   const {
     turn,
     changeTurn,
@@ -56,6 +52,10 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
 
   const [randomAttacker, setRandomAttacker] = useState<Character>(
     randomFromArray(enemy)
+  );
+
+  const filteredEnemies = enemy.filter(
+    (character) => character.name !== randomAttacker.name
   );
 
   const [gondorAudio] = useSound("/audio/gondor.mp3");
@@ -96,7 +96,7 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
     randomAttacker.health =
       randomAttacker.health - attackingCharacter.attack.value;
 
-    await animationTimer(500);
+    await animationTimer(2250);
     changeTurn();
     setShowModal(false);
     updateAttackingCharacter(undefined);
@@ -133,7 +133,7 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
 
     setShowModal(true);
 
-    setTimeout(() => setShowModal(false), 2000);
+    setTimeout(() => setShowModal(false), 2250);
 
     if (attackingCharacter) {
       const character = team.find(
@@ -158,8 +158,8 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
       updateDeck(victoryCharacter);
     }
 
-    reset();
     router.push("/");
+    reset();
   }
 
   return (
@@ -178,7 +178,7 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
             onClick={closeModal}
           />
           <div className={styles.container}>
-            {enemy.map((character) => (
+            {filteredEnemies.map((character) => (
               <EnemyFightCard key={character._id} character={character} />
             ))}
           </div>

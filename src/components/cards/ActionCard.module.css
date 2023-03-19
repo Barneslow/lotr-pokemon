@@ -5,4 +5,5 @@
   border-radius: 15px;
   position: relative;
   height: fit-content;
+  overflow: hidden;
 }

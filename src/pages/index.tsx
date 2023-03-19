@@ -124,42 +124,41 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <main className={`${styles.background} ${msPlus.className}`}>
-          <PopupModal modalOpen={modalOpen} close={close} />
-
-          <DeckNavigation />
-          <div className={styles.heading}>
-            <h1>LOTR POKEMON</h1>
-          </div>
-          <motion.div
-            variants={container}
-            initial="initial"
-            animate="animate"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 5,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {filteredCharacters.map((character) => (
-              <motion.div variants={child} key={character._id}>
-                <FlipCard
-                  name={character.name}
-                  _id={character._id}
-                  updateCount={updateCount}
-                  flipAll={flipAll}
-                  health={character.health}
-                  mainAttack={character.mainAttack.value}
-                  specialAttack={character.specialAttack.value}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </main>
-      </Layout>
+      {/* <Layout> */}
+      <PopupModal modalOpen={modalOpen} close={close} />
+      <main className={`${styles.background} ${msPlus.className}`}>
+        <DeckNavigation />
+        <div className={styles.heading}>
+          <h1>LOTR POKEMON</h1>
+        </div>
+        <motion.div
+          variants={container}
+          initial="initial"
+          animate="animate"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 5,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {filteredCharacters.map((character) => (
+            <motion.div variants={child} key={character._id}>
+              <FlipCard
+                name={character.name}
+                _id={character._id}
+                updateCount={updateCount}
+                flipAll={flipAll}
+                health={character.health}
+                mainAttack={character.mainAttack.value}
+                specialAttack={character.specialAttack.value}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </main>
+      {/* </Layout> */}
     </>
   );
 }
