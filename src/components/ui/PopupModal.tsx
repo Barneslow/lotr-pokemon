@@ -24,13 +24,14 @@ const dropIn = {
   },
   exit: {
     scale: 2,
-    transition: { duration: 0.4 },
+    transition: { duration: 0.3 },
+    filter: "blur(4px)",
   },
 };
 
 const container = {
   initial: {},
-  animate: { transition: { staggerChildren: 0.3 } },
+  animate: { transition: { staggerChildren: 0.15 } },
 };
 
 const enemyContainer = {
@@ -55,8 +56,8 @@ const PopupModal = ({ modalOpen, close }: PopupModalProps) => {
   const router = useRouter();
 
   async function startFight() {
-    router.push("/fight");
     close();
+    router.push("/fight");
   }
   return (
     <AnimatePresence initial={false} mode="wait">

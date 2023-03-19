@@ -21,6 +21,14 @@ import DroppableZones from "@/components/fight/Playground/PlayGround";
 import ActionButtons from "@/components/ui/ActionButtons";
 import { useRouter } from "next/router";
 
+import { M_PLUS_Rounded_1c } from "next/font/google";
+import Layout from "@/components/Layout/Layout";
+
+const msPlus = M_PLUS_Rounded_1c({
+  weight: ["400", "500", "700", "800", "900"],
+  subsets: ["latin"],
+});
+
 interface FightProps {
   setIsFighting: (boolean: boolean) => void;
 }
@@ -155,30 +163,32 @@ const FightScreen = ({ setIsFighting }: FightProps) => {
   }
 
   return (
-    <main className={styles.background}>
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        transition={{ duration: 1 }}
-        className={styles.wrapper}
-      >
-        <CompletedModal
-          victory={team.filter((char) => char.health > 0).length > 0}
-          showModal={completedAnimation}
-          character={victoryCharacter}
-          onClick={closeModal}
-        />
-        <div className={styles.container}>
-          {enemy.map((character) => (
-            <EnemyFightCard key={character._id} character={character} />
-          ))}
-        </div>
-        <FightModal animatedAttack={animatedAttack} showModal={showModal} />
-        <DroppableZones randomAttacker={randomAttacker}>
-          {attackingCharacter && <ActionButtons fight={fightPokemonStyle} />}
-        </DroppableZones>
-      </motion.div>
-    </main>
+    <Layout>
+      <main className={`${styles.background} ${msPlus.className}`}>
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className={styles.wrapper}
+        >
+          <CompletedModal
+            victory={team.filter((char) => char.health > 0).length > 0}
+            showModal={completedAnimation}
+            character={victoryCharacter}
+            onClick={closeModal}
+          />
+          <div className={styles.container}>
+            {enemy.map((character) => (
+              <EnemyFightCard key={character._id} character={character} />
+            ))}
+          </div>
+          <FightModal animatedAttack={animatedAttack} showModal={showModal} />
+          <DroppableZones randomAttacker={randomAttacker}>
+            {attackingCharacter && <ActionButtons fight={fightPokemonStyle} />}
+          </DroppableZones>
+        </motion.div>
+      </main>
+    </Layout>
   );
 };
 

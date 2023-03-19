@@ -10,7 +10,6 @@ import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
-import TheOneRing from "@/components/ui/icon/TheOneRing";
 import { animationTimer } from "@/helpers/fight";
 import PopupModal from "@/components/ui/PopupModal";
 import useModal from "@/hooks/useModal";
@@ -131,9 +130,7 @@ export default function Home() {
 
           <DeckNavigation />
           <div className={styles.heading}>
-            <TheOneRing />
             <h1>LOTR POKEMON</h1>
-            <TheOneRing />
           </div>
           <motion.div
             variants={container}
