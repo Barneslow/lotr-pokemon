@@ -3,8 +3,6 @@
   flex-direction: column;
   display: flex;
   flex: 1;
-  width: clamp(300px, 100%, 1000px);
-  gap: 0.5rem;
 }
 
 .fight-area {
@@ -16,7 +14,6 @@
   align-items: center;
   overflow: hidden;
   position: relative;
-  width: clamp(300px, 100%, 750px);
 }
 
 .fight-zone-container {
@@ -25,12 +22,13 @@
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  align-content: center;
+  gap: 0.2rem;
 }
 
 .fight-zone {
-  background-color: rgba(141, 251, 124, 0.5);
-  border: 2px dashed green;
+  background-color: rgba(141, 251, 124, 0.3);
+  border: 5px dashed green;
   border-radius: 20px;
   height: 100%;
   padding: 0.2rem;
@@ -40,8 +38,8 @@
 }
 
 .fight-zone:nth-child(2) {
-  background-color: rgba(255, 54, 54, 0.5);
-  border: 2px dashed red;
+  background-color: rgba(255, 54, 54, 0.3);
+  border: 5px dashed red;
 }
 
 .container {

@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout/Layout";
 import { Character } from "@/models/models";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
@@ -16,7 +17,7 @@ const CharacterPage = (props: CharacterPageProps) => {
   const { character, quotes } = props;
 
   return (
-    <div>
+    <Layout>
       <h1>Character Page</h1>
       <div
         style={{
@@ -34,7 +35,7 @@ const CharacterPage = (props: CharacterPageProps) => {
       {quotes.map((quote, index) => (
         <p key={index}>{quote}</p>
       ))}
-    </div>
+    </Layout>
   );
 };
 

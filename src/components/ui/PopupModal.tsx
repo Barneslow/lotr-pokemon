@@ -1,7 +1,8 @@
 import { FightContext } from "@/context/FightContext";
 import { animationTimer } from "@/helpers/fight";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import { ReactNode, useContext } from "react";
 import CharacterCard from "../cards/CharacterCard";
 
 import styles from "./PopupModal.module.css";
@@ -23,7 +24,7 @@ const dropIn = {
   },
   exit: {
     scale: 2,
-    transition: { duration: 0.2 },
+    transition: { duration: 0.4 },
   },
 };
 
@@ -47,16 +48,15 @@ const child = {
 interface PopupModalProps {
   modalOpen: boolean;
   close: () => void;
-  setIsFighting: (boolen: boolean) => void;
 }
 
-const PopupModal = ({ modalOpen, close, setIsFighting }: PopupModalProps) => {
+const PopupModal = ({ modalOpen, close }: PopupModalProps) => {
   const { team, enemy } = useContext(FightContext);
+  const router = useRouter();
 
   async function startFight() {
+    router.push("/fight");
     close();
-    await animationTimer(50);
-    setIsFighting(true);
   }
   return (
     <AnimatePresence initial={false} mode="wait">
@@ -125,7 +125,7 @@ export const Backdrop = ({ children, onClick }: BackdropProps) => {
       onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 1, background: "black" }}
     >
       {children}
     </motion.div>

@@ -12,9 +12,9 @@ import { FightContext } from "@/context/FightContext";
 import DeckNavigation from "@/components/deck/DeckNavigation";
 import TheOneRing from "@/components/ui/icon/TheOneRing";
 import { animationTimer } from "@/helpers/fight";
-import FightScreen from "@/components/fight/FightScreen";
 import PopupModal from "@/components/ui/PopupModal";
 import useModal from "@/hooks/useModal";
+import Layout from "@/components/Layout/Layout";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],
@@ -26,7 +26,6 @@ export default function Home() {
   const { updateTeam, team, setEnemyTeam, count, setCount, characters } =
     useContext(FightContext);
   const [flipAll, setFlipAll] = useState(true);
-  const [isFighting, setIsFighting] = useState(false);
 
   const [filteredCharacters, setFilteredCharacters] =
     useState<Character[]>(characters);
@@ -126,53 +125,44 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.background} ${msPlus.className}`}>
-        <PopupModal
-          modalOpen={modalOpen}
-          setIsFighting={setIsFighting}
-          close={close}
-        />
-        {isFighting ? (
-          <>
-            <FightScreen setIsFighting={setIsFighting} />
-          </>
-        ) : (
-          <>
-            <DeckNavigation />
-            <div className={styles.heading}>
-              <TheOneRing />
-              <h1>LOTR POKEMON</h1>
-              <TheOneRing />
-            </div>
-            <motion.div
-              variants={container}
-              initial="initial"
-              animate="animate"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 5,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {filteredCharacters.map((character) => (
-                <motion.div variants={child} key={character._id}>
-                  <FlipCard
-                    name={character.name}
-                    _id={character._id}
-                    updateCount={updateCount}
-                    flipAll={flipAll}
-                    health={character.health}
-                    mainAttack={character.mainAttack.value}
-                    specialAttack={character.specialAttack.value}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </>
-        )}
-      </main>
+      <Layout>
+        <main className={`${styles.background} ${msPlus.className}`}>
+          <PopupModal modalOpen={modalOpen} close={close} />
+
+          <DeckNavigation />
+          <div className={styles.heading}>
+            <TheOneRing />
+            <h1>LOTR POKEMON</h1>
+            <TheOneRing />
+          </div>
+          <motion.div
+            variants={container}
+            initial="initial"
+            animate="animate"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 5,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {filteredCharacters.map((character) => (
+              <motion.div variants={child} key={character._id}>
+                <FlipCard
+                  name={character.name}
+                  _id={character._id}
+                  updateCount={updateCount}
+                  flipAll={flipAll}
+                  health={character.health}
+                  mainAttack={character.mainAttack.value}
+                  specialAttack={character.specialAttack.value}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </main>
+      </Layout>
     </>
   );
 }

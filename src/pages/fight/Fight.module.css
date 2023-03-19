@@ -1,3 +1,11 @@
+.background {
+  background: url("../../assets/images/lotr-map-background.jpg");
+  background-size: contain;
+  min-height: 100vh;
+  min-width: 100vw;
+  text-align: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
