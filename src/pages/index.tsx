@@ -125,8 +125,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Layout> */}
-      <PopupModal modalOpen={modalOpen} close={close} />
       <main className={`${styles.background} ${msPlus.className}`}>
+        <PopupModal modalOpen={modalOpen} close={close} />
+
         <DeckNavigation />
         <div className={styles.heading}>
           <h1>LOTR POKEMON</h1>

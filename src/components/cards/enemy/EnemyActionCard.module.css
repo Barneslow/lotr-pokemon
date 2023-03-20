@@ -1,0 +1,9 @@
+.card {
+  background-color: whitesmoke;
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem;
+  border-radius: 15px;
+  position: relative;
+  height: fit-content;
+  overflow: hidden;
+}

@@ -17,8 +17,8 @@ interface IFightContext {
   count: number;
   turn: number;
   characters: Character[];
-  attackingCharacter: AttackingCharacter | undefined;
-  updateAttackingCharacter: (attack: AttackingCharacter | undefined) => void;
+  // attackingCharacter: AttackingCharacter | undefined;
+  // updateAttackingCharacter: (attack: AttackingCharacter | undefined) => void;
   updateTeam: (character: Character) => void;
   setEnemyTeam: (array: Character[]) => void;
   setCount: Dispatch<SetStateAction<number>>;
@@ -32,8 +32,8 @@ const defaultState: IFightContext = {
   characters: [],
   count: 0,
   turn: 0,
-  attackingCharacter: undefined,
-  updateAttackingCharacter: (character: AttackingCharacter | undefined) => {},
+  // attackingCharacter: {},
+  // updateAttackingCharacter: (character: AttackingCharacter | undefined) => {},
   updateTeam: (character: Character) => {},
   setEnemyTeam: (array: Character[]) => {},
   setCount: () => {},
@@ -50,9 +50,9 @@ type Props = {
 export const FightContextProvider = ({ children }: Props) => {
   const [team, setTeam] = useState<Character[]>([]);
   const [enemy, setEnemy] = useState<Character[]>([]);
-  const [attackingCharacter, setAttackingCharacter] = useState<
-    AttackingCharacter | undefined
-  >();
+  // const [attackingCharacter, setAttackingCharacter] = useState<
+  //   AttackingCharacter | undefined
+  // >();
   const [characters, setCharacters] = useState<Character[]>(
     DUMMY_DATA as Character[]
   );
@@ -64,11 +64,11 @@ export const FightContextProvider = ({ children }: Props) => {
     setTeam((prev) => [...prev, character]);
   }
 
-  function updateAttackingCharacter(
-    newCharacter: AttackingCharacter | undefined
-  ) {
-    setAttackingCharacter(newCharacter);
-  }
+  // function updateAttackingCharacter(
+  //   newCharacter: AttackingCharacter | undefined
+  // ) {
+  //   setAttackingCharacter(newCharacter);
+  // }
 
   function setEnemyTeam(rival: Character[]) {
     const randomEnemies = randomFiveFromArray(rival);
@@ -96,8 +96,8 @@ export const FightContextProvider = ({ children }: Props) => {
     enemy,
     team,
     setEnemyTeam,
-    attackingCharacter,
-    updateAttackingCharacter,
+    // attackingCharacter,
+    // updateAttackingCharacter,
     count,
     setCount,
     reset,

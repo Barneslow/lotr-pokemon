@@ -1,18 +1,12 @@
-import imageJSON from "../../assets/images.json";
+import imageJSON from "../../../assets/images.json";
 import Image from "next/image";
-import { useContext } from "react";
-import DeadOverlay from "../ui/DeadOverlay";
-import { FightContext } from "@/context/FightContext";
+import DeadOverlay from "../../ui/DeadOverlay";
 import { CharacterObjectProps } from "@/models/models";
 
-import characterHealthData from "../../assets/data/myFile.json";
+import characterHealthData from "../../../assets/data/myFile.json";
 
-import styles from "./FightCard.module.scss";
-import { HeartIcon } from "../ui/icon/CardIcons";
-
-// interface EnemyFightCardProps extends CharacterObjectProps {
-//   playerFightAnimation: (target: Character) => void;
-// }
+import styles from "../FightCard.module.scss";
+import { HeartIcon } from "../../ui/icon/CardIcons";
 
 const EnemyFightCard: React.FC<CharacterObjectProps> = ({ character }) => {
   const data = imageJSON.find((item) => item.name === character.name)!;
@@ -24,18 +18,12 @@ const EnemyFightCard: React.FC<CharacterObjectProps> = ({ character }) => {
   const percentage = 100 - (character.health / health) * 100;
 
   return (
-    <div
-      // disabled={isOdd(turn) || character.health <= 0 || !attackingCharacter}
-      // onClick={() => {
-      //   playerFightAnimation(character);
-      // }}
-      className={styles.card}
-    >
+    <div className={styles.card}>
       <div className={styles.enemy}></div>
       {character.health <= 0 && <DeadOverlay />}
       <div className={styles.header}>
         <h3>{character.name.substring(0, 20)}</h3>
-      </div>{" "}
+      </div>
       <Image
         alt={`Picture of the ${character.name}`}
         width={400}

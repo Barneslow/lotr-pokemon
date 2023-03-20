@@ -22,6 +22,7 @@ export type PowerIconProps = {
 export type BasicIconProps = {
   stroke?: string;
   size?: number;
+  style: boolean;
 };
 
 export function SwordIcon({ id, used, stroke, size }: PowerIconProps) {
@@ -268,9 +269,10 @@ export function FightIcon({ stroke, size }: BasicIconProps) {
 
 type StaticHeartIconProp = {
   children: ReactNode;
+  style: boolean;
 };
 
-export function StaticHeartIcon({ children }: StaticHeartIconProp) {
+export function StaticHeartIcon({ children, style }: StaticHeartIconProp) {
   return (
     <div
       style={{
@@ -279,7 +281,11 @@ export function StaticHeartIcon({ children }: StaticHeartIconProp) {
         display: "flex",
       }}
     >
-      <svg viewBox="0 0 24 24" className={styles["svg-static"]} fill="red">
+      <svg
+        viewBox="0 0 24 24"
+        className={`${style ? styles.svg : styles["svg-static"]}`}
+        fill="red"
+      >
         <path
           stroke="black"
           strokeWidth={0.6}
@@ -291,9 +297,16 @@ export function StaticHeartIcon({ children }: StaticHeartIconProp) {
   );
 }
 
-export function StaticSpecialPowerIcon() {
+export function StaticSpecialPowerIcon({
+  stroke,
+  size,
+  style,
+}: BasicIconProps) {
   return (
-    <svg viewBox="0 -0.5 17 17" className={styles["svg-static"]}>
+    <svg
+      viewBox="0 -0.5 17 17"
+      className={`${style ? styles.svg : styles["svg-static"]}`}
+    >
       <path
         fill="#32CD32"
         stroke="black"
@@ -304,9 +317,12 @@ export function StaticSpecialPowerIcon() {
   );
 }
 
-export function StaticSwordIcon() {
+export function StaticSwordIcon({ stroke, size, style }: BasicIconProps) {
   return (
-    <svg viewBox="0 0 510.31 510.3" className={styles["svg-static"]}>
+    <svg
+      viewBox="0 0 510.31 510.3"
+      className={`${style ? styles.svg : styles["svg-static"]}`}
+    >
       <path
         fill="#0A6EBD"
         stroke="black"

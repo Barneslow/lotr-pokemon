@@ -1,7 +1,7 @@
-import ActionCard from "@/components/cards/ActionCard";
+import EnemyActionCard from "@/components/cards/enemy/EnemyActionCard";
 import { FightContext } from "@/context/FightContext";
-import { Character } from "@/models/models";
-import React, { ReactNode, useContext, useEffect, useState } from "react";
+import { AttackingCharacter, Character } from "@/models/models";
+import React, { useContext, useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableActionCharacter from "./DraggableActionCharacter";
 import DraggableCharacter from "./DraggableCharacter";
@@ -18,10 +18,11 @@ const reorder = (list: Character[], startIndex: number, endIndex: number) => {
 
 type DroppableZonesProps = {
   randomAttacker: Character | undefined;
-  children: ReactNode;
+  fight: (attackingCharacter: AttackingCharacter) => Promise<void>;
 };
-const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
-  const { team, updateAttackingCharacter } = useContext(FightContext);
+
+const DroppableZones = ({ randomAttacker, fight }: DroppableZonesProps) => {
+  const { team } = useContext(FightContext);
   const [inPlayCharacter, setInPlayCharacter] = useState<Character[]>([]);
   const [teamArray, setTeamArray] = useState<Character[]>(team);
 
@@ -82,10 +83,6 @@ const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
     }
   };
 
-  useEffect(() => {
-    updateAttackingCharacter(undefined);
-  }, [inPlayCharacter]);
-
   function setInPlayCharacterClickHandler(character: Character) {
     const newTeamArray = Array.from(teamArray);
 
@@ -117,6 +114,7 @@ const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
                       character={character}
                       index={index}
                       key={character._id}
+                      fight={fight}
                     />
                   ))}
                   {provided.placeholder}
@@ -125,7 +123,10 @@ const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
             </Droppable>
             {randomAttacker && (
               <div className={styles["fight-zone"]}>
-                <ActionCard character={randomAttacker} />
+                <EnemyActionCard
+                  stroke="3px solid red"
+                  character={randomAttacker}
+                />
               </div>
             )}
           </div>
@@ -153,7 +154,6 @@ const DroppableZones = ({ children, randomAttacker }: DroppableZonesProps) => {
             );
           }}
         </Droppable>
-        {children}
       </div>
     </DragDropContext>
   );

@@ -125,7 +125,7 @@ export const Backdrop = ({ children, onClick }: BackdropProps) => {
       onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 1, background: "black" }}
+      exit={{ opacity: 1 }}
     >
       {children}
     </motion.div>

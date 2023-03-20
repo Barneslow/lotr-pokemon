@@ -2,12 +2,12 @@
   width: 40px;
 }
 
+.svg-static {
+  width: 25px;
+}
+
 @media only screen and (max-width: 500px) {
   .svg {
     width: 25px;
   }
-}
-
-.svg-static {
-  width: 20px;
 }

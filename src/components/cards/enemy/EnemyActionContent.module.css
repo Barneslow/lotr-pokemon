@@ -25,6 +25,7 @@
   color: black;
   font-weight: 700;
 }
+
 .image-box {
   border-radius: 10px;
   overflow: hidden;
@@ -83,11 +84,5 @@
 @media only screen and (max-width: 500px) {
   .image-box {
     width: 150px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .image-box {
-    width: 125px;
   }
 }

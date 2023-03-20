@@ -1,5 +1,4 @@
 import imageJSON from "../../assets/images.json";
-import styles from "./FightCard.module.scss";
 import Image from "next/image";
 import DeadOverlay from "../ui/DeadOverlay";
 import { CharacterObjectProps } from "@/models/models";
@@ -8,7 +7,10 @@ import {
   calculateAttackTimeRemaining,
   calculateCharacterHealth,
 } from "@/helpers/fight";
+
 import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";
+
+import styles from "./FightCard.module.scss";
 
 export interface FightCardProps extends CharacterObjectProps {
   onClick: () => void;
