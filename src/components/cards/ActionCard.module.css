@@ -33,7 +33,7 @@
   transform: translate(-50%, -50%);
   font-size: 12px;
   color: black;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .image-box {
@@ -109,7 +109,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 370px) {
   .image-box {
     width: 125px;
   }
