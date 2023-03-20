@@ -1,3 +1,4 @@
+import { DUMMY_CHARACTER } from "@/components/ui/DummyEnemies";
 import { Character } from "@/models/models";
 import { createContext, ReactNode, useState } from "react";
 
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export const DeckContextProvider = ({ children }: Props) => {
-  const [deck, setDeck] = useState<Character[]>([]);
+  const [deck, setDeck] = useState<Character[]>([DUMMY_CHARACTER]);
 
   function updateDeck(character: Character) {
     setDeck((prev) => [...prev, character]);

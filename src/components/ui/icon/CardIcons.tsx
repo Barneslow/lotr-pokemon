@@ -34,7 +34,7 @@ export function SwordIcon({ id, used, stroke, size }: PowerIconProps) {
     >
       <linearGradient id={`swordgradient${id}`} gradientTransform="rotate(90)">
         <stop offset={`${used}%`} stopColor="white" stopOpacity=".5" />
-        <stop offset={`${used}%`} stopColor="#0A6EBD" />
+        <stop offset={`${used}%`} stopColor="var(--blue)" />
       </linearGradient>
 
       <motion.path
@@ -324,7 +324,7 @@ export function StaticSwordIcon({ stroke, size, style }: BasicIconProps) {
       className={`${style ? styles.svg : styles["svg-static"]}`}
     >
       <path
-        fill="#0A6EBD"
+        fill="var(--blue)"
         stroke="black"
         strokeWidth={10}
         d="M504.06,443.728c-8.341-8.341-21.845-8.341-30.165,0h-0.021L412.946,382.8c20.096-23.915,34.731-50.389,36.928-72.768

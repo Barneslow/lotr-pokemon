@@ -46,7 +46,7 @@ const VictoryCard = ({ character }: VictoryCardProps) => {
             icon={faHandFist}
             style={{
               height: 30,
-              color: "#0A6EBD",
+              color: "var(--blue)",
               stroke: "black",
               strokeWidth: 5,
             }}

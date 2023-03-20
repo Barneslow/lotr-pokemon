@@ -1,40 +1,57 @@
+import { motion } from "framer-motion";
+
 import Layout from "@/components/Layout/Layout";
+import Quote from "@/components/Quote";
 import { Character } from "@/models/models";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { M_PLUS_Rounded_1c } from "next/font/google";
+import imageData from "../../assets/images.json";
+
 import { ParsedUrlQuery } from "querystring";
 import { fetchCharacter, fetchCharacterQuotes } from "../api/hello";
+
+import styles from "./CharacterPage.module.css";
+import Image from "next/image";
+import CharacterInfo from "@/components/CharacterInfo";
+
+const msPlus = M_PLUS_Rounded_1c({
+  weight: ["400", "500", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 type CharacterPageProps = {
   character: Character;
   quotes: string[];
+  imageUrl: string;
 };
 
 interface Params extends ParsedUrlQuery {
   name: string;
 }
 
-const CharacterPage = (props: CharacterPageProps) => {
-  const { character, quotes } = props;
-
+const CharacterPage = ({ character, quotes, imageUrl }: CharacterPageProps) => {
   return (
     <Layout>
-      <h1>Character Page</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "1rem",
-        }}
-      ></div>
-
-      <p>{character.name}</p>
-      <a target="_blank" href={character.wikiUrl}>
-        Find out More
-      </a>
-      {quotes.map((quote, index) => (
-        <p key={index}>{quote}</p>
-      ))}
+      <main className={`${styles.background} ${msPlus.className}`}>
+        <div className={styles.container}>
+          <div className={styles["image-box"]}>
+            <Image
+              className={styles.image}
+              width={1000}
+              height={1000}
+              src={imageUrl}
+              alt={`Picture of ${character.name}`}
+            />
+          </div>
+          <h1>{character.name}</h1>
+          <CharacterInfo character={character} />
+          <div className={styles.quotes}>
+            {quotes.map((quote, index) => (
+              <Quote key={index} quote={quote} />
+            ))}
+          </div>
+        </div>
+      </main>
     </Layout>
   );
 };
@@ -54,6 +71,8 @@ export const getStaticProps: GetStaticProps<
 > = async (context) => {
   const { name } = context.params!;
 
+  const { imageUrl } = imageData.find((char) => char.name === name)!;
+
   const character = await fetchCharacter(name);
 
   const quotes = await fetchCharacterQuotes(character._id);
@@ -62,6 +81,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       character,
       quotes,
+      imageUrl,
     },
   };
 };

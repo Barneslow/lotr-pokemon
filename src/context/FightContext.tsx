@@ -96,8 +96,6 @@ export const FightContextProvider = ({ children }: Props) => {
     enemy,
     team,
     setEnemyTeam,
-    // attackingCharacter,
-    // updateAttackingCharacter,
     count,
     setCount,
     reset,
