@@ -22,7 +22,7 @@ export type PowerIconProps = {
 export type BasicIconProps = {
   stroke?: string;
   size?: number;
-  style: boolean;
+  style?: boolean;
 };
 
 export function SwordIcon({ id, used, stroke, size }: PowerIconProps) {

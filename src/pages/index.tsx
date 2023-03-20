@@ -9,11 +9,10 @@ import styles from "./index.module.css";
 import { shuffleArray } from "@/helpers/arrays";
 import FlipCard from "@/components/cards/FlipCard";
 import { FightContext } from "@/context/FightContext";
-import DeckNavigation from "@/components/deck/DeckNavigation";
+import DeckNavigation from "@/components/navigation/DeckNavigation";
 import { animationTimer } from "@/helpers/fight";
-import PopupModal from "@/components/ui/PopupModal";
+import PopupModal from "@/components/ui/modals/PopupModal";
 import useModal from "@/hooks/useModal";
-import Layout from "@/components/Layout/Layout";
 
 const msPlus = M_PLUS_Rounded_1c({
   weight: ["400", "500", "700", "800", "900"],

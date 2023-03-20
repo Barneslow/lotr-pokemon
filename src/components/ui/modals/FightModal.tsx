@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 import { IAttackingAnimationProps } from "@/helpers/fight";
-import images from "../../assets/images.json";
+import images from "../../../assets/images.json";
 
 import styles from "./FightModal.module.css";
-import { Backdrop } from "../ui/PopupModal";
+import { Backdrop } from "./PopupModal";
 import Image from "next/image";
 
 interface FightModalProps {

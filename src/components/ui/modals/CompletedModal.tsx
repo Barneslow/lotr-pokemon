@@ -1,9 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./FightModal.module.css";
-import { Backdrop } from "../ui/PopupModal";
+import { Backdrop } from "./PopupModal";
 import { Character } from "@/models/models";
-import VictoryCard from "../cards/VictoryCard";
+import VictoryCard from "../../cards/VictoryCard";
 
 interface CompletedModalProps {
   showModal: boolean;

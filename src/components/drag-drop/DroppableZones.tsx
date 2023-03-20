@@ -6,7 +6,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggableActionCharacter from "./DraggableActionCharacter";
 import DraggableCharacter from "./DraggableCharacter";
 
-import styles from "./Playground.module.css";
+import styles from "./DroppableZones.module.css";
 
 const reorder = (list: Character[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);

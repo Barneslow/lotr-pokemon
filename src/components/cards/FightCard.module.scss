@@ -58,11 +58,6 @@
 .card:hover:not(:disabled) {
   background-color: red;
 
-  // .enemy {
-  //   display: block;
-  //   background-color: rgba(255, 0, 0, 0.2);
-  // }
-
   filter: brightness(1.2);
 }
 

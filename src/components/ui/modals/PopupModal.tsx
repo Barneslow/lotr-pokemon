@@ -2,7 +2,7 @@ import { FightContext } from "@/context/FightContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { ReactNode, useContext } from "react";
-import CharacterCard from "../cards/CharacterCard";
+import CharacterCard from "@/components/cards/CharacterCard";
 
 import styles from "./PopupModal.module.css";
 

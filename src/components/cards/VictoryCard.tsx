@@ -1,11 +1,11 @@
-import styles from "./VictoryCard.module.css";
-
 import { motion } from "framer-motion";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt, faHandFist, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Character } from "@/models/models";
 import Image from "next/image";
+
+import styles from "./VictoryCard.module.css";
 
 import imageData from "../../assets/images.json";
 

@@ -6,8 +6,6 @@ import {
   calculateAttackTimeRemaining,
   calculateCharacterHealth,
 } from "@/helpers/fight";
-import { FightContext } from "@/context/FightContext";
-import { useContext } from "react";
 
 import imageData from "../../assets/images.json";
 import { HeartIcon, SpecialPowerIcon, SwordIcon } from "../ui/icon/CardIcons";

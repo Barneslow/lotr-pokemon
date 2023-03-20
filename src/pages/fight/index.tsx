@@ -11,13 +11,13 @@ import EnemyFightCard from "@/components/cards/enemy/EnemyFightCard";
 import { motion } from "framer-motion";
 
 import styles from "./Fight.module.css";
-import FightModal from "@/components/fight/FightModal";
+import FightModal from "@/components/ui/modals/FightModal";
 
 import useSound from "use-sound";
-import CompletedModal from "@/components/fight/CompletedModal";
+import CompletedModal from "@/components/ui/modals/CompletedModal";
 import { randomFromArray } from "@/helpers/arrays";
 import { DeckContext } from "@/context/DeckContext";
-import DroppableZones from "@/components/fight/Playground/PlayGround";
+import DroppableZones from "@/components/drag-drop/DroppableZones";
 import { useRouter } from "next/router";
 
 import { M_PLUS_Rounded_1c } from "next/font/google";
