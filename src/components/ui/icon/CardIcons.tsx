@@ -269,7 +269,7 @@ export function FightIcon({ stroke, size }: BasicIconProps) {
 
 type StaticHeartIconProp = {
   children: ReactNode;
-  style: boolean;
+  style?: boolean;
 };
 
 export function StaticHeartIcon({ children, style }: StaticHeartIconProp) {
