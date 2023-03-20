@@ -43,9 +43,9 @@ const CharacterPage = ({ character, quotes, imageUrl }: CharacterPageProps) => {
               alt={`Picture of ${character.name}`}
             />
           </div>
-          <h1>{character.name}</h1>
-          <CharacterInfo character={character} />
           <div className={styles.quotes}>
+            <h1>{character.name}</h1>
+            <CharacterInfo character={character} />
             {quotes.map((quote, index) => (
               <Quote key={index} quote={quote} />
             ))}
